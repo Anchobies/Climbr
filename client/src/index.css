@@ -24,3 +24,8 @@ code {
   text-decoration: underline;
   cursor: pointer;
 }
+
+header {
+  font-size: 32px;
+  font-weight: bold;
+}

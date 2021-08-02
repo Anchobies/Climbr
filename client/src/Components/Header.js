@@ -5,9 +5,7 @@ const Header = () => {
    const history = useHistory();
 
    return (
-       <div>
-       <header className="header">
-          <div className="menu">
+          <div className="header">
              <h1 onClick={() => history.push("/")} style={{cursor:'pointer'}}>HiveFive</h1>
              <br />
              <ul className="header-ul">
@@ -42,8 +40,6 @@ const Header = () => {
                 </li>
              </ul>
           </div>
-       </header>
-       </div>
    )
 }
 
