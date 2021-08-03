@@ -29,3 +29,19 @@ header {
   font-size: 32px;
   font-weight: bold;
 }
+
+.img-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.default {
+  width: 150px;
+  height: 150px;
+}
+
+.post {
+  max-width: 400px;
+  max-height: 400px;
+}

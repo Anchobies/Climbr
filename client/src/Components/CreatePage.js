@@ -13,8 +13,35 @@ const CreatePage = () => {
         setNewBees(newBeesCopy);
     };
   
+    const handleError = response => {
+        if (!response.ok) { 
+           throw Error(response.statusText);
+        }
+     };
+
     const handleNewHive = e => {
         e.preventDefault()
+
+        fetch("http://localhost:3000/hives", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(
+                {
+                    hive: {
+                        name: newHive,
+                        bees: newBees,
+                        queen_bee_id: 1
+                    }
+                }
+            )
+        })
+        .then(handleError)
+        .then(res => res.json()) 
+        .then(data => console.log("Does something with data"))
+        .catch(console.log);
     };
 
     const addAnotherBee = () => {

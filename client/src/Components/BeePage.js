@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-// import { useHistory } from "react-router-dom"
+// import { useParams } from "react-router-dom"
 
-const BeePage = () => {
-    // const beeId = useHistory().bee_id;
+const BeePage = ({ timeDifference }) => {
+    // const beeId = useParams().bee_id;
     const initialBee = {
         username: "",
         user_id: 0,
@@ -43,40 +43,6 @@ const BeePage = () => {
         }])
     }, []);
 
-    function timeDifference(current, previous) {
-        const msPerMinute = 60 * 1000;
-        const msPerHour = msPerMinute * 60;
-        const msPerDay = msPerHour * 24;
-        const msPerMonth = msPerDay * 30;
-        const msPerYear = msPerDay * 365;
-    
-        const elapsed = current - previous;
-    
-        if (elapsed < msPerMinute) {
-             return Math.round(elapsed/1000) + ' seconds ago';   
-        }
-    
-        else if (elapsed < msPerHour) {
-             return Math.round(elapsed/msPerMinute) + ' minutes ago';   
-        }
-    
-        else if (elapsed < msPerDay ) {
-             return Math.round(elapsed/msPerHour ) + ' hours ago';   
-        }
-    
-        else if (elapsed < msPerMonth) {
-            return 'approximately ' + Math.round(elapsed/msPerDay) + ' days ago';   
-        }
-    
-        else if (elapsed < msPerYear) {
-            return 'approximately ' + Math.round(elapsed/msPerMonth) + ' months ago';   
-        }
-    
-        else {
-            return 'approximately ' + Math.round(elapsed/msPerYear ) + ' years ago';   
-        }
-    }
-
     const sortedMessages = messages.sort((a, b) => a.created - b.created);
 
     const currentTime = Date.now();
@@ -86,7 +52,7 @@ const BeePage = () => {
         return (
             <li className="message" key={message.id}>
                 <p>{message.content}</p>
-                {message.img_url ? <img src={message.img_url} alt="" /> : null}
+                {message.img_url ? <img src={message.img_url} alt="" className="post" /> : null}
                 <p>{timeDifference(currentTime, message.created)}</p>
                 <br />
             </li>
