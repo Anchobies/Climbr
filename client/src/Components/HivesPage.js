@@ -5,16 +5,19 @@ const HivesPage = () => {
     const [hives, setHives] = useState([])
 
     useEffect(() => {
-        setHives([
-            {
-                name: "Hive 1",
-                id: 1
-            },
-            {
-                name: "Hive 2",
-                id: 2
-            }
-        ])
+        fetch("http://localhost:3000/users/1/hives")
+        .then(response => response.json())
+        .then(json => setHives(json))
+        // setHives([
+        //     {
+        //         name: "Hive 1",
+        //         id: 1
+        //     },
+        //     {
+        //         name: "Hive 2",
+        //         id: 2
+        //     }
+        // ])
     }, [])
 
     const hivesArray = hives.map(hive => {

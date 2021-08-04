@@ -1,23 +1,21 @@
 import React, { useState } from 'react'
+import { useHistory } from "react-router-dom"
 import { Button } from "@material-ui/core"
 
 const CreatePage = () => {
     const [newHive, setNewHive] = useState("");
     const [newBees, setNewBees] = useState([]);
     const [numOfBees, setNumOfBees] = useState(3);
+    const [hiveErrors, setHiveErrors] = useState([]);
   
+    const history = useHistory();
+
     const handleHive = e => setNewHive(e.target.value);
     const handleBees = (e, index) => {
         const newBeesCopy = [...newBees];
         newBeesCopy[index] = e.target.value;
         setNewBees(newBeesCopy);
     };
-  
-    const handleError = response => {
-        if (!response.ok) { 
-           throw Error(response.statusText);
-        }
-     };
 
     const handleNewHive = e => {
         e.preventDefault()
@@ -38,10 +36,14 @@ const CreatePage = () => {
                 }
             )
         })
-        .then(handleError)
-        .then(res => res.json()) 
-        .then(data => console.log("Does something with data"))
-        .catch(console.log);
+        .then(res => res.json())    
+        .then(data => {
+            if (!data.errors) {
+                history.push(`/hives/${data.id}`);
+            } else {
+                setHiveErrors(data.errors);
+            }
+        })
     };
 
     const addAnotherBee = () => {
@@ -124,6 +126,7 @@ const CreatePage = () => {
             </Button>
             <br />
          </form>
+         {hiveErrors.map(hiveError => <p className="error-message" key={hiveError}>{hiveError}</p>)}
         </div>
     )
 }
