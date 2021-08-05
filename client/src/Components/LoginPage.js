@@ -7,19 +7,19 @@ const LoginPage = ({ setToggle, toggle, onLogin }) => {
         username: ""   
     }
 
-    const [credentials, setCredentials] = useState(initialUser);
+    const [cred, setCred] = useState(initialUser);
     const [loginErrors, setLoginErrors] = useState([]);
 
     const handleLogin = e => {
         e.preventDefault();
         
-        fetch("http://localhost:3000/users/login", {
+        fetch("http://localhost:3000/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify(credentials)
+            body: JSON.stringify(cred)
         })
         // .then(response => response.json())
         // .then(json => {
@@ -31,10 +31,10 @@ const LoginPage = ({ setToggle, toggle, onLogin }) => {
         // })
     };
 
-    const handleCredentials = e => {
-        const credentialsCopy = { ...credentials };
-        credentialsCopy[e.target.name] = e.target.value;
-        setCredentials(credentialsCopy);
+    const handleCred = e => {
+        const credCopy = { ...cred };
+        credCopy[e.target.name] = e.target.value;
+        setCred(credCopy);
     };
 
     return (
@@ -43,11 +43,11 @@ const LoginPage = ({ setToggle, toggle, onLogin }) => {
             <form onSubmit={handleLogin} >
                 <br />
                 <label>
-                    <input onChange={handleCredentials} name="username" value={credentials.username} type="text" placeholder="Username" />
+                    <input onChange={handleCred} name="username" value={cred.username} type="text" placeholder="Username" />
                 </label>
                 <br />
                 <label>
-                    <input onChange={handleCredentials} name="password" value={credentials.password} type="password" placeholder="Password" />
+                    <input onChange={handleCred} name="password" value={cred.password} type="password" placeholder="Password" />
                 </label>
                 <br />
                 <br />

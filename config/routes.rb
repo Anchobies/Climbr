@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   get "/users", to: "users#show"
   
-  post "/users/signup", to: "sessions#signup"
-  post "/users/login", to: "sessions#login"
+  post "/signup", to: "sessions#signup"
+  post "/login", to: "sessions#login"
   
   get "/hives", to: "hives#show"
 

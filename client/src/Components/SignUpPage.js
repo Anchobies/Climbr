@@ -16,7 +16,7 @@ const SignUpPage = ({ setToggle, toggle, onLogin }) => {
     const handleSubmitUser = e => {
         e.preventDefault();
         
-        fetch("http://localhost:3000/users/signup", {
+        fetch("http://localhost:3000/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

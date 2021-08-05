@@ -71,8 +71,6 @@ function App() {
         <Route exact path="/friends" component={FriendsPage} />
         <Route exact path="/users/:user_id" component={UserPage} />
         <Route exact path="/hives/:hive_id/:bee_id" component={() => <BeePage timeDifference={timeDifference} />} />
-        <Route exact path="/signup" component={() => <LoginPage setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />} />
-        <Route exact path="/login" component={() => <SignUpPage setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />} />
       </Switch>
       <Footer />
     </div>
