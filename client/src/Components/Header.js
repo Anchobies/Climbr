@@ -18,7 +18,6 @@ const Header = () => {
                 </li>
                 <li>
                    <NavLink to="/create" style={{ textDecoration: 'none' }}>
-                      {" "}
                       <Button type="submit" color="primary" variant="contained">
                          Create a Hive{" "}
                       </Button>

@@ -1,5 +1,6 @@
 import './App.css';
 
+import React, { useState } from 'react';
 import { Route, Switch } from "react-router-dom"
 import Header from './Components/Header';
 import Footer from './Components/Footer';
@@ -10,8 +11,21 @@ import HivePage from './Components/HivePage';
 import FriendsPage from './Components/FriendsPage';
 import UserPage from './Components/UserPage';
 import BeePage from './Components/BeePage';
+import SignUpPage from './Components/SignUpPage';
+import LoginPage from './Components/LoginPage';
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [toggle, setToggle] = useState(true);
+
+  if (!currentUser) {
+    if (toggle) {
+      return <LoginPage setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />; 
+    } else {
+      return <SignUpPage setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />;
+    }
+  }
+
   function timeDifference(current, previous) {
     const msPerMinute = 60 * 1000;
     const msPerHour = msPerMinute * 60;
@@ -57,6 +71,8 @@ function App() {
         <Route exact path="/friends" component={FriendsPage} />
         <Route exact path="/users/:user_id" component={UserPage} />
         <Route exact path="/hives/:hive_id/:bee_id" component={() => <BeePage timeDifference={timeDifference} />} />
+        <Route exact path="/signup" component={() => <LoginPage setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />} />
+        <Route exact path="/login" component={() => <SignUpPage setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />} />
       </Switch>
       <Footer />
     </div>

@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2021_07_30_224539) do
     t.bigint "chat_id", null: false
     t.string "comment"
     t.string "img_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "created_at", null: false
+    t.integer "updated_at", null: false
     t.index ["chat_id"], name: "index_messages_on_chat_id"
   end
 
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_07_30_224539) do
     t.string "email"
     t.string "password_digest"
     t.string "username"
+    t.string "img_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

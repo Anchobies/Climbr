@@ -1,8 +1,8 @@
 class HivesController < ApplicationController
-    def index
-        @hives = Hive.all
-        render json: @hives
-    end
+    def show
+        hives = @current_user.hives
+        render json: hives
+    end 
 
     def create 
         if Hive.find_by(name: hive_params[:name])

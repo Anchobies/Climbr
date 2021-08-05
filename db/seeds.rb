@@ -10,11 +10,11 @@ User.destroy_all
 Hive.destroy_all
 Bee.destroy_all
 
-user1 = User.create(first_name: "Anthony", last_name: "Chung", email: "anthonychung@gmail.com", password: "password", username: "Anchobies")
-user2 = User.create(first_name: "Anthony2", last_name: "Chung2", email: "anthonychung2@gmail.com", password: "password", username: "Anchobies2")
-user3 = User.create(first_name: "Anthony3", last_name: "Chung3", email: "anthonychung3@gmail.com", password: "password", username: "Anchobies3")
-user4 = User.create(first_name: "Anthony4", last_name: "Chung4", email: "anthonychung4@gmail.com", password: "password", username: "Anchobies4")
-user5 = User.create(first_name: "Anthony5", last_name: "Chung5", email: "anthonychung5@gmail.com", password: "password", username: "Anchobies5")
+user1 = User.create(first_name: "Anthony", last_name: "Chung", email: "anthonychung@gmail.com", password: "password", username: "Anchobies", img_url: "")
+user2 = User.create(first_name: "Anthony2", last_name: "Chung2", email: "anthonychung2@gmail.com", password: "password", username: "Anchobies2", img_url: "")
+user3 = User.create(first_name: "Anthony3", last_name: "Chung3", email: "anthonychung3@gmail.com", password: "password", username: "Anchobies3", img_url: "")
+user4 = User.create(first_name: "Anthony4", last_name: "Chung4", email: "anthonychung4@gmail.com", password: "password", username: "Anchobies4", img_url: "")
+user5 = User.create(first_name: "Anthony5", last_name: "Chung5", email: "anthonychung5@gmail.com", password: "password", username: "Anchobies5", img_url: "")
 
 hive1 = Hive.create(name: "Sample Hive", queen_bee_id: user1.id)
 hive2 = Hive.create(name: "Sample Hive 2", queen_bee_id: user2.id)
