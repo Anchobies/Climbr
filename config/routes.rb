@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   
   post "/signup", to: "sessions#signup"
   post "/login", to: "sessions#login"
+  delete "/signout", to: "sessions#destroy"
   
   get "/hives", to: "hives#show"
 

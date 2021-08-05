@@ -20,7 +20,7 @@ const CreatePage = () => {
     const handleNewHive = e => {
         e.preventDefault()
 
-        fetch("http://localhost:3000/hives", {
+        fetch("/hives", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

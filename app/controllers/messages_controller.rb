@@ -20,16 +20,15 @@ class MessagesController < ApplicationController
 
     def sent
         messages = Message.all.select do |message|
-            message.chat.relationship.sender_id.to_s == session[:user_id] && 
+            message.chat.relationship.sender_id == session[:user_id] && 
             message.chat.relationship.receiver_id.to_s == params[:receiver_id]
         end
         render json: messages
     end
 
     def received
-        # byebug
         messages = Message.all.select do |message|
-            message.chat.relationship.receiver_id.to_s == params[:receiver_id]
+            message.chat.relationship.receiver_id == session[:user_id]
         end
         render json: messages
     end

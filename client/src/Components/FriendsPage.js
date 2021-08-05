@@ -5,7 +5,7 @@ const FriendsPage = () => {
     const [friends, setFriends] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3000/relationships/friends")
+        fetch("/relationships/friends")
             .then(response => response.json())
             .then(json => setFriends(json))
     }, []);

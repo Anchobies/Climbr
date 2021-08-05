@@ -14,11 +14,11 @@ const UserPage = () => {
     const [userHives, setUserHives] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/users`)
+        fetch(`/users`)
         .then(response => response.json())
         .then(json => setUser(json))
         
-        fetch(`http://localhost:3000/hives`)
+        fetch(`/hives`)
         .then(response => response.json())
         .then(json => setUserHives(json))
     }, [userId]);

@@ -62,7 +62,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header onLogin={setCurrentUser} />
       <Switch>
         <Route exact path="/" component={() => <FeedPage timeDifference={timeDifference} />} />
         <Route exact path="/create" component={CreatePage} />

@@ -11,7 +11,7 @@ const HivePage = () => {
     const [bees, setBees] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/bees/${hiveId}/bees`)
+        fetch(`/bees/${hiveId}/bees`)
             .then(response => response.json())
             .then(json => setBees(json))
     }, [hiveId]);

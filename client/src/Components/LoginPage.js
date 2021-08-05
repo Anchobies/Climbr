@@ -13,7 +13,7 @@ const LoginPage = ({ setToggle, toggle, onLogin }) => {
     const handleLogin = e => {
         e.preventDefault();
         
-        fetch("http://localhost:3000/login", {
+        fetch("/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -21,14 +21,14 @@ const LoginPage = ({ setToggle, toggle, onLogin }) => {
             },
             body: JSON.stringify(cred)
         })
-        // .then(response => response.json())
-        // .then(json => {
-        //     if (!json.errors) {
-        //         onLogin(json);
-        //     } else {
-        //         setLoginErrors(json.errors);
-        //     }
-        // })
+        .then(response => response.json())
+        .then(json => {
+            if (!json.errors) {
+                onLogin(json);
+            } else {
+                setLoginErrors(json.errors);
+            }
+        })
     };
 
     const handleCred = e => {

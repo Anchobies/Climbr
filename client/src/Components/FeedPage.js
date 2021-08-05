@@ -4,7 +4,7 @@ const FeedPage = ({ timeDifference }) => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/messages`)
+        fetch(`/messages`)
             .then(response => response.json())
             .then(json => setPosts(json))
     }, []);

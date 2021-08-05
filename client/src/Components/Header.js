@@ -1,8 +1,20 @@
 import { NavLink, useHistory } from "react-router-dom"
 import { Button } from "@material-ui/core"
 
-const Header = () => {
+const Header = ({ onLogin }) => {
    const history = useHistory();
+
+   const handleSignOut = () => {
+      fetch("/signout", {
+         method: "DELETE"
+      })
+         .then(response => {
+            if (response.ok) {
+               onLogin(null);
+            }
+         }
+      );
+   };
 
    return (
           <div className="header">
@@ -36,6 +48,11 @@ const Header = () => {
                          My Friends{" "}
                       </Button>
                    </NavLink>
+                </li>
+                <li>
+                     <Button onClick={handleSignOut} type="submit" color="primary" variant="contained">
+                        Sign Out{" "}
+                     </Button>
                 </li>
              </ul>
           </div>

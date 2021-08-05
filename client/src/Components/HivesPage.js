@@ -5,7 +5,7 @@ const HivesPage = () => {
     const [hives, setHives] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:3000/hives")
+        fetch("/hives")
         .then(response => response.json())
         .then(json => setHives(json))
     }, [])

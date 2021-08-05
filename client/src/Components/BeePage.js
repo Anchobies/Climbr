@@ -21,13 +21,13 @@ const BeePage = ({ timeDifference }) => {
     const [messageErrors, setMessageErrors] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/bees/${beeId}`)
+        fetch(`/bees/${beeId}`)
             .then(response => response.json())
             .then(json => setBee(json))
     }, [beeId]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/messages/${bee.id}`)
+        fetch(`/messages/${bee.id}`)
             .then(response => response.json())
             .then(json => setMessages(json))
 }, [bee]);
@@ -56,7 +56,7 @@ const BeePage = ({ timeDifference }) => {
     const handleSubmitMessage = e => {
         e.preventDefault();
 
-        fetch("http://localhost:3000/messages", {
+        fetch("/messages", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
