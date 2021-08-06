@@ -119,7 +119,10 @@ const CreatePage = () => {
                 </li>
                 {moreBees}
             </ul>
-            <button id="add-bee" onClick={addAnotherBee}>+ Add another bee</button>
+            <button id="add-bee" onClick={e => {
+                e.preventDefault();
+                addAnotherBee(e)
+                }}>+ Add another bee</button>
             <br />
             <Button type="submit" color="primary" variant="contained">
                Create

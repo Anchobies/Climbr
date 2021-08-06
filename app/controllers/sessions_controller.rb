@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
     skip_before_action :authorize, only: [:signup, :login]
 
     def signup 
-        user = User.create(signup_params)
+        user = User.create(email: signup_params[:email], password: signup_params[:password], first_name: signup_params[:first_name].capitalize, last_name: signup_params[:last_name].capitalize, username: signup_params[:username])
         if user.valid?
             session[:user_id] = user.id
             render json: user, status: :created

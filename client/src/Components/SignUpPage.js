@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from "react-router-dom"
 import { Button } from "@material-ui/core"
 
 const SignUpPage = ({ setToggle, toggle, onLogin }) => {
@@ -9,6 +10,8 @@ const SignUpPage = ({ setToggle, toggle, onLogin }) => {
         first_name: "",
         last_name: ""        
     }
+
+    const history = useHistory();
 
     const [newUser, setNewUser] = useState(initialUser);
     const [userErrors, setUserErrors] = useState([]);
@@ -28,6 +31,7 @@ const SignUpPage = ({ setToggle, toggle, onLogin }) => {
         .then(json => {
             if (!json.errors) {
                 onLogin(json);
+                history.push("/create");
             } else {
                 setUserErrors(json.errors);
             }

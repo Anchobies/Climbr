@@ -13,6 +13,7 @@ import UserPage from './Components/UserPage';
 import BeePage from './Components/BeePage';
 import SignUpPage from './Components/SignUpPage';
 import LoginPage from './Components/LoginPage';
+import SearchPage from './Components/SearchPage';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -62,15 +63,16 @@ function App() {
 
   return (
     <div className="App">
-      <Header onLogin={setCurrentUser} />
+      <Header onLogin={setCurrentUser} setToggle={setToggle} />
       <Switch>
         <Route exact path="/" component={() => <FeedPage timeDifference={timeDifference} />} />
         <Route exact path="/create" component={CreatePage} />
         <Route exact path="/hives" component={HivesPage} />
-        <Route exact path="/hives/:hive_id" component={HivePage} />
+        <Route exact path="/hives/:hive_id" component={() => <HivePage currentUser={currentUser} />} />
         <Route exact path="/friends" component={FriendsPage} />
         <Route exact path="/users/:user_id" component={UserPage} />
         <Route exact path="/hives/:hive_id/:bee_id" component={() => <BeePage timeDifference={timeDifference} />} />
+        <Route exact path="/search/:type/:query" component={() => <SearchPage currentUser={currentUser} />} />
       </Switch>
       <Footer />
     </div>

@@ -5,22 +5,26 @@ const UserPage = () => {
     const userId = useParams().user_id;
 
     const initialUser = {
-        first_name: "",
-        last_name: "",
-        img_url: ""
+        user: {
+            first_name: "",
+            last_name: "",
+            img_url: ""
+        },
+        friends: false
     };
 
     const [user, setUser] = useState(initialUser);
     const [userHives, setUserHives] = useState([]);
 
     useEffect(() => {
-        fetch(`/users`)
+        fetch(`/users/${userId}`)
         .then(response => response.json())
         .then(json => setUser(json))
         
         fetch(`/hives`)
         .then(response => response.json())
         .then(json => setUserHives(json))
+
     }, [userId]);
 
     const userHivesArray = userHives.map(userHive => {
@@ -33,14 +37,29 @@ const UserPage = () => {
             </li>
         )
     })
+
+    const handleFriend = () => {
+        fetch(`/relationships/${userId}`, {
+            method: "PATCH"
+        })
+        .then(response => response.json())
+        .then(json => {
+            const userCopy = {...user}
+            userCopy.friends = json;
+            setUser(userCopy);
+        })
+    }
+
     return (
         <div>
-            <header>{user.first_name} {user.last_name}</header>
-            {user.img_url ? <img src={user.img_url} alt="User" className="img-circle" /> :
+            <header>{user.user.first_name} {user.user.last_name}</header>
+            {user.user.img_url ? <img src={user.user.img_url} alt="User" className="img-circle" /> :
                                       <img src="https://image.flaticon.com/icons/png/128/809/809052.png" alt="User" className="default" />
                     }
             <br />
-            <h3>{user.first_name}'s Hives</h3>
+            <button onClick={handleFriend}>{user.friends ? "Remove friend" : "Add friend"}</button>
+            <br />
+            <h3>{user.user.first_name}'s Hives</h3>
             <ul>
                 {userHivesArray}
             </ul>

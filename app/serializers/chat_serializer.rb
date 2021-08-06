@@ -1,3 +1,3 @@
 class ChatSerializer < ActiveModel::Serializer
-  attributes :hive_id
+  belongs_to :hive
 end

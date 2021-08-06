@@ -30,7 +30,7 @@ class MessagesController < ApplicationController
         messages = Message.all.select do |message|
             message.chat.relationship.receiver_id == session[:user_id]
         end
-        render json: messages
+        render json: messages, include: '**'
     end
 
     private

@@ -1,4 +1,9 @@
 class HivesController < ApplicationController
+    def index 
+        hives = Hive.all
+        render json: hives
+    end
+
     def show
         hives = @current_user.hives
         render json: hives
@@ -26,6 +31,21 @@ class HivesController < ApplicationController
             end
 
             render json: hive, status: :created
+        else
+            render json: { errors: hive.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+
+    def update
+        hive = Hive.find(params[:hive_id])
+        if hive.name != hive_params[:name]
+            if Hive.find_by(name: hive_params[:name])
+                render json: { errors: ["A hive with that name already exists."] } and return
+            end
+        end
+        hive.update(hive_params)
+        if hive.valid?
+            render json: hive
         else
             render json: { errors: hive.errors.full_messages }, status: :unprocessable_entity
         end

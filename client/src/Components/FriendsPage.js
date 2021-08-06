@@ -4,14 +4,24 @@ import { Link } from "react-router-dom";
 const FriendsPage = () => {
     const [friends, setFriends] = useState([]);
 
-    useEffect(() => {
+    const getFriends = () => {
         fetch("/relationships/friends")
-            .then(response => response.json())
-            .then(json => setFriends(json))
+        .then(response => response.json())
+        .then(json => setFriends(json))
+    }
+
+    useEffect(() => {
+       getFriends();
     }, []);
 
-    const friendsArray = friends.map(friend => {
+    const handleRemoveFriend = friend_id => {
+        fetch(`/relationships/${friend_id}`, {
+            method: "PATCH"
+        })
+        .then(() => getFriends())
+    }
 
+    const friendsArray = friends.map(friend => {
         return (
             <li className="friend" key={friend.id}>
                 <Link to={`/users/${friend.id}`}>
@@ -20,6 +30,9 @@ const FriendsPage = () => {
                                       <img src="https://image.flaticon.com/icons/png/128/809/809052.png" alt="User" className="default" />
                     }
                 </Link>
+                <br />
+                <button onClick={() => handleRemoveFriend(friend.id)}>Remove friend</button>
+                <br />
                 <br />
             </li>
         );

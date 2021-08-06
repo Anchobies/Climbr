@@ -1,7 +1,8 @@
 import { NavLink, useHistory } from "react-router-dom"
 import { Button } from "@material-ui/core"
+import SearchBar from "./SearchBar";
 
-const Header = ({ onLogin }) => {
+const Header = ({ onLogin, setToggle }) => {
    const history = useHistory();
 
    const handleSignOut = () => {
@@ -10,6 +11,7 @@ const Header = ({ onLogin }) => {
       })
          .then(response => {
             if (response.ok) {
+               setToggle(true);
                onLogin(null);
             }
          }
@@ -55,6 +57,7 @@ const Header = ({ onLogin }) => {
                      </Button>
                 </li>
              </ul>
+             <SearchBar />
           </div>
    )
 }

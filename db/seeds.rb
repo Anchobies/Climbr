@@ -33,6 +33,9 @@ relationship2 =Relationship.create(friends: false, sender_id: user1.id, receiver
 relationship3 =Relationship.create(friends: true, sender_id: user2.id, receiver_id: user1.id)
 relationship4 =Relationship.create(friends: false, sender_id: user3.id, receiver_id: user1.id)
 relationship5 =Relationship.create(friends: true, sender_id: user3.id, receiver_id: user2.id)
+relationship6 =Relationship.create(friends: true, sender_id: user2.id, receiver_id: user3.id)
+
+
 
 chat1 = Chat.create(relationship_id: relationship1.id, hive_id: hive1.id)
 chat2 = Chat.create(relationship_id: relationship2.id, hive_id: hive1.id)
