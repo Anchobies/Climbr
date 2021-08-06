@@ -77,9 +77,65 @@ body {
   left: 840px;
 }
 
+.signUpForm {
+  position: absolute;
+  top: 300px;
+  left: 730px;
+}
+
 .loginInput {
   padding: 10px 20px;
+  width: 225px;
   margin-top: -10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 2px solid #ffda5b;
+  border-radius: 4px;
+}
+
+.signUpInput {
+  padding: 10px 20px;
+  width: 225px;
+  margin-top: -10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 2px solid #ffda5b;
+  border-radius: 4px;
+}
+
+.signUpInput2 {
+  position: absolute;
+  padding: 10px 20px;
+  width: 125px;
+  margin-top: -10px;
+  top: 68px;
+  left: 250px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 2px solid #ffda5b;
+  border-radius: 4px;
+}
+
+.signUpInput3 {
+  position: absolute;
+  padding: 10px 20px;
+  width: 125px;
+  margin-top: -10px;
+  top: 43px;
+  left: 400px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 2px solid #ffda5b;
+  border-radius: 4px;
+}
+
+.signUpInput4 {
+  position: absolute;
+  padding: 10px 20px;
+  width: 125px;
+  margin-top: -10px;
+  top: 18px;
+  left: 250px;
   font-size: 16px;
   box-sizing: border-box;
   border: 2px solid #ffda5b;
@@ -96,6 +152,18 @@ body {
   position: absolute;
   top: -5px;
   left: 0px;
+}
+
+.signUpButton1 {
+  position: absolute;
+  top: -195px;
+  left: 500px;
+}
+
+.signUpButton2 {
+  position: absolute;
+  top: -77px;
+  left: 52px;
 }
 
 .loginDescription {

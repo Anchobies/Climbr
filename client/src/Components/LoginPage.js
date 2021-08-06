@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button } from "@material-ui/core"
-import HiveFive1 from '../HiveFive1.png'
-import HiveFive2 from '../HiveFive2.png'
+// import HiveFive1 from '../HiveFive1.png'
+// import HiveFive2 from '../HiveFive2.png'
 import HiveFive3 from '../HiveFive3.png'
 
 const style = {
@@ -61,7 +61,7 @@ const LoginPage = ({ setToggle, toggle, onLogin }) => {
 
     return (
         <div className="loginPage">
-            <img src={HiveFive3} className="loginLogo" />
+            <img src={HiveFive3} className="loginLogo" alt="logo"/>
             <p className="loginDescription">A safe place to anonymously <br /> build each other up.</p>
             <div className="loginForm">
                 <form onSubmit={handleLogin} >
