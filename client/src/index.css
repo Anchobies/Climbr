@@ -49,3 +49,61 @@ header {
 .error-message {
   color: red;
 }
+
+.loginPage {
+  background: black;
+  height: 124.63px;
+  text-align: center;
+  margin-top: 291px;
+  margin-left: 666px;
+  color: white;
+}
+
+body {
+  background: #ffda5b;
+}
+
+.loginLogo {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 6%;
+  width: 677.3px;
+}
+
+.loginForm {
+  position: absolute;
+  top: 300px;
+  left: 840px;
+}
+
+.loginInput {
+  padding: 10px 20px;
+  margin-top: -10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 2px solid #ffda5b;
+  border-radius: 4px;
+}
+
+.loginButton1 {
+  position: absolute;
+  top: -142px;
+  left: 220px;
+}
+
+.loginButton2 {
+  position: absolute;
+  top: -5px;
+  left: 0px;
+}
+
+.loginDescription {
+  position: absolute;
+  text-align: left;
+  top: 100px;
+  left: 840px;
+  font-size: 32px;
+  font-family: 'Titillium Web', sans-serif;
+  color: black;
+}
