@@ -2,6 +2,15 @@ import React, { useState } from 'react'
 import { useHistory } from "react-router-dom"
 import { Button } from "@material-ui/core"
 
+const style = {
+    background: '#FE3B8B',
+    borderRadius: 3,
+    border: 0,
+    color: 'white',
+    height: 38,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+ };
+
 const CreatePage = () => {
     const [newHive, setNewHive] = useState("");
     const [newBees, setNewBees] = useState([]);
@@ -55,8 +64,9 @@ const CreatePage = () => {
         const beeName = "bee" + (i + 1)
         moreBees.push(
             <li key={beeName}>
-                <label htmlFor="bee1">Bee {i + 1}:</label>
+                <label htmlFor="bee1">Bee {i + 1}:</label> &nbsp;
                 <input
+                className="searchInput"
                 value={newBees[i] ? newBees[i] : ""}
                 onChange={e => handleBees(e, i)}
                 name="bee1"
@@ -64,29 +74,34 @@ const CreatePage = () => {
                 placeholder="Enter username ..."
                 />
                 <br />
+                <br />
             </li>
         )
     };
 
     return (
-        <div>
-            <header>Create a Hive</header>
+        <div className="pageDiv">
             <form onSubmit={handleNewHive}>
             <br />
-            <label htmlFor="name">Hive name:</label>
-            <input
-               value={newHive}
-               onChange={handleHive}
-               name="name"
-               type="text"
-               placeholder="Enter hive name ..."
-            />
+            <div id="hiveName">
+                <label htmlFor="name">Hive name:</label> &nbsp;
+                <input
+                className="searchInput"
+                value={newHive}
+                onChange={handleHive}
+                name="name"
+                type="text"
+                placeholder="Enter hive name ..."
+                />
+            </div>
+            <br />
             <br />
             <label>Add bees:</label>
             <ul>
                 <li>
-                    <label htmlFor="bee1">Bee 1:</label>
+                    <label htmlFor="bee1">Bee 1:</label> &nbsp;
                     <input
+                    className="searchInput"
                     value={newBees[0] ? newBees[0] : ""}
                     onChange={e => handleBees(e, 0)}
                     name="bee1"
@@ -94,37 +109,42 @@ const CreatePage = () => {
                     placeholder="Enter username ..."
                     />
                     <br />
+                    <br />
                 </li>
                 <li>
-                    <label htmlFor="bee2">Bee 2:</label>
+                    <label htmlFor="bee2">Bee 2:</label> &nbsp;
                     <input
-                        value={newBees[1] ? newBees[1] : ""}
+                    className="searchInput"
+                    value={newBees[1] ? newBees[1] : ""}
                     onChange={e => handleBees(e, 1)}
                     name="bee2"
                     type="text"
                     placeholder="Enter username ..."
                     />
                     <br />
+                    <br />
                 </li>
                 <li>
-                    <label htmlFor="bee3">Bee 3:</label>
+                    <label htmlFor="bee3">Bee 3:</label> &nbsp;
                     <input
-                        value={newBees[2] ? newBees[2] : ""}
+                    className="searchInput"
+                    value={newBees[2] ? newBees[2] : ""}
                     onChange={e => handleBees(e, 2)}
                     name="bee3"
                     type="text"
                     placeholder="Enter username ..."
                     />
                     <br />
+                    <br />
                 </li>
                 {moreBees}
             </ul>
-            <button id="add-bee" onClick={e => {
+            <p id="add-bee" onClick={e => {
                 e.preventDefault();
                 addAnotherBee(e)
-                }}>+ Add another bee</button>
+                }}>+ Add another bee</p>
             <br />
-            <Button type="submit" color="primary" variant="contained">
+            <Button style={style} type="submit" color="primary" variant="contained">
                Create
             </Button>
             <br />

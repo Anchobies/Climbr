@@ -1,6 +1,17 @@
-import { NavLink, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { Button } from "@material-ui/core"
 import SearchBar from "./SearchBar";
+import HiveFive5 from '../HiveFive5.png'
+import SimpleTabs from './SimpleTabs'
+
+const style = {
+   background: '#FE3B8B',
+   borderRadius: 3,
+   border: 0,
+   color: 'white',
+   height: 38,
+   boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+};
 
 const Header = ({ onLogin, setToggle }) => {
    const history = useHistory();
@@ -20,44 +31,12 @@ const Header = ({ onLogin, setToggle }) => {
 
    return (
           <div className="header">
-             <h1 onClick={() => history.push("/")} style={{cursor:'pointer'}}>HiveFive</h1>
-             <br />
-             <ul className="header-ul">
-                <li>
-                   <NavLink to="/" style={{ textDecoration: 'none' }}>
-                      <Button type="submit" color="primary" variant="contained">
-                         Feed{" "}
-                      </Button>
-                   </NavLink>
-                </li>
-                <li>
-                   <NavLink to="/create" style={{ textDecoration: 'none' }}>
-                      <Button type="submit" color="primary" variant="contained">
-                         Create a Hive{" "}
-                      </Button>
-                   </NavLink>
-                </li>
-                <li>
-                   <NavLink to="/hives" style={{ textDecoration: 'none' }}>
-                      <Button type="submit" color="primary" variant="contained">
-                         My Hives{" "}
-                      </Button>
-                   </NavLink>
-                </li>
-                <li>
-                   <NavLink to="/friends" style={{ textDecoration: 'none' }}>
-                      <Button type="submit" color="primary" variant="contained">
-                         My Friends{" "}
-                      </Button>
-                   </NavLink>
-                </li>
-                <li>
-                     <Button onClick={handleSignOut} type="submit" color="primary" variant="contained">
-                        Sign Out{" "}
-                     </Button>
-                </li>
-             </ul>
+             <img onClick={() => history.push("/")} style={{cursor:'pointer'}} src={HiveFive5} className="headerLogo" alt="logo"/>
              <SearchBar />
+             <SimpleTabs />
+             <Button style={style} onClick={handleSignOut} type="submit" color="primary" variant="contained">
+                        Sign Out{" "}
+            </Button>
           </div>
    )
 }

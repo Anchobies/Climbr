@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom"
+import { Button } from "@material-ui/core"
+
+const style = {
+    background: '#FE3B8B',
+    borderRadius: 3,
+    border: 0,
+    color: 'white',
+    height: 38,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+ };
 
 const BeePage = ({ timeDifference }) => {
     const beeId = useParams().bee_id;
@@ -88,11 +98,16 @@ const BeePage = ({ timeDifference }) => {
     };
 
     return (
-        <div>
+        <div className="pageDiv">
             <header>{bee.hive_name}</header>
+            <br />
+            <br />
+            <hr />
+            <br />
             <h2>{bee.user.first_name} {bee.user.last_name}</h2>
             <br />
             <h3>Your Words of Honey to {bee.user.first_name}:</h3>
+            <br />
             <ul>
                 {messagesArray}
             </ul>
@@ -102,14 +117,14 @@ const BeePage = ({ timeDifference }) => {
             <h3>Send a new message:</h3>
             <form onSubmit={handleSubmitMessage}>
                 <br />
-                <label htmlFor="comment">Comment:</label>
-                <input onChange={handleMessage} value={newMessage.comment} type="text" name="comment" placeholder="Type your comment here..." />
+                <label htmlFor="comment">Comment:</label>&nbsp;&nbsp;
+                <input className="searchInput" onChange={handleMessage} value={newMessage.comment} type="text" name="comment" placeholder="Enter comment..." />
                 <br />
-                <label htmlFor="img_url">Image URL:</label>
-                <input onChange={handleMessage} value={newMessage.img_url} type="text" name="img_url" placeholder="Enter your image url here..." />
+                <label htmlFor="img_url">Image URL:</label>&nbsp;&nbsp;
+                <input className="searchInput" onChange={handleMessage} value={newMessage.img_url} type="text" name="img_url" placeholder="Enter image url..." />
                 <br />
                 <br />
-                <button type="submit">Send message</button>
+                <Button style={style} type="submit">Send message</Button>
                 <br />
             </form>
             {messageErrors.map(messageError => <p className="error-message" key={messageError}>{messageError}</p>)}

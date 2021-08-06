@@ -26,10 +26,9 @@ const FeedPage = ({ timeDifference }) => {
     });
 
     return (
-        <div>
-            <header>Feed</header>
+        <div className="pageDiv">
             <ul>
-                {postsArray}
+                {postsArray.length > 0 ? postsArray : <h3>No recent activity</h3>}
             </ul>
         </div>
     )

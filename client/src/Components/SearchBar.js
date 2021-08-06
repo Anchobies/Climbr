@@ -1,6 +1,5 @@
 import React, { useState }from 'react'
 import { useHistory } from "react-router-dom"
-import { Button } from "@material-ui/core"
 
 const SearchBar = () => {
     const history = useHistory()
@@ -25,21 +24,20 @@ const SearchBar = () => {
                <select
                   onChange={e => {
                      setType(e.target.value)
-                  }}>
+                  }}
+                  className="searchInput">
                   <option value="users">Users</option>
                   <option value="hives">Hives</option>
                </select>
+               &nbsp;
                <input
+                  className="searchInput"
                   name="query"
                   value={query}
                   onChange={handleQuery}
                   type="text"
                   placeholder={type === "all" ? "Search HiveFive" : ("users" ? "Search users..." : type === "Search hives...")}
                />
-               &nbsp; &nbsp; &nbsp;
-               <Button type="submit" variant="contained" color="primary">
-                  Search
-               </Button>
             </form>
     )
 }

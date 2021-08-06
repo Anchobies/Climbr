@@ -64,7 +64,7 @@ const LoginPage = ({ setToggle, toggle, onLogin }) => {
     return (
         <div className="loginPage">
             <img src={HiveFive3} className="loginLogo" alt="logo"/>
-            <p className="loginDescription">A safe place to anonymously <br /> build each other up.</p>
+            <p className="loginDescription">A safe space to build each <br /> other up anonymously.</p>
             <div className="loginForm">
                 <form onSubmit={handleLogin} >
                     <br />

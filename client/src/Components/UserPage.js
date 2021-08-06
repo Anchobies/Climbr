@@ -34,6 +34,7 @@ const UserPage = () => {
                     <h3>{userHive.name}</h3>
                     <img src={"https://www.svgrepo.com/show/212068/hive.svg"} alt="Beehive" className="default"/>
                 </Link>
+                <br />
             </li>
         )
     })
@@ -51,15 +52,22 @@ const UserPage = () => {
     }
 
     return (
-        <div>
+        <div className="pageDiv">
             <header>{user.user.first_name} {user.user.last_name}</header>
+            <br />
+            <br />
             {user.user.img_url ? <img src={user.user.img_url} alt="User" className="img-circle" /> :
                                       <img src="https://image.flaticon.com/icons/png/128/809/809052.png" alt="User" className="default" />
                     }
             <br />
             <button onClick={handleFriend}>{user.friends ? "Remove friend" : "Add friend"}</button>
             <br />
-            <h3>{user.user.first_name}'s Hives</h3>
+            <br />
+            <br />
+            <hr />
+            <br />
+            <h2>{user.user.first_name}'s Hives</h2>
+            <br />
             <ul>
                 {userHivesArray}
             </ul>

@@ -18,12 +18,13 @@ const HivesPage = () => {
                     <h3>{hive.name}</h3>
                     <img src="https://www.svgrepo.com/show/212068/hive.svg" alt="Bee hive" className="default"/>
                 </Link>
+                <br />
+                <br />
             </li>
         )
     })
     return (
-        <div>
-            <header>My Hives</header>
+        <div className="pageDiv">
             <ul>
                 {hivesArray}
             </ul>

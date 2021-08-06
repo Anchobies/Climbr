@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-// import BeePage from './Components/BeePage';
+import { Button } from "@material-ui/core"
+import queenBee from "../queenBee.png"
+
+const style = {
+  background: '#FE3B8B',
+  borderRadius: 3,
+  border: 0,
+  color: 'white',
+  height: 38,
+  boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+};
 
 const HivePage = ({ currentUser }) => {
   const hiveId = useParams().hive_id;
@@ -96,7 +106,7 @@ const HivePage = ({ currentUser }) => {
                 bee.user.img_url
                   ? bee.user.img_url
                   : bee.user.id === bee.hive.queen_bee_id
-                  ? "https://s.clipartkey.com/mpngs/s/9-90613_transparent-pumpkin-monogram-clipart-clip-art-queen-bee.png"
+                  ? queenBee
                   : "https://image.flaticon.com/icons/png/128/809/809052.png"
               }
               alt="Bee"
@@ -114,7 +124,7 @@ const HivePage = ({ currentUser }) => {
                   bee.user.img_url
                     ? bee.user.img_url
                     : bee.user.id === bee.hive.queen_bee_id
-                    ? "https://s.clipartkey.com/mpngs/s/9-90613_transparent-pumpkin-monogram-clipart-clip-art-queen-bee.png"
+                    ? queenBee
                     : "https://image.flaticon.com/icons/png/128/809/809052.png"
                 }
                 alt="Bee"
@@ -129,6 +139,7 @@ const HivePage = ({ currentUser }) => {
             ) : null}
           </>
         )}
+        <br />
       </div>
     );
   });
@@ -148,7 +159,12 @@ const HivePage = ({ currentUser }) => {
         </form>
       );
     } else {
-      return <header>{bees.length > 0 ? bees[0].hive.name : null}</header>;
+      return (<>
+        <header>{bees.length > 0 ? bees[0].hive.name : null}</header>
+        <br />
+        <br />
+        <hr />
+      </>)
     }
   };
 
@@ -177,7 +193,7 @@ const HivePage = ({ currentUser }) => {
   };
 
   return (
-    <div>
+    <div className="pageDiv">
       {editHive()}
       <br />
       {editErrors.map((editError) => (
@@ -195,15 +211,20 @@ const HivePage = ({ currentUser }) => {
       ))}
       {beesArray}
       <br />
+      <hr />
+      <br />
       <form onSubmit={addNewBee}>
         <input
+          className="searchInput"
           value={newBee}
           onChange={(e) => setNewBee(e.target.value)}
           name="newBee"
           type="text"
           placeholder="Enter username ..."
         />
-        <button id="add-bee">Add bee</button>
+        <br />
+        <br />
+        <Button style={style}>Add bee</Button>
       </form>
       {addErrors.map((addError) => (
         <p className="error-message" key={addError}>

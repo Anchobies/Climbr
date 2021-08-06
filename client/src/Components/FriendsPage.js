@@ -39,8 +39,7 @@ const FriendsPage = () => {
     });
 
     return (
-        <div>
-            <header>My Friends</header>
+        <div className="pageDiv">
             <ul>
                 {friendsArray}
             </ul>

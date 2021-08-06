@@ -1,38 +1,281 @@
-.App {
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#add-bee {
+  font-size: 16px;
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  font-family: arial, sans-serif;
+  color: #FE3B8B;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+header {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.img-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.default {
+  width: 150px;
+  height: 150px;
+}
+
+.post {
+  max-width: 400px;
+  max-height: 400px;
+}
+
+.error-message {
+  color: red;
+}
+
+.loginPage {
+  background: black;
+  height: 124.63px;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-top: 291px;
+  margin-left: 666px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+body {
+  background: #ffda5b;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.loginLogo {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 86px;
+  width: 677.3px;
+}
+
+.loginForm {
+  position: absolute;
+  top: 300px;
+  left: 840px;
+}
+
+.signUpForm {
+  position: absolute;
+  top: 300px;
+  left: 730px;
+}
+
+.loginInput {
+  padding: 10px 20px;
+  width: 225px;
+  margin-top: -10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 2px solid #ffda5b;
+  border-radius: 4px;
+}
+
+.signUpInput {
+  padding: 10px 20px;
+  width: 225px;
+  margin-top: -10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 2px solid #ffda5b;
+  border-radius: 4px;
+}
+
+.signUpInput2 {
+  position: absolute;
+  padding: 10px 20px;
+  width: 125px;
+  margin-top: -10px;
+  top: 68px;
+  left: 250px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 2px solid #ffda5b;
+  border-radius: 4px;
+}
+
+.signUpInput3 {
+  position: absolute;
+  padding: 10px 20px;
+  width: 125px;
+  margin-top: -10px;
+  top: 43px;
+  left: 400px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 2px solid #ffda5b;
+  border-radius: 4px;
+}
+
+.signUpInput4 {
+  position: absolute;
+  padding: 10px 20px;
+  width: 125px;
+  margin-top: -10px;
+  top: 18px;
+  left: 250px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 2px solid #ffda5b;
+  border-radius: 4px;
+}
+
+.loginButton1 {
+  position: absolute;
+  top: -142px;
+  left: 220px;
+}
+
+.loginButton2 {
+  position: absolute;
+  top: -5px;
+  left: 0px;
+}
+
+.signUpButton1 {
+  position: absolute;
+  top: -195px;
+  left: 500px;
+}
+
+.signUpButton2 {
+  position: absolute;
+  top: -77px;
+  left: 52px;
+}
+
+.loginDescription {
+  position: absolute;
+  text-align: left;
+  width: 400px;
+  top: 100px;
+  left: 840px;
+  font-size: 32px;
+  font-family: 'Titillium Web', sans-serif;
+  color: black;
+}
+
+.App {
+  text-align: center;
+  background: rgb(250, 248, 227);
+  min-height: 100vh;
+  padding-bottom: 125px;
+}
+
+.header-ul {
+  display: flex;
+  width: 40%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.header {
+  background: #ffda5b;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+  height: 70px;
+}
+
+.footer {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  bottom:0;
+  left:0;
+  width:100%;
+  height: 70px;
+  background-color: #ffda5b;
+}
+
+.footer p {
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 30px;
+  font-family: 
+    '-apple-system',
+    'BlinkMacSystemFont',
+    '"Segoe UI"',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"';
+  opacity: 0.75;
+}
+
+.footer p:hover {
+  color: #FE3B8B;
+  opacity: 1;
+}
+
+.headerLogo {
+  margin-left: 0px;
+  margin-right: 50px;
+  width: 150px;
+}
+
+.searchInput {
+  padding: 5px 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.tabs {
+  margin-left: 50px;
+  margin-right: 20px;
+}
+
+.pageDiv {
+  margin: auto;
+  margin-top: 50px;
+  padding: 30px;
+  background: #ffda5b;
+  width: 30%;
+}
+
+#hiveName {
+  position: relative;
+  right: 18px;
+}
+
+li {
+  padding: 0;
+  list-style-type: none;
 }

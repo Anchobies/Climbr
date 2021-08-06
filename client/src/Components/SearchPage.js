@@ -95,7 +95,7 @@ const SearchPage = ({ currentUser }) => {
   }
 
   return (
-    <div>
+    <div className="pageDiv">
       <header>{type === "users" ? "Users" : "Hives"}</header>
       {type === "users" ? usersArray : hivesArray}
     </div>

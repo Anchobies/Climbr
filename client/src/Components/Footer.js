@@ -3,10 +3,8 @@ import React from "react"
 const Footer = () => {
    return (
       <footer className="footer">
-         <ul>
-            <li>Contact: Anthony Chung</li>
-            <li>About: Flatiron Phase 4 Project</li>
-         </ul>
+         <p>ANTHONY CHUNG</p>
+         <p>FLATIRON PHASE 4 PROJECT</p>
       </footer>
    )
 }
