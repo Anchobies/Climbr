@@ -13,6 +13,8 @@ const style = {
     padding: '0 30px',
 };
 
+// random comment
+
 const style2 = {
     background: 'linear-gradient(45deg, #FE3B8B 10%, #Ff6E53 90%)',
     borderRadius: 3,
