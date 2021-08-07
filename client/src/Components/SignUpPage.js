@@ -51,7 +51,7 @@ const SignUpPage = ({ setToggle, toggle, onLogin }) => {
         .then(json => {
             if (!json.errors) {
                 onLogin(json);
-                history.push("/create");
+                history.push("/");
             } else {
                 setUserErrors(json.errors);
             }

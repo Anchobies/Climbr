@@ -224,7 +224,7 @@ const HivePage = ({ currentUser }) => {
         />
         <br />
         <br />
-        <Button style={style} onClick={addNewBee}>Add bee</Button>
+        <Button style={style} type="submit">Add bee</Button>
       </form>
       {addErrors.map((addError) => (
         <p className="error-message" key={addError}>
