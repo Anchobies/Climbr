@@ -45,8 +45,7 @@ const AntTabs = withStyles({
     selected: {},
   }))((props) => <Tab disableRipple {...props} />);
 
-export default function SimpleTabs() {
-    const [value, setValue] = React.useState(window.location.pathname);
+export default function SimpleTabs({ value, setValue }) {
     const history = useHistory();
 
     const handleTabs = (e, newValue) => {

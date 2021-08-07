@@ -1,7 +1,7 @@
 import React, { useState }from 'react'
 import { useHistory } from "react-router-dom"
 
-const SearchBar = () => {
+const SearchBar = ({ setValue }) => {
     const history = useHistory()
     const [query, setQuery] = useState("")
     const [type, setType] = useState("users")
@@ -15,6 +15,7 @@ const SearchBar = () => {
                onSubmit={e => {
                   e.preventDefault()
                   setQuery("");
+                  setValue(null);
                   if (!query) {
                      history.push(`/search/${type}/All`)
                   } else {

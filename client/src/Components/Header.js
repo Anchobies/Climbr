@@ -3,6 +3,7 @@ import { Button } from "@material-ui/core"
 import SearchBar from "./SearchBar";
 import HiveFive5 from '../HiveFive5.png'
 import SimpleTabs from './SimpleTabs'
+import React from 'react';
 
 const style = {
    background: '#FE3B8B',
@@ -15,6 +16,7 @@ const style = {
 
 const Header = ({ onLogin, setToggle }) => {
    const history = useHistory();
+   const [value, setValue] = React.useState(window.location.pathname);
 
    const handleSignOut = () => {
       fetch("/signout", {
@@ -32,8 +34,8 @@ const Header = ({ onLogin, setToggle }) => {
    return (
           <div className="header">
              <img onClick={() => history.push("/")} style={{cursor:'pointer'}} src={HiveFive5} className="headerLogo" alt="logo"/>
-             <SearchBar />
-             <SimpleTabs />
+             <SearchBar setValue={setValue}/>
+             <SimpleTabs value={value} setValue={setValue}/>
              <Button style={style} onClick={handleSignOut} type="submit" color="primary" variant="contained">
                         Sign Out{" "}
             </Button>
