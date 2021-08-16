@@ -2,18 +2,17 @@ import './App.css';
 
 import React, { useState } from 'react';
 import { Route, Switch } from "react-router-dom"
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import FeedPage from './Components/FeedPage';
-import CreatePage from './Components/CreatePage';
-import HivesPage from './Components/HivesPage';
-import HivePage from './Components/HivePage';
-import FriendsPage from './Components/FriendsPage';
-import UserPage from './Components/UserPage';
-import BeePage from './Components/BeePage';
-import SignUpPage from './Components/SignUpPage';
-import LoginPage from './Components/LoginPage';
-import SearchPage from './Components/SearchPage';
+import MyClimbs from './Components/MyClimbs'
+import MyApproaches from './Components/MyApproaches'
+import Approach from './Components/Approach';
+import Create from './Components/Create';
+import Login from './Components/FeedPage';
+import Problem from './Components/Problem';
+import Profile from './Components/Profile';
+import Search from './Components/Search';
+import SignUp from './Components/SignUp';
+import Solve from './OldComponents/Solve';
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -21,9 +20,9 @@ function App() {
 
   if (!currentUser) {
     if (toggle) {
-      return <LoginPage setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />; 
+      return <Login setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />; 
     } else {
-      return <SignUpPage setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />;
+      return <SignUp setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />;
     }
   }
 
@@ -65,14 +64,14 @@ function App() {
     <div className="App">
       <Header onLogin={setCurrentUser} setToggle={setToggle} />
       <Switch>
-        <Route exact path="/" component={() => <FeedPage timeDifference={timeDifference} />} />
-        <Route exact path="/create" component={CreatePage} />
-        <Route exact path="/hives" component={HivesPage} />
-        <Route exact path="/hives/:hive_id" component={() => <HivePage currentUser={currentUser} />} />
-        <Route exact path="/friends" component={FriendsPage} />
-        <Route exact path="/users/:user_id" component={UserPage} />
-        <Route exact path="/hives/:hive_id/:bee_id" component={() => <BeePage timeDifference={timeDifference} />} />
-        <Route exact path="/search/:type/:query" component={() => <SearchPage currentUser={currentUser} />} />
+        <Route exact path="/create" component={() => <Create currentUser={currentUser} />} />
+        <Route exact path="/approaches/:approach_id" component={() => <Approach currentUser={currentUser} />} />
+        <Route exact path="/problems/:problem_id" component={() => <Problem currentUser={currentUser} />} />
+        <Route exact path="/profile" component={() => <Profile currentUser={currentUser} />} />
+        <Route exact path="/profile/problems" component={() => <MyClimbs currentUser={currentUser} timeDifference={timeDifference} />} />
+        <Route exact path="/profile/approaches" component={() => <MyApproaches currentUser={currentUser} timeDifference={timeDifference}  />} />
+        <Route exact path="/search/:type/:query" component={() => <Search currentUser={currentUser} />} />
+        <Route exact path="/solve" component={() => <Solve currentUser={currentUser} />} />
       </Switch>
       <Footer />
     </div>
