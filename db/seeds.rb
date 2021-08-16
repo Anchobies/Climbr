@@ -6,47 +6,56 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Gym.destroy_all
+Wall.destroy_all
+Problem.destroy_all
 User.destroy_all
-Hive.destroy_all
-Bee.destroy_all
+Approach.destroy_all
+UserProblem.destroy_all
 
-user1 = User.create(first_name: "Anthony", last_name: "Chung", email: "anthonychung@gmail.com", password: "password", username: "Anchobies", img_url: "")
-user2 = User.create(first_name: "Anthony2", last_name: "Chung2", email: "anthonychung2@gmail.com", password: "password", username: "Anchobies2", img_url: "")
-user3 = User.create(first_name: "Anthony3", last_name: "Chung3", email: "anthonychung3@gmail.com", password: "password", username: "Anchobies3", img_url: "")
-user4 = User.create(first_name: "Anthony4", last_name: "Chung4", email: "anthonychung4@gmail.com", password: "password", username: "Anchobies4", img_url: "")
-user5 = User.create(first_name: "Anthony5", last_name: "Chung5", email: "anthonychung5@gmail.com", password: "password", username: "Anchobies5", img_url: "")
+gym1 = Gym.create(name: "Gym 1")
+gym2 = Gym.create(name: "Gym 2")
+gym3 = Gym.create(name: "Gym 3")
+gym4 = Gym.create(name: "Gym 4")
+gym5 = Gym.create(name: "Gym 5")
 
-hive1 = Hive.create(name: "Sample Hive", queen_bee_id: user1.id)
-hive2 = Hive.create(name: "Sample Hive 2", queen_bee_id: user2.id)
-hive3 = Hive.create(name: "Sample Hive 3", queen_bee_id: user3.id)
-hive4 = Hive.create(name: "Sample Hive 4", queen_bee_id: user1.id)
-hive5 = Hive.create(name: "Sample Hive 5", queen_bee_id: user2.id)
+wall1 = Wall.create(name: "Wall 1", gym_id: gym1.id)
+wall2 = Wall.create(name: "Wall 2", gym_id: gym1.id)
+wall3 = Wall.create(name: "Wall 3", gym_id: gym2.id)
+wall4 = Wall.create(name: "Wall 4", gym_id: gym3.id)
+wall5 = Wall.create(name: "Wall 5", gym_id: gym4.id)
+wall6 = Wall.create(name: "Wall 6", gym_id: gym5.id)
 
-Bee.create(user_id: user1.id, hive_id: hive1.id)
-Bee.create(user_id: user2.id, hive_id: hive2.id)
-Bee.create(user_id: user3.id, hive_id: hive3.id)
-Bee.create(user_id: user1.id, hive_id: hive2.id)
-Bee.create(user_id: user2.id, hive_id: hive3.id)
+problem1 = Problem.create(name: "Problem 1", wall_id: wall1.id, difficulty: "V1", categories: [])
+problem2 = Problem.create(name: "Problem 2", wall_id: wall1.id, difficulty: "V2", categories: [])
+problem3 = Problem.create(name: "Problem 3", wall_id: wall2.id, difficulty: "V3", categories: [])
+problem4 = Problem.create(name: "Problem 4", wall_id: wall3.id, difficulty: "V4", categories: [])
+problem5 = Problem.create(name: "Problem 5", wall_id: wall4.id, difficulty: "V5", categories: [])
+problem6 = Problem.create(name: "Problem 6", wall_id: wall5.id, difficulty: "V6", categories: [])
+problem7 = Problem.create(name: "Problem 7", wall_id: wall6.id, difficulty: "V7", categories: [])
 
-relationship1 = Relationship.create(friends: true, sender_id: user1.id, receiver_id: user2.id)
-relationship2 =Relationship.create(friends: false, sender_id: user1.id, receiver_id: user3.id)
-relationship3 =Relationship.create(friends: true, sender_id: user2.id, receiver_id: user1.id)
-relationship4 =Relationship.create(friends: false, sender_id: user3.id, receiver_id: user1.id)
-relationship5 =Relationship.create(friends: true, sender_id: user3.id, receiver_id: user2.id)
-relationship6 =Relationship.create(friends: true, sender_id: user2.id, receiver_id: user3.id)
+user1 = User.create(full_name: "Anthony Chung", email: "anthonychung@gmail.com", password: "password", username: "Anchobies", img_url: "")
+user2 = User.create(full_name: "Anthony2 Chung2", email: "anthonychung2@gmail.com", password: "password", username: "Anchobies2", img_url: "")
+user3 = User.create(full_name: "Anthony3 Chung3", email: "anthonychung3@gmail.com", password: "password", username: "Anchobies3", img_url: "")
+user4 = User.create(full_name: "Anthony4 Chung4", email: "anthonychung4@gmail.com", password: "password", username: "Anchobies4", img_url: "")
+user5 = User.create(full_name: "Anthony5 Chung5", email: "anthonychung5@gmail.com", password: "password", username: "Anchobies5", img_url: "")
 
+approach1 = Approach.create(user_id: user1.id, problem_id: problem1.id, steps: [])
+approach2 = Approach.create(user_id: user1.id, problem_id: problem2.id, steps: [])
+approach3 = Approach.create(user_id: user2.id, problem_id: problem1.id, steps: [])
+approach4 = Approach.create(user_id: user2.id, problem_id: problem3.id, steps: [])
+approach5 = Approach.create(user_id: user4.id, problem_id: problem4.id, steps: [])
+approach6 = Approach.create(user_id: user4.id, problem_id: problem5.id, steps: [])
+approach7 = Approach.create(user_id: user5.id, problem_id: problem6.id, steps: [])
+approach8 = Approach.create(user_id: user5.id, problem_id: problem7.id, steps: [])
 
-
-chat1 = Chat.create(relationship_id: relationship1.id, hive_id: hive1.id)
-chat2 = Chat.create(relationship_id: relationship2.id, hive_id: hive1.id)
-chat3 = Chat.create(relationship_id: relationship1.id, hive_id: hive2.id)
-chat4 = Chat.create(relationship_id: relationship2.id, hive_id: hive3.id)
-chat5 = Chat.create(relationship_id: relationship3.id, hive_id: hive2.id)
-
-Message.create(comment: "You are awesome", img_url: "", chat_id: chat1.id)
-Message.create(comment: "You are kind", img_url: "", chat_id: chat1.id)
-Message.create(comment: "You are pretty", img_url: "", chat_id: chat2.id)
-Message.create(comment: "You are smart", img_url: "", chat_id: chat3.id)
-Message.create(comment: "You are pleasant", img_url: "", chat_id: chat4.id)
+user_problem1 = UserProblem.create(user_id: user1.id, problem_id: problem1.id, status: [])
+user_problem2 = UserProblem.create(user_id: user1.id, problem_id: problem2.id, status: [])
+user_problem3 = UserProblem.create(user_id: user2.id, problem_id: problem1.id, status: [])
+user_problem4 = UserProblem.create(user_id: user2.id, problem_id: problem3.id, status: [])
+user_problem5 = UserProblem.create(user_id: user4.id, problem_id: problem4.id, status: [])
+user_problem6 = UserProblem.create(user_id: user4.id, problem_id: problem5.id, status: [])
+user_problem7 = UserProblem.create(user_id: user5.id, problem_id: problem6.id, status: [])
+user_problem8 = UserProblem.create(user_id: user5.id, problem_id: problem7.id, status: [])
 
 puts "Seeding complete :)"

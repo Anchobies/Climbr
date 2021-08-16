@@ -1,0 +1,2 @@
+class UserProblemsController < ApplicationController
+end

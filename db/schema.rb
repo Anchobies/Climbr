@@ -10,56 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_30_224539) do
+ActiveRecord::Schema.define(version: 2021_08_11_154150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bees", force: :cascade do |t|
+  create_table "approaches", force: :cascade do |t|
+    t.string "steps", default: [], array: true
     t.bigint "user_id", null: false
-    t.bigint "hive_id", null: false
+    t.bigint "problem_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["hive_id"], name: "index_bees_on_hive_id"
-    t.index ["user_id"], name: "index_bees_on_user_id"
+    t.index ["problem_id"], name: "index_approaches_on_problem_id"
+    t.index ["user_id"], name: "index_approaches_on_user_id"
   end
 
-  create_table "chats", force: :cascade do |t|
-    t.bigint "relationship_id", null: false
-    t.bigint "hive_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["hive_id"], name: "index_chats_on_hive_id"
-    t.index ["relationship_id"], name: "index_chats_on_relationship_id"
-  end
-
-  create_table "hives", force: :cascade do |t|
+  create_table "gyms", force: :cascade do |t|
     t.string "name"
-    t.integer "queen_bee_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.bigint "chat_id", null: false
-    t.string "comment"
-    t.string "img_url"
-    t.integer "created_at", null: false
-    t.integer "updated_at", null: false
-    t.index ["chat_id"], name: "index_messages_on_chat_id"
-  end
-
-  create_table "relationships", force: :cascade do |t|
-    t.boolean "friends"
-    t.integer "sender_id"
-    t.integer "receiver_id"
+  create_table "problems", force: :cascade do |t|
+    t.string "name"
+    t.bigint "wall_id", null: false
+    t.string "difficulty"
+    t.string "categories", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["wall_id"], name: "index_problems_on_wall_id"
+  end
+
+  create_table "user_problems", force: :cascade do |t|
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.bigint "problem_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["problem_id"], name: "index_user_problems_on_problem_id"
+    t.index ["user_id"], name: "index_user_problems_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.string "full_name"
     t.string "email"
     t.string "password_digest"
     t.string "username"
@@ -68,9 +61,18 @@ ActiveRecord::Schema.define(version: 2021_07_30_224539) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "bees", "hives"
-  add_foreign_key "bees", "users"
-  add_foreign_key "chats", "hives"
-  add_foreign_key "chats", "relationships"
-  add_foreign_key "messages", "chats"
+  create_table "walls", force: :cascade do |t|
+    t.string "name"
+    t.bigint "gym_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gym_id"], name: "index_walls_on_gym_id"
+  end
+
+  add_foreign_key "approaches", "problems"
+  add_foreign_key "approaches", "users"
+  add_foreign_key "problems", "walls"
+  add_foreign_key "user_problems", "problems"
+  add_foreign_key "user_problems", "users"
+  add_foreign_key "walls", "gyms"
 end

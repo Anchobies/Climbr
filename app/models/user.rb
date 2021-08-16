@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-    has_many :approaches
-    has_many :user_problems
+    has_many :approaches, dependent: :destroy
+    has_many :user_problems, dependent: :destroy
     has_many :attempted_problems, through: :user_problems, source: :problems
     has_many :solved_problems, through: :approaches, source: :problems
     has_secure_password

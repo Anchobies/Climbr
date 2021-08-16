@@ -1,0 +1,2 @@
+class ApproachesController < ApplicationController
+end
