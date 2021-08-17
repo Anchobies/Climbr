@@ -10,7 +10,7 @@ import Problem from './Components/Problem';
 import Profile from './Components/Profile';
 import Search from './Components/Search';
 import SignUp from './Components/SignUp';
-import Solve from './OldComponents/Solve';
+import Solve from './Components/Solve';
 
 
 function App() {
