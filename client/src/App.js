@@ -19,13 +19,13 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [toggle, setToggle] = useState(true);
 
-  if (!currentUser) {
-    if (toggle) {
-      return <Login setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />; 
-    } else {
-      return <SignUp setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />;
-    }
-  }
+  // if (!currentUser) {
+  //   if (toggle) {
+  //     return <Login setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />; 
+  //   } else {
+  //     return <SignUp setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />;
+  //   }
+  // }
 
   function timeDifference(current, previous) {
     const msPerMinute = 60 * 1000;

@@ -267,7 +267,7 @@ ul {
   margin-top: 50px;
   padding: 30px;
   background: #ffda5b;
-  width: 30%;
+  width: 60%;
 }
 
 #hiveName {
@@ -278,4 +278,22 @@ ul {
 li {
   padding: 0;
   list-style-type: none;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--tile-size));
+  grid-gap: 0;
+  align-self: flex-start;
+}
+
+.tile {
+  box-sizing: border-box;
+  border: 1px solid black;
+  background: white;
+}
+
+:root {
+  --cols: 12;
+  --tile-size: 50px;
 }
