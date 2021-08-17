@@ -3,7 +3,6 @@ import './App.css';
 import React, { useState } from 'react';
 import { Route, Switch } from "react-router-dom"
 import MyClimbs from './Components/MyClimbs'
-import MyApproaches from './Components/MyApproaches'
 import Approach from './Components/Approach';
 import Create from './Components/Create';
 import Login from './Components/FeedPage';
@@ -68,8 +67,7 @@ function App() {
         <Route exact path="/approaches/:approach_id" component={() => <Approach currentUser={currentUser} />} />
         <Route exact path="/problems/:problem_id" component={() => <Problem currentUser={currentUser} />} />
         <Route exact path="/profile" component={() => <Profile currentUser={currentUser} />} />
-        <Route exact path="/profile/problems" component={() => <MyClimbs currentUser={currentUser} timeDifference={timeDifference} />} />
-        <Route exact path="/profile/approaches" component={() => <MyApproaches currentUser={currentUser} timeDifference={timeDifference}  />} />
+        <Route exact path="/climbs" component={() => <MyClimbs currentUser={currentUser} timeDifference={timeDifference} />} />
         <Route exact path="/search/:type/:query" component={() => <Search currentUser={currentUser} />} />
         <Route exact path="/solve" component={() => <Solve currentUser={currentUser} />} />
       </Switch>

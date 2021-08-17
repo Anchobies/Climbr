@@ -28,7 +28,8 @@ const SearchBar = ({ setValue }) => {
                   }}
                   className="searchInput">
                   <option value="users">Users</option>
-                  <option value="hives">Hives</option>
+                  <option value="gyms">Gyms</option>
+                  <option value="problems">Problems</option>
                </select>
                &nbsp;
                <input
@@ -37,7 +38,8 @@ const SearchBar = ({ setValue }) => {
                   value={query}
                   onChange={handleQuery}
                   type="text"
-                  placeholder={type === "all" ? "Search HiveFive" : ("users" ? "Search users..." : type === "Search hives...")}
+                  placeholder={type === "all" ? "Search Climbr" : (type === "users" ? "Search users..." : 
+                  (type === "gyms" ? "Search gyms..." : "Search problems..."))}
                />
             </form>
     )

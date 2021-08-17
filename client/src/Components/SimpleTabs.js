@@ -57,9 +57,9 @@ export default function SimpleTabs({ value, setValue }) {
     <div className="tabs">
         <AntTabs value={value} onChange={handleTabs} aria-label="ant example">
             <AntTab value="/" label="FEED" />
-            <AntTab value="/create" label="CREATE A HIVE" />
-            <AntTab value="/hives" label="MY HIVES" />
-            <AntTab value="/friends" label="MY FRIENDS" />
+            <AntTab value="/create" label="CREATE A CLIMB" />
+            <AntTab value="/climbs" label="MY CLIMBS" />
+            <AntTab value="/profile" label="MY PROFILE" />
         </AntTabs>
     </div>
   );

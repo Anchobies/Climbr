@@ -1,7 +1,6 @@
 import { useHistory } from "react-router-dom"
 import { Button } from "@material-ui/core"
 import SearchBar from "./SearchBar";
-import HiveFive5 from '../HiveFive5.png'
 import SimpleTabs from './SimpleTabs'
 import React from 'react';
 
@@ -33,7 +32,7 @@ const Header = ({ onLogin, setToggle }) => {
 
    return (
           <div className="header">
-             <img onClick={() => history.push("/")} style={{cursor:'pointer'}} src={HiveFive5} className="headerLogo" alt="logo"/>
+             <img onClick={() => history.push("/")} style={{cursor:'pointer'}} src="" className="headerLogo" alt="logo"/>
              <SearchBar setValue={setValue}/>
              <SimpleTabs value={value} setValue={setValue}/>
              <Button style={style} onClick={handleSignOut} type="submit" color="primary" variant="contained">
