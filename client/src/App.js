@@ -11,6 +11,8 @@ import Profile from './Components/Profile';
 import Search from './Components/Search';
 import SignUp from './Components/SignUp';
 import Solve from './Components/Solve';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
 
 
 function App() {
