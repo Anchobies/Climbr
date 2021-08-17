@@ -11,8 +11,10 @@ const Create = ({ currentUser }) => {
         }
     }
 
-    const clickTile = e => {
-        e.target.style.background = e.target.style.background === 'red' ? 'white' : 'red';
+    const clickTile = (e, row, col, layout, setLayout) => {
+        let newLayout = [...layout];
+        newLayout[row][col].isEmpty = !newLayout[row][col].isEmpty;
+        setLayout(newLayout);
     }
 
     return (

@@ -291,9 +291,17 @@ li {
   box-sizing: border-box;
   border: 1px solid black;
   background: white;
+  height: 50px;
 }
 
 :root {
   --cols: 12;
   --tile-size: 50px;
+}
+
+.hold {
+  border-radius: 50%;
+  background: red;
+  width: 100%;
+  height: 100%;
 }
