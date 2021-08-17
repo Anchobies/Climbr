@@ -108,7 +108,7 @@ const Search = ({ currentUser }) => {
       );
     }
 
-    problemsArray = queriedProblems.map((gym) => {
+    problemsArray = queriedProblems.map((problem) => {
       return (
         <li className="problem" key={problem.id}>
           <Link to={`/probems/${problem.id}`}>
