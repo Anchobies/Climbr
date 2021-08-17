@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom"
 import MyClimbs from './Components/MyClimbs'
 import Approach from './Components/Approach';
 import Create from './Components/Create';
-import Login from './Components/FeedPage';
+import Login from './Components/Login';
 import Problem from './Components/Problem';
 import Profile from './Components/Profile';
 import Search from './Components/Search';
