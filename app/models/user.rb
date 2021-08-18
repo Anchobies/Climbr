@@ -1,8 +1,8 @@
 class User < ApplicationRecord
     has_many :approaches, dependent: :destroy
     has_many :user_problems, dependent: :destroy
-    has_many :attempted_problems, through: :user_problems, source: :problems
-    has_many :solved_problems, through: :approaches, source: :problems
+    has_many :attempted_problems, through: :user_problems, source: :problem
+    has_many :solved_problems, through: :approaches, source: :problem
     has_secure_password
 
     validates :email, presence: true, uniqueness: true

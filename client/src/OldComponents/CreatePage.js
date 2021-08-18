@@ -48,9 +48,9 @@ const CreatePage = () => {
         .then(res => res.json())    
         .then(data => {
             if (!data.errors) {
-                history.push(`/hives/${data.id}`);
+                history.push("/climbs");
             } else {
-                setHiveErrors(data.errors);
+                setProblemErrors(data.errors);
             }
         })
     };

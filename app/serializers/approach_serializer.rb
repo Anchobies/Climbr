@@ -1,3 +1,5 @@
 class ApproachSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :steps
+
+  belongs_to :problem
 end

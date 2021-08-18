@@ -5,6 +5,7 @@ class CreateProblems < ActiveRecord::Migration[6.1]
       t.belongs_to :wall, null: false, foreign_key: true
       t.string :difficulty
       t.string :categories, array: true, default: []
+      t.text "layout"
       t.timestamps
     end
   end

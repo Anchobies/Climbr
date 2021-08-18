@@ -1,3 +1,3 @@
 class ProblemSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :difficulty, :wall_id, :categories, :layout
 end

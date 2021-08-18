@@ -295,13 +295,11 @@ li {
 }
 
 :root {
-  --cols: 12;
+  --cols: 16;
   --tile-size: 50px;
 }
 
 .hold {
-  border-radius: 50%;
-  background: red;
   width: 100%;
   height: 100%;
 }
