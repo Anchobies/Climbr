@@ -26,6 +26,15 @@ function App() {
   //   }
   // }
 
+  const [solution, setSolution] = useState([
+    [
+      [null, null],
+      [null, null],
+      [null, null],
+      [null, null],
+    ],
+  ]);
+
   function timeDifference(current, previous) {
     const msPerMinute = 60 * 1000;
     const msPerHour = msPerMinute * 60;
@@ -94,7 +103,7 @@ function App() {
         <Route
           exact
           path="/solve/:problem_id/:step"
-          component={() => <Solve currentUser={currentUser} />}
+          component={() => <Solve currentUser={currentUser} solution={solution} setSolution={setSolution} />}
         />
       </Switch>
       <Footer />

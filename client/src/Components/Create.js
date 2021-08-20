@@ -12,7 +12,6 @@ const Create = ({ currentUser }) => {
       initialLayout[row].push({
         id: row * 16 + col,
         isEmpty: true,
-        myStyle: null,
       });
     }
   }
@@ -27,91 +26,28 @@ const Create = ({ currentUser }) => {
 
   const history = useHistory();
 
-  const clickTile = (row, col, layout, setLayout) => {
+  const clickTile = (row, col, layout, setLayout, mouseDown, setMouseDown, setIsHold) => {
     let newLayout = [...layout];
+
+    setIsHold(!layout[row][col].isEmpty);
+
     newLayout[row][col].isEmpty = !newLayout[row][col].isEmpty;
+    !layout[row][col].isEmpty
+      ? (newLayout[row][col].holdType = holdType)
+      : (newLayout[row][col].holdType = "white");
+
     setLayout(newLayout);
+    setMouseDown(!mouseDown);
   };
 
-  const dragOverTile = (row, col, layout, setLayout) => {
+  const dragOverTile = (row, col, layout, setLayout, isHold) => {
     let newLayout = [...layout];
 
-    newLayout[row][col].isEmpty = false;
+    newLayout[row][col].isEmpty = isHold;
+    !layout[row][col].isEmpty
+      ? (newLayout[row][col].holdType = holdType)
+      : (newLayout[row][col].holdType = "white");
     setLayout(newLayout);
-  };
-
-  const holdStyle = (row, col, layout, setLayout) => {
-    if (layout[row][col].isEmpty && layout[row][col].myStyle === null) {
-      return;
-    } else if (layout[row][col].isEmpty) {
-      let newLayout = [...layout];
-      newLayout[row][col].myStyle = null;
-      setLayout(newLayout);
-      return;
-    }
-
-    if (
-      layout[row][col].myStyle &&
-      layout[row][col].myStyle.background !== holdType
-    ) {
-      return;
-    }
-
-    let topLeft = "50%";
-    let topRight = "50%";
-    let bottomRight = "50%";
-    let bottomLeft = "50%";
-
-    if (
-      layout[row - 1] &&
-      !layout[row - 1][col].isEmpty &&
-      layout[row - 1][col].myStyle &&
-      layout[row - 1][col].myStyle.background === holdType
-    ) {
-      topLeft = "0";
-      topRight = "0";
-    }
-    if (
-      layout[row + 1] &&
-      !layout[row + 1][col].isEmpty &&
-      layout[row + 1][col].myStyle &&
-      layout[row + 1][col].myStyle.background === holdType
-    ) {
-      bottomLeft = "0";
-      bottomRight = "0";
-    }
-    if (
-      layout[row][col - 1] &&
-      !layout[row][col - 1].isEmpty &&
-      layout[row][col - 1].myStyle &&
-      layout[row][col - 1].myStyle.background === holdType
-    ) {
-      topLeft = "0";
-      bottomLeft = "0";
-    }
-    if (
-      layout[row][col + 1] &&
-      !layout[row][col + 1].isEmpty &&
-      layout[row][col + 1].myStyle &&
-      layout[row][col + 1].myStyle.background === holdType
-    ) {
-      topRight = "0";
-      bottomRight = "0";
-    }
-
-    let myStyle = {
-      background: "white",
-      borderRadius:
-        topLeft + " " + topRight + " " + bottomRight + " " + bottomLeft,
-    };
-
-    myStyle.background = holdType;
-
-    if (JSON.stringify(myStyle) !== JSON.stringify(layout[row][col].myStyle)) {
-      let newLayout = [...layout];
-      newLayout[row][col].myStyle = myStyle;
-      setLayout(newLayout);
-    }
   };
 
   const handleRadioChange = (e) => {
@@ -205,7 +141,6 @@ const Create = ({ currentUser }) => {
           setLayout={setLayout}
           initialLayout={initialLayout}
           clickTile={clickTile}
-          holdStyle={holdStyle}
           dragOverTile={dragOverTile}
         />
         <div className="form-group">
