@@ -4,7 +4,6 @@ import Layout from "./Layout";
 import { Button } from "@material-ui/core";
 
 const Solve = ({ currentUser, solution, setSolution }) => {
-  console.log(solution);
   const problemId = useParams().problem_id;
 
   const step = useParams().step;
@@ -21,6 +20,8 @@ const Solve = ({ currentUser, solution, setSolution }) => {
 
   const [solveErrors, setSolveErrors] = useState([]);
 
+  const [solutionStep, setSolutionStep] = useState("0");
+
   if (!solution[+step - 1]) {
     history.push(`/solve/${problemId}/1`);
   }
@@ -33,37 +34,37 @@ const Solve = ({ currentUser, solution, setSolution }) => {
       });
   }, [problemId]);
 
-  const clickTile = (
-    row,
-    col,
-    stepSolution,
-    setStepSolution,
-    solutionStep,
-    setSolutionStep
-  ) => {
-    if (solutionStep === 5) {
+  const clickTile = (row, col, stepSolution, setStepSolution) => {
+    const handFeet = ["lh", "rh", "lf", "rf"];
+
+    if (+solutionStep === 5) {
       return;
     }
 
     let newStepSolution = [...stepSolution];
 
     if (
-      stepSolution[solutionStep - 1] &&
-      stepSolution[solutionStep - 1][0] === row &&
-      stepSolution[solutionStep - 1][1] === col
+      stepSolution[+solutionStep] &&
+      stepSolution[+solutionStep][0] === row &&
+      stepSolution[+solutionStep][1] === col
     ) {
-      console.log("hi");
-      newStepSolution[solutionStep - 1] = [null, null];
-      if (solutionStep > 0) {
-        setSolutionStep(solutionStep - 1);
-      }
-    } else if (solutionStep < 4) {
-      newStepSolution[solutionStep] = [row, col];
-      setSolutionStep(solutionStep + 1);
+      newStepSolution[+solutionStep] = [null, null];
+    } else if (solutionStep === "4") {
+      newStepSolution[3] = [null, null];
+      setSolutionStep("3");
+    } else if (+solutionStep < 4) {
+      newStepSolution[+solutionStep] = [row, col];
+      setSolutionStep((+solutionStep + 1).toString());
     }
 
     setStepSolution(newStepSolution);
   };
+
+  const handleRadioChange = (e) => {
+    setSolutionStep(e.target.value);
+  };
+
+  console.log(solutionStep)
 
   return (
     <div>
@@ -79,6 +80,51 @@ const Solve = ({ currentUser, solution, setSolution }) => {
         }}
         clickTile={clickTile}
       />
+
+      <div className="form-group">
+        <p>Select placement:</p>
+        <div>
+          <input
+            type="radio"
+            value="0"
+            checked={solutionStep === "0"}
+            onChange={handleRadioChange}
+            className="hold-form"
+          />
+          <label htmlFor="0">Left hand</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            value="1"
+            checked={solutionStep === "1"}
+            onChange={handleRadioChange}
+            className="hold-form"
+          />
+          <label htmlFor="1">Right hand</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            value="2"
+            checked={solutionStep === "2"}
+            onChange={handleRadioChange}
+            className="hold-form"
+          />
+          <label htmlFor="2">Left foot</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            value="3"
+            checked={solutionStep === "3" || solutionStep === "4"}
+            onChange={handleRadioChange}
+            className="hold-form"
+          />
+          <label htmlFor="3">Right foot</label>
+        </div>
+      </div>
+
       {step != 1 ? (
         <Button
           variant="contained"
@@ -98,7 +144,7 @@ const Solve = ({ currentUser, solution, setSolution }) => {
           }
 
           setSolveErrors([]);
-          
+
           if (!solution[step]) {
             let newSolution = [...solution];
             newSolution[step] = [

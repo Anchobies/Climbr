@@ -11,7 +11,8 @@ const Create = ({ currentUser }) => {
     for (let col = 0; col < 16; col++) {
       initialLayout[row].push({
         id: row * 16 + col,
-        isEmpty: true
+        isEmpty: true,
+        placementType: null
       });
     }
   }

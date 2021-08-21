@@ -6,11 +6,10 @@ const Layout = ({
   clickTile,
   dragOverTile,
   solution,
-  setSolution,
+  setSolution
 }) => {
   const [mouseDown, setMouseDown] = useState(false);
   const [isHold, setIsHold] = useState(false);
-  const [solutionStep, setSolutionStep] = useState(0);
 
   const holdStyle = (row, col, layout, solution = null, isEmpty) => {
 
@@ -133,9 +132,7 @@ const Layout = ({
                       i,
                       j,
                       solution,
-                      setSolution,
-                      solutionStep,
-                      setSolutionStep
+                      setSolution
                     )
                   }
                 >
