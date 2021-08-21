@@ -10,7 +10,7 @@ import Problem from "./Components/Problem";
 import Profile from "./Components/Profile";
 import Search from "./Components/Search";
 // import SignUp from "./Components/SignUp";
-import Solve from "./Components/Solve";
+import SolveParent from "./Components/SolveParent";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
@@ -25,15 +25,6 @@ function App() {
   //     return <SignUp setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />;
   //   }
   // }
-
-  const [solution, setSolution] = useState([
-    [
-      [null, null],
-      [null, null],
-      [null, null],
-      [null, null],
-    ],
-  ]);
 
   function timeDifference(current, previous) {
     const msPerMinute = 60 * 1000;
@@ -103,7 +94,7 @@ function App() {
         <Route
           exact
           path="/solve/:problem_id/:step"
-          component={() => <Solve currentUser={currentUser} solution={solution} setSolution={setSolution} />}
+          component={() => <SolveParent currentUser={currentUser} />}
         />
       </Switch>
       <Footer />

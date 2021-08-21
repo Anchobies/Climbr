@@ -11,7 +11,7 @@ const Create = ({ currentUser }) => {
     for (let col = 0; col < 16; col++) {
       initialLayout[row].push({
         id: row * 16 + col,
-        isEmpty: true,
+        isEmpty: true
       });
     }
   }
@@ -206,6 +206,9 @@ const Create = ({ currentUser }) => {
             <label htmlFor="volume">Volume</label>
           </div>
         </div>
+        <Button onClick={() => setLayout(initialLayout)} color="primary" variant="contained">
+          Clear
+        </Button>
         <Button type="submit" color="primary" variant="contained">
           Create Problem
         </Button>

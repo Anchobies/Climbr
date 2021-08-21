@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 
-const Layout = ({ layout, setLayout, clickTile, dragOverTile }) => {
+const Layout = ({
+  layout,
+  setLayout,
+  clickTile,
+  dragOverTile,
+  solution,
+  setSolution,
+}) => {
   const [mouseDown, setMouseDown] = useState(false);
   const [isHold, setIsHold] = useState(false);
+  const [solutionStep, setSolutionStep] = useState(0);
 
-  const holdStyle = (row, col, layout) => {
-    if (layout[row][col].isEmpty) {
-      return;
-    }
+  const holdStyle = (row, col, layout, solution = null, isEmpty) => {
 
     let topLeft = "50%";
     let topRight = "50%";
@@ -53,7 +58,36 @@ const Layout = ({ layout, setLayout, clickTile, dragOverTile }) => {
         topLeft + " " + topRight + " " + bottomRight + " " + bottomLeft,
     };
 
-    return <div className="hold" style={myStyle}></div>;
+    let placement = "";
+
+    if (solution) {
+      const handFeet = ["lh", "rh", "lf", "rf"];
+
+      for (let i = 0; i < solution.length; i++) {
+        if (
+          solution[i][0] &&
+          row === solution[i][0] &&
+          col === solution[i][1]
+        ) {
+          placement += handFeet[i];
+        }
+      }
+    }
+
+    if (isEmpty) {
+      return (
+        <div className="hold" style={{background: "white"}}>
+          {solution ? <p className="tileText">{placement}</p> : null}
+        </div>
+      );
+    }
+    else {
+      return (
+        <div className="hold" style={myStyle}>
+          {solution ? <p className="tileText">{placement}</p> : null}
+        </div>
+      );
+    }
   };
 
   return (
@@ -65,11 +99,25 @@ const Layout = ({ layout, setLayout, clickTile, dragOverTile }) => {
                 <div
                   className="tile"
                   key={col.id}
-                  onMouseDown={() => clickTile(i, j, layout, setLayout, mouseDown, setMouseDown, setIsHold)}
+                  onMouseDown={() =>
+                    clickTile(
+                      i,
+                      j,
+                      layout,
+                      setLayout,
+                      mouseDown,
+                      setMouseDown,
+                      setIsHold
+                    )
+                  }
                   onMouseUp={() => setMouseDown(!mouseDown)}
-                  onMouseEnter={() => mouseDown ? dragOverTile(i, j, layout, setLayout, isHold) : null}
+                  onMouseEnter={() =>
+                    mouseDown
+                      ? dragOverTile(i, j, layout, setLayout, isHold)
+                      : null
+                  }
                 >
-                  {col.isEmpty ? null : holdStyle(i, j, layout)}
+                  {holdStyle(i, j, layout, col.isEmpty)}
                 </div>
               );
             });
@@ -77,8 +125,21 @@ const Layout = ({ layout, setLayout, clickTile, dragOverTile }) => {
         : layout.map((row, i) => {
             return row.map((col, j) => {
               return (
-                <div className="tile" key={col.id}>
-                  {col.isEmpty ? null : holdStyle(i, j, layout)}
+                <div
+                  className="tile"
+                  key={col.id}
+                  onMouseDown={() =>
+                    clickTile(
+                      i,
+                      j,
+                      solution,
+                      setSolution,
+                      solutionStep,
+                      setSolutionStep
+                    )
+                  }
+                >
+                  {holdStyle(i, j, layout, solution, col.isEmpty)}
                 </div>
               );
             });

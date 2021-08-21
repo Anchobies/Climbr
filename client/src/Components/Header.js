@@ -34,7 +34,7 @@ const Header = ({ onLogin, setToggle }) => {
           <div className="header">
              <img onClick={() => history.push("/")} style={{cursor:'pointer'}} src="" className="headerLogo" alt="logo"/>
              <SearchBar setValue={setValue}/>
-             <SimpleTabs value={value} setValue={setValue}/>
+             <SimpleTabs value={value === "/" || value === "/create" || value === "/climbs" || value === "/profile" ? value : "/"} setValue={setValue}/>
              <Button style={style} onClick={handleSignOut} type="submit" color="primary" variant="contained">
                         Sign Out{" "}
             </Button>
