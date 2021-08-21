@@ -64,8 +64,6 @@ const Solve = ({ currentUser, solution, setSolution }) => {
     setSolutionStep(e.target.value);
   };
 
-  console.log(solutionStep)
-
   return (
     <div>
       <header>Solve {problem.name}</header>
@@ -156,6 +154,8 @@ const Solve = ({ currentUser, solution, setSolution }) => {
             setSolution(newSolution);
           }
 
+          setSolutionStep("0")
+
           history.push(`/solve/${problemId}/${+step + 1}`);
         }}
       >
@@ -170,7 +170,15 @@ const Solve = ({ currentUser, solution, setSolution }) => {
         variant="contained"
         color="primary"
         onClick={() => {
-          history.push(`/climbs`);
+            fetch("/approaches", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+              },
+              body: JSON.stringify({steps: solution, problem_id: problemId})
+            })
+              .then(res => history.push(`/climbs`))
         }}
       >
         Create Approach

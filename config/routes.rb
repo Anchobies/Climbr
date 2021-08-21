@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   
   get "/approaches", to: "approaches#index"
   get "/approaches/:approach_id", to: "approaches#show"
+  post "/approaches", to: "approaches#create"
 
   post "/signup", to: "sessions#signup"
   post "/login", to: "sessions#login"

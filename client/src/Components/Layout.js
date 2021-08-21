@@ -6,13 +6,12 @@ const Layout = ({
   clickTile,
   dragOverTile,
   solution,
-  setSolution
+  setSolution,
 }) => {
   const [mouseDown, setMouseDown] = useState(false);
   const [isHold, setIsHold] = useState(false);
 
   const holdStyle = (row, col, layout, solution = null, isEmpty) => {
-
     let topLeft = "50%";
     let topRight = "50%";
     let bottomRight = "50%";
@@ -75,12 +74,11 @@ const Layout = ({
 
     if (isEmpty) {
       return (
-        <div className="hold" style={{background: "white"}}>
+        <div className="hold" style={{ background: "white" }}>
           {solution ? <p className="tileText">{placement}</p> : null}
         </div>
       );
-    }
-    else {
+    } else {
       return (
         <div className="hold" style={myStyle}>
           {solution ? <p className="tileText">{placement}</p> : null}
@@ -128,12 +126,7 @@ const Layout = ({
                   className="tile"
                   key={col.id}
                   onMouseDown={() =>
-                    clickTile(
-                      i,
-                      j,
-                      solution,
-                      setSolution
-                    )
+                    clickTile ? clickTile(i, j, solution, setSolution) : null
                   }
                 >
                   {holdStyle(i, j, layout, solution, col.isEmpty)}
