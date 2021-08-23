@@ -166,6 +166,19 @@ const Solve = ({ currentUser, solution, setSolution }) => {
           {solveError}
         </p>
       ))}
+      <Button onClick={() => {
+        let newSolution = [...solution];
+        newSolution[step - 1] = [
+          [null, null],
+          [null, null],
+          [null, null],
+          [null, null],
+        ];
+        setSolution(newSolution);
+        setSolutionStep("0");
+      }} color="primary" variant="contained">
+          Clear
+        </Button>
       <Button
         variant="contained"
         color="primary"

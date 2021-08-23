@@ -53,7 +53,7 @@ const Layout = ({
     let myStyle = {
       background: layout[row][col].holdType,
       borderRadius:
-        topLeft + " " + topRight + " " + bottomRight + " " + bottomLeft,
+        topLeft + " " + topRight + " " + bottomRight + " " + bottomLeft
     };
 
     let placement = "";
@@ -96,8 +96,9 @@ const Layout = ({
                 <div
                   className="tile"
                   key={col.id}
-                  onMouseDown={() =>
+                  onMouseDown={(e) =>
                     clickTile(
+                      e,
                       i,
                       j,
                       layout,
@@ -108,9 +109,9 @@ const Layout = ({
                     )
                   }
                   onMouseUp={() => setMouseDown(!mouseDown)}
-                  onMouseEnter={() =>
+                  onMouseEnter={(e) =>
                     mouseDown
-                      ? dragOverTile(i, j, layout, setLayout, isHold)
+                      ? dragOverTile(e, i, j, layout, setLayout, isHold)
                       : null
                   }
                 >
@@ -125,8 +126,8 @@ const Layout = ({
                 <div
                   className="tile"
                   key={col.id}
-                  onMouseDown={() =>
-                    clickTile ? clickTile(i, j, solution, setSolution) : null
+                  onMouseDown={(e) =>
+                    clickTile ? clickTile(e, i, j, solution, setSolution) : null
                   }
                 >
                   {holdStyle(i, j, layout, solution, col.isEmpty)}

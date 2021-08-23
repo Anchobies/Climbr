@@ -12,7 +12,8 @@ const Create = ({ currentUser }) => {
       initialLayout[row].push({
         id: row * 16 + col,
         isEmpty: true,
-        placementType: null
+        placementType: null,
+        startFinish: false,
       });
     }
   }
@@ -28,27 +29,65 @@ const Create = ({ currentUser }) => {
 
   const history = useHistory();
 
-  const clickTile = (row, col, layout, setLayout, mouseDown, setMouseDown, setIsHold) => {
+  const clickTile = (
+    e,
+    row,
+    col,
+    layout,
+    setLayout,
+    mouseDown,
+    setMouseDown,
+    setIsHold
+  ) => {
     let newLayout = [...layout];
 
-    setIsHold(!layout[row][col].isEmpty);
+    if (holdType === "#FF00FF" || holdType === "cyan") {
+      setIsHold(!layout[row][col].startFinish);
 
-    newLayout[row][col].isEmpty = !newLayout[row][col].isEmpty;
-    !layout[row][col].isEmpty
-      ? (newLayout[row][col].holdType = holdType)
-      : (newLayout[row][col].holdType = "white");
+      newLayout[row][col].startFinish = !newLayout[row][col].startFinish;
+      if (e.target.className === "tile") {
+        layout[row][col].startFinish
+          ? (e.target.style.border = `4px solid ${holdType}`)
+          : (e.target.style.border = "1px solid black");
+      } else {
+        layout[row][col].startFinish
+          ? (e.target.parentElement.style.border = `4px solid ${holdType}`)
+          : (e.target.parentElement.style.border = "1px solid black");
+      }
+    } else {
+      setIsHold(!layout[row][col].isEmpty);
+
+      newLayout[row][col].isEmpty = !newLayout[row][col].isEmpty;
+      !layout[row][col].isEmpty
+        ? (newLayout[row][col].holdType = holdType)
+        : (newLayout[row][col].holdType = "white");
+    }
 
     setLayout(newLayout);
     setMouseDown(!mouseDown);
   };
 
-  const dragOverTile = (row, col, layout, setLayout, isHold) => {
+  const dragOverTile = (e, row, col, layout, setLayout, isHold) => {
     let newLayout = [...layout];
 
-    newLayout[row][col].isEmpty = isHold;
-    !layout[row][col].isEmpty
-      ? (newLayout[row][col].holdType = holdType)
-      : (newLayout[row][col].holdType = "white");
+    if (holdType === "#FF00FF" || holdType === "cyan") {
+      newLayout[row][col].startFinish = isHold;
+      if (e.target.className === "tile") {
+        layout[row][col].startFinish
+          ? (e.target.style.border = `4px solid ${holdType}`)
+          : (e.target.style.border = "1px solid black");
+      } else {
+        layout[row][col].startFinish
+          ? (e.target.parentElement.style.border = `4px solid ${holdType}`)
+          : (e.target.parentElement.style.border = "1px solid black");
+      }
+    } else {
+      newLayout[row][col].isEmpty = isHold;
+      !layout[row][col].isEmpty
+        ? (newLayout[row][col].holdType = holdType)
+        : (newLayout[row][col].holdType = "white");
+    }
+
     setLayout(newLayout);
   };
 
@@ -151,87 +190,90 @@ const Create = ({ currentUser }) => {
           <div>
             <input
               type="radio"
-              value="pink"
-              checked={holdType === "pink"}
+              value="#FF00FF"
+              checked={holdType === "#FF00FF"}
               onChange={handleRadioChange}
               className="hold-form"
             />
-            <label htmlFor="pink">Start</label>
+            <label htmlFor="#FF00FF">Start</label>
           </div>
         </div>
-          <div>
-            <input
-              type="radio"
-              value="red"
-              checked={holdType === "red"}
-              onChange={handleRadioChange}
-              className="hold-form"
-            />
-            <label htmlFor="jug">Jug</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              value="orange"
-              checked={holdType === "orange"}
-              onChange={handleRadioChange}
-              className="hold-form"
-            />
-            <label htmlFor="sloper">Sloper</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              value="yellow"
-              checked={holdType === "yellow"}
-              onChange={handleRadioChange}
-              className="hold-form"
-            />
-            <label htmlFor="pocket">Pocket</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              value="green"
-              checked={holdType === "green"}
-              onChange={handleRadioChange}
-              className="hold-form"
-            />
-            <label htmlFor="pinch">Pinch</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              value="blue"
-              checked={holdType === "blue"}
-              onChange={handleRadioChange}
-              className="hold-form"
-            />
-            <label htmlFor="crimp">Crimp</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              value="purple"
-              checked={holdType === "purple"}
-              onChange={handleRadioChange}
-              className="hold-form"
-            />
-            <label htmlFor="purple">Volume</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              value="cyan"
-              checked={holdType === "cyan"}
-              onChange={handleRadioChange}
-              className="hold-form"
-            />
-            <label htmlFor="cyan">Finish</label>
-          </div>
-          <div>
+        <div>
+          <input
+            type="radio"
+            value="red"
+            checked={holdType === "red"}
+            onChange={handleRadioChange}
+            className="hold-form"
+          />
+          <label htmlFor="jug">Jug</label>
         </div>
-        <Button onClick={() => setLayout(initialLayout)} color="primary" variant="contained">
+        <div>
+          <input
+            type="radio"
+            value="orange"
+            checked={holdType === "orange"}
+            onChange={handleRadioChange}
+            className="hold-form"
+          />
+          <label htmlFor="sloper">Sloper</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            value="yellow"
+            checked={holdType === "yellow"}
+            onChange={handleRadioChange}
+            className="hold-form"
+          />
+          <label htmlFor="pocket">Pocket</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            value="green"
+            checked={holdType === "green"}
+            onChange={handleRadioChange}
+            className="hold-form"
+          />
+          <label htmlFor="pinch">Pinch</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            value="blue"
+            checked={holdType === "blue"}
+            onChange={handleRadioChange}
+            className="hold-form"
+          />
+          <label htmlFor="crimp">Crimp</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            value="purple"
+            checked={holdType === "purple"}
+            onChange={handleRadioChange}
+            className="hold-form"
+          />
+          <label htmlFor="purple">Volume</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            value="cyan"
+            checked={holdType === "cyan"}
+            onChange={handleRadioChange}
+            className="hold-form"
+          />
+          <label htmlFor="cyan">Finish</label>
+        </div>
+        <div></div>
+        <Button
+          onClick={() => setLayout(initialLayout)}
+          color="primary"
+          variant="contained"
+        >
           Clear
         </Button>
         <Button type="submit" color="primary" variant="contained">
