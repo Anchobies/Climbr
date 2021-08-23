@@ -42,7 +42,7 @@ const Approach = ({ currentUser }) => {
 
   return (
     <div>
-      <header>Solve {problem.name}</header>
+      <header>Anchobies's Approach to {problem.name}</header>
       <h4>Step {step}:</h4>
       <Layout layout={problem.layout} solution={approach[step - 1]} />
 

@@ -24,6 +24,7 @@ const Create = ({ currentUser }) => {
   });
   const [holdType, setHoldType] = useState("red");
   const [problemErrors, setProblemErrors] = useState([]);
+  const [hasStartFinish, setHasStartFinish] = useState(false);
 
   const history = useHistory();
 
@@ -68,6 +69,7 @@ const Create = ({ currentUser }) => {
         className="problem-form"
         onSubmit={(e) => {
           e.preventDefault();
+
           fetch("/problems", {
             method: "POST",
             headers: {
@@ -149,6 +151,17 @@ const Create = ({ currentUser }) => {
           <div>
             <input
               type="radio"
+              value="pink"
+              checked={holdType === "pink"}
+              onChange={handleRadioChange}
+              className="hold-form"
+            />
+            <label htmlFor="pink">Start</label>
+          </div>
+        </div>
+          <div>
+            <input
+              type="radio"
               value="red"
               checked={holdType === "red"}
               onChange={handleRadioChange}
@@ -204,8 +217,19 @@ const Create = ({ currentUser }) => {
               onChange={handleRadioChange}
               className="hold-form"
             />
-            <label htmlFor="volume">Volume</label>
+            <label htmlFor="purple">Volume</label>
           </div>
+          <div>
+            <input
+              type="radio"
+              value="cyan"
+              checked={holdType === "cyan"}
+              onChange={handleRadioChange}
+              className="hold-form"
+            />
+            <label htmlFor="cyan">Finish</label>
+          </div>
+          <div>
         </div>
         <Button onClick={() => setLayout(initialLayout)} color="primary" variant="contained">
           Clear
