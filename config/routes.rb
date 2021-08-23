@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get "/approaches/:approach_id", to: "approaches#show"
   post "/approaches", to: "approaches#create"
 
-  post "/signup", to: "sessions#signup"
-  post "/login", to: "sessions#login"
-  delete "/signout", to: "sessions#destroy"
+  # post "/signup", to: "sessions#signup"
+  # post "/login", to: "sessions#login"
+  # delete "/signout", to: "sessions#destroy"
 end
