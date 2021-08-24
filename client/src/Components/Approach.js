@@ -27,6 +27,8 @@ const Approach = ({ currentUser }) => {
     ],
   ]);
 
+  const [solutionName, setSolutionName] = useState("");
+
   if (!approach[+step - 1]) {
     history.push(`/approaches/${approachId}/1`);
   }
@@ -39,15 +41,26 @@ const Approach = ({ currentUser }) => {
         dataCopy.layout = JSON.parse(dataCopy.layout);
         setProblem(dataCopy);
         setApproach(JSON.parse(data.solution.steps));
+        setSolutionName(data.solution.name);
       });
   }, [approachId]);
 
   return (
     <div>
-      <header>Anchobies's Approach to {problem.name}</header>
+      <header>Approach: {solutionName}</header>
       <h4>Step {step}:</h4>
       <Layout layout={problem.layout} solution={approach[step - 1]} />
-
+      <div className="legend">
+        <h3>Legend</h3>
+        <p style={{color:"#FF00FF"}} htmlFor="#FF00FF">Start</p>
+        <p style={{color:"red"}} htmlFor="red">Jug</p>
+        <p style={{color:"orange"}} htmlFor="orange">Sloper</p>
+        <p style={{color:"yellow"}} htmlFor="yellow">Pocket</p>
+        <p style={{color:"green"}} htmlFor="green">Pinch</p>
+        <p style={{color:"blue"}} htmlFor="blue">Crimp</p>
+        <p style={{color:"purple"}} htmlFor="purple">Volume</p>
+        <p style={{color:"cyan"}} htmlFor="cyan">End</p>
+      </div>
       {step != 1 ? (
         <Button
           variant="contained"

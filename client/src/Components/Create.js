@@ -10,10 +10,10 @@ const Create = ({ currentUser }) => {
     initialLayout.push([]);
     for (let col = 0; col < 16; col++) {
       initialLayout[row].push({
-        id: row * 16 + col,
+        id: row * 16 + col + 1,
         isEmpty: true,
         placementType: null,
-        startFinish: false,
+        startFinish: null
       });
     }
   }
@@ -25,12 +25,10 @@ const Create = ({ currentUser }) => {
   });
   const [holdType, setHoldType] = useState("red");
   const [problemErrors, setProblemErrors] = useState([]);
-  const [hasStartFinish, setHasStartFinish] = useState(false);
 
   const history = useHistory();
 
   const clickTile = (
-    e,
     row,
     col,
     layout,
@@ -44,16 +42,7 @@ const Create = ({ currentUser }) => {
     if (holdType === "#FF00FF" || holdType === "cyan") {
       setIsHold(!layout[row][col].startFinish);
 
-      newLayout[row][col].startFinish = !newLayout[row][col].startFinish;
-      if (e.target.className === "tile") {
-        layout[row][col].startFinish
-          ? (e.target.style.border = `4px solid ${holdType}`)
-          : (e.target.style.border = "1px solid black");
-      } else {
-        layout[row][col].startFinish
-          ? (e.target.parentElement.style.border = `4px solid ${holdType}`)
-          : (e.target.parentElement.style.border = "1px solid black");
-      }
+      newLayout[row][col].startFinish = layout[row][col].startFinish ? null : holdType;
     } else {
       setIsHold(!layout[row][col].isEmpty);
 
@@ -67,20 +56,20 @@ const Create = ({ currentUser }) => {
     setMouseDown(!mouseDown);
   };
 
-  const dragOverTile = (e, row, col, layout, setLayout, isHold) => {
+  const dragOverTile = (row, col, layout, setLayout, isHold) => {
     let newLayout = [...layout];
 
     if (holdType === "#FF00FF" || holdType === "cyan") {
-      newLayout[row][col].startFinish = isHold;
-      if (e.target.className === "tile") {
-        layout[row][col].startFinish
-          ? (e.target.style.border = `4px solid ${holdType}`)
-          : (e.target.style.border = "1px solid black");
-      } else {
-        layout[row][col].startFinish
-          ? (e.target.parentElement.style.border = `4px solid ${holdType}`)
-          : (e.target.parentElement.style.border = "1px solid black");
-      }
+      newLayout[row][col].startFinish = !isHold ? null : holdType;
+      // if (e.target.className === "tile") {
+      //   isHold
+      //     ? (e.target.style.border = `4px solid ${holdType}`)
+      //     : (e.target.style.border = "1px solid black");
+      // } else {
+      //   layout[row][col].startFinish
+      //     ? (e.target.parentElement.style.border = `4px solid ${holdType}`)
+      //     : (e.target.parentElement.style.border = "1px solid black");
+      // }
     } else {
       newLayout[row][col].isEmpty = isHold;
       !layout[row][col].isEmpty
@@ -126,7 +115,7 @@ const Create = ({ currentUser }) => {
             .then((res) => res.json())
             .then((data) => {
               if (!data.errors) {
-                history.push("climbs");
+                history.push("/climbs");
               } else {
                 setProblemErrors(data.errors);
               }
@@ -185,6 +174,19 @@ const Create = ({ currentUser }) => {
           clickTile={clickTile}
           dragOverTile={dragOverTile}
         />
+        <Button color="primary" variant="contained" onClick={() => {
+          let newLayout = [...layout];
+          newLayout.push([]);
+          for (let col = 0; col < 16; col++) {
+            newLayout[newLayout.length - 1].push({
+              id: (newLayout.length - 1) * 16 + col + 1,
+              isEmpty: true,
+              placementType: null,
+              startFinish: false,
+            });
+          }
+          setLayout(newLayout);
+        }}>Add Row</Button>
         <div className="form-group">
           <p>Select a hold type:</p>
           <div>
@@ -195,7 +197,7 @@ const Create = ({ currentUser }) => {
               onChange={handleRadioChange}
               className="hold-form"
             />
-            <label htmlFor="#FF00FF">Start</label>
+            <label style={{color:"#FF00FF"}} htmlFor="#FF00FF">Start</label>
           </div>
         </div>
         <div>
@@ -206,7 +208,7 @@ const Create = ({ currentUser }) => {
             onChange={handleRadioChange}
             className="hold-form"
           />
-          <label htmlFor="jug">Jug</label>
+          <label style={{color:"red"}} htmlFor="red">Jug</label>
         </div>
         <div>
           <input
@@ -216,7 +218,7 @@ const Create = ({ currentUser }) => {
             onChange={handleRadioChange}
             className="hold-form"
           />
-          <label htmlFor="sloper">Sloper</label>
+          <label style={{color:"orange"}} htmlFor="orange">Sloper</label>
         </div>
         <div>
           <input
@@ -226,7 +228,7 @@ const Create = ({ currentUser }) => {
             onChange={handleRadioChange}
             className="hold-form"
           />
-          <label htmlFor="pocket">Pocket</label>
+          <label style={{color:"yellow"}} htmlFor="yellow">Pocket</label>
         </div>
         <div>
           <input
@@ -236,7 +238,7 @@ const Create = ({ currentUser }) => {
             onChange={handleRadioChange}
             className="hold-form"
           />
-          <label htmlFor="pinch">Pinch</label>
+          <label style={{color:"green"}} htmlFor="green">Pinch</label>
         </div>
         <div>
           <input
@@ -246,7 +248,7 @@ const Create = ({ currentUser }) => {
             onChange={handleRadioChange}
             className="hold-form"
           />
-          <label htmlFor="crimp">Crimp</label>
+          <label style={{color:"blue"}} htmlFor="blue">Crimp</label>
         </div>
         <div>
           <input
@@ -256,7 +258,7 @@ const Create = ({ currentUser }) => {
             onChange={handleRadioChange}
             className="hold-form"
           />
-          <label htmlFor="purple">Volume</label>
+          <label style={{color:"purple"}} htmlFor="purple">Volume</label>
         </div>
         <div>
           <input
@@ -266,7 +268,7 @@ const Create = ({ currentUser }) => {
             onChange={handleRadioChange}
             className="hold-form"
           />
-          <label htmlFor="cyan">Finish</label>
+          <label style={{color:"cyan"}} htmlFor="cyan">Finish</label>
         </div>
         <div></div>
         <Button

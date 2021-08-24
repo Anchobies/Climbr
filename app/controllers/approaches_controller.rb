@@ -10,7 +10,11 @@ class ApproachesController < ApplicationController
     end
 
     def create
-        approach = Approach.create(user_id: User.first.id, problem_id: params[:problem_id], steps: params[:steps])
-        render json: approach
+        approach = Approach.create(user_id: User.first.id, problem_id: params[:problem_id], steps: params[:steps], name: params[:name])
+        if approach.valid?
+            render json: approach
+        else
+            render json: { errors: approach.errors.full_messages }, status: :unprocessable_entity
+        end
     end
 end

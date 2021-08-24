@@ -5,6 +5,6 @@ class Problem < ApplicationRecord
     has_many :solvers, through: :approaches, source: :user
     has_many :climbers, through: :user_problems, source: :user
 
-    validates :name, presence: true
+    validates :name, presence: true, uniqueness: { scope: :wall_id }
     validates :difficulty, presence: true
 end

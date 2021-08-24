@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2021_08_11_154150) do
 
   create_table "approaches", force: :cascade do |t|
     t.string "steps"
+    t.string "name"
     t.bigint "user_id", null: false
     t.bigint "problem_id", null: false
     t.datetime "created_at", precision: 6, null: false

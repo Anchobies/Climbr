@@ -87,8 +87,6 @@ const Layout = ({
     }
   };
 
-  // console.log(layout)
-
   return (
     <div className="layout">
       {(layout && layout.length > 0 && setLayout && clickTile && dragOverTile)
@@ -98,9 +96,9 @@ const Layout = ({
                 <div
                   className="tile"
                   key={col.id}
-                  onMouseDown={(e) =>
+                  style={{border: col.startFinish ? `4px solid ${col.startFinish}` : "1px solid black"}}
+                  onMouseDown={() =>
                     clickTile(
-                      e,
                       i,
                       j,
                       layout,
@@ -111,9 +109,9 @@ const Layout = ({
                     )
                   }
                   onMouseUp={() => setMouseDown(!mouseDown)}
-                  onMouseEnter={(e) =>
+                  onMouseEnter={() =>
                     mouseDown
-                      ? dragOverTile(e, i, j, layout, setLayout, isHold)
+                      ? dragOverTile(i, j, layout, setLayout, isHold)
                       : null
                   }
                 >
@@ -128,8 +126,9 @@ const Layout = ({
                 <div
                   className="tile"
                   key={col.id}
-                  onMouseDown={(e) =>
-                    clickTile ? clickTile(e, i, j, solution, setSolution) : null
+                  style={{border: col.startFinish ? `4px solid ${col.startFinish}` : "1px solid black"}}
+                  onMouseDown={() =>
+                    clickTile ? clickTile(i, j, solution, setSolution) : null
                   }
                 >
                   {holdStyle(i, j, layout, solution, col.isEmpty)}

@@ -6,7 +6,7 @@ class ProblemsController < ApplicationController
 
     def show
         problem = Problem.find(params[:problem_id])
-        render json: problem
+        render json: problem, serializer: ProblemSerializer
     end
 
     def create

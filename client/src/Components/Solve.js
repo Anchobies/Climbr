@@ -22,6 +22,10 @@ const Solve = ({ currentUser, solution, setSolution }) => {
 
   const [solutionStep, setSolutionStep] = useState("0");
 
+  const [approachName, setApproachName] = useState("");
+
+  const [approachErrors, setApproachErrors] = useState([]);
+
   if (!solution[+step - 1]) {
     history.push(`/solve/${problemId}/1`);
   }
@@ -36,7 +40,7 @@ const Solve = ({ currentUser, solution, setSolution }) => {
       });
   }, [problemId]);
 
-  const clickTile = (e, row, col, stepSolution, setStepSolution) => {
+  const clickTile = (row, col, stepSolution, setStepSolution) => {
     const handFeet = ["lh", "rh", "lf", "rf"];
 
     if (+solutionStep === 5) {
@@ -69,6 +73,17 @@ const Solve = ({ currentUser, solution, setSolution }) => {
   return (
     <div>
       <header>Solve {problem.name}</header>
+      <div className="form-group">
+          <label htmlFor="name">Approach Name:</label>
+          <input
+            type="text"
+            className="form-control"
+            value={approachName}
+            onChange={(e) => setApproachName(e.target.value)}
+            id="approach-name"
+            placeholder="Enter approach name..."
+          />
+        </div>
       <h4>Step {step}:</h4>
       <Layout
         layout={problem.layout}
@@ -124,7 +139,17 @@ const Solve = ({ currentUser, solution, setSolution }) => {
           <label htmlFor="3">Right foot</label>
         </div>
       </div>
-
+      <div className="legend">
+        <h3>Legend</h3>
+        <p style={{color:"#FF00FF"}} htmlFor="#FF00FF">Start</p>
+        <p style={{color:"red"}} htmlFor="red">Jug</p>
+        <p style={{color:"orange"}} htmlFor="orange">Sloper</p>
+        <p style={{color:"yellow"}} htmlFor="yellow">Pocket</p>
+        <p style={{color:"green"}} htmlFor="green">Pinch</p>
+        <p style={{color:"blue"}} htmlFor="blue">Crimp</p>
+        <p style={{color:"purple"}} htmlFor="purple">Volume</p>
+        <p style={{color:"cyan"}} htmlFor="cyan">End</p>
+      </div>
       {step != 1 ? (
         <Button
           variant="contained"
@@ -191,13 +216,25 @@ const Solve = ({ currentUser, solution, setSolution }) => {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
               },
-              body: JSON.stringify({steps: solution, problem_id: problemId})
+              body: JSON.stringify({steps: solution, problem_id: problemId, name: approachName})
             })
-              .then(res => history.push(`/climbs`))
+            .then((res) => res.json())
+            .then((data) => {
+              if (!data.errors) {
+                history.push("/climbs");
+              } else {
+                setApproachErrors(data.errors);
+              }
+            });
         }}
       >
         Create Approach
       </Button>
+      {approachErrors.map((approachError) => (
+        <p className="error-message" key={approachError}>
+          {approachError}
+        </p>
+      ))}
     </div>
   );
 };

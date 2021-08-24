@@ -59,7 +59,6 @@ const MyClimbs = ({ currentUser, timeDifference }) => {
     });
   }
 
-
   return (
     <div>
       <h3>My Problems</h3>
