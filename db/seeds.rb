@@ -40,14 +40,70 @@ user3 = User.create(full_name: "Anthony3 Chung3", email: "anthonychung3@gmail.co
 user4 = User.create(full_name: "Anthony4 Chung4", email: "anthonychung4@gmail.com", password: "password", username: "Anchobies4", img_url: "")
 user5 = User.create(full_name: "Anthony5 Chung5", email: "anthonychung5@gmail.com", password: "password", username: "Anchobies5", img_url: "")
 
-approach1 = Approach.create(user_id: user1.id, problem_id: problem1.id, steps: [])
-approach2 = Approach.create(user_id: user1.id, problem_id: problem2.id, steps: [])
-approach3 = Approach.create(user_id: user2.id, problem_id: problem1.id, steps: [])
-approach4 = Approach.create(user_id: user2.id, problem_id: problem3.id, steps: [])
-approach5 = Approach.create(user_id: user4.id, problem_id: problem4.id, steps: [])
-approach6 = Approach.create(user_id: user4.id, problem_id: problem5.id, steps: [])
-approach7 = Approach.create(user_id: user5.id, problem_id: problem6.id, steps: [])
-approach8 = Approach.create(user_id: user5.id, problem_id: problem7.id, steps: [])
+approach1 = Approach.create(user_id: user1.id, problem_id: problem1.id, steps: [
+    [
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+    ]
+  ])
+approach2 = Approach.create(user_id: user1.id, problem_id: problem2.id, steps: [
+    [
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+    ]
+  ])
+approach3 = Approach.create(user_id: user2.id, problem_id: problem1.id, steps: [
+    [
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+    ]
+  ])
+approach4 = Approach.create(user_id: user2.id, problem_id: problem3.id, steps: [
+    [
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+    ]
+  ])
+approach5 = Approach.create(user_id: user4.id, problem_id: problem4.id, steps: [
+    [
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+    ]
+  ])
+approach6 = Approach.create(user_id: user4.id, problem_id: problem5.id, steps: [
+    [
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+    ]
+  ])
+approach7 = Approach.create(user_id: user5.id, problem_id: problem6.id, steps: [
+    [
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+    ]
+  ])
+approach8 = Approach.create(user_id: user5.id, problem_id: problem7.id, steps: [
+    [
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+      [nil, nil],
+    ]
+  ])
 
 user_problem1 = UserProblem.create(user_id: user1.id, problem_id: problem1.id, status: [])
 user_problem2 = UserProblem.create(user_id: user1.id, problem_id: problem2.id, status: [])
