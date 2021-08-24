@@ -7,6 +7,4 @@ class Problem < ApplicationRecord
 
     validates :name, presence: true
     validates :difficulty, presence: true
-
-    serialize :layout, Array
 end

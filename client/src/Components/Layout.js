@@ -87,9 +87,11 @@ const Layout = ({
     }
   };
 
+  // console.log(layout)
+
   return (
     <div className="layout">
-      {layout && setLayout && clickTile && dragOverTile
+      {(layout && layout.length > 0 && setLayout && clickTile && dragOverTile)
         ? layout.map((row, i) => {
             return row.map((col, j) => {
               return (
@@ -120,7 +122,7 @@ const Layout = ({
               );
             });
           })
-        : layout ? layout.map((row, i) => {
+        : ((layout && layout.length > 0) ? layout.map((row, i) => {
             return row.map((col, j) => {
               return (
                 <div
@@ -134,7 +136,7 @@ const Layout = ({
                 </div>
               );
             });
-          }) : null } 
+          }) : null )} 
     </div>
   );
 };

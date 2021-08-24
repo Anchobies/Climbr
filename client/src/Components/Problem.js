@@ -20,7 +20,9 @@ const Problem = ({ currentUser }) => {
         fetch(`/problems/${problemId}`)
             .then(res => res.json())
             .then(data => {
-                setProblem(data)
+                let dataCopy = {...data};
+                dataCopy.layout = JSON.parse(dataCopy.layout);
+                setProblem(dataCopy)
             }
             )
     }, [problemId]);

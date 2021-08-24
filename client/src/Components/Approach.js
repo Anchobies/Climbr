@@ -35,7 +35,9 @@ const Approach = ({ currentUser }) => {
     fetch(`/approaches/${approachId}`)
       .then((res) => res.json())
       .then((data) => {
-        setProblem(data.problem);
+        let dataCopy = {...data.problem};
+        dataCopy.layout = JSON.parse(dataCopy.layout);
+        setProblem(dataCopy);
         setApproach(JSON.parse(data.solution.steps));
       });
   }, [approachId]);

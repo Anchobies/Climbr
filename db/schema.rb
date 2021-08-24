@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_08_11_154150) do
     t.bigint "wall_id", null: false
     t.string "difficulty"
     t.string "categories", default: [], array: true
-    t.text "layout"
+    t.string "layout"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["wall_id"], name: "index_problems_on_wall_id"
