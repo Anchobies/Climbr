@@ -8,10 +8,7 @@ const MyClimbs = ({ currentUser, timeDifference }) => {
 
   useEffect(() => {
     fetch("/problems")
-      .then((res) => {
-        console.log(res)
-        return res.json()
-      })
+      .then((res) => res.json())
       .then((data) => {
         setProblems(data);
       });
