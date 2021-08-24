@@ -120,7 +120,7 @@ const Create = ({ currentUser }) => {
               // gym: problemInfo.gym,
               difficulty: problemInfo.difficulty,
               layout: layout,
-              wall_id: 1,
+              wall_id: 33,
             }),
           })
             .then((res) => res.json())
