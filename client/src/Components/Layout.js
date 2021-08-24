@@ -120,7 +120,7 @@ const Layout = ({
               );
             });
           })
-        : layout.map((row, i) => {
+        : layout ? layout.map((row, i) => {
             return row.map((col, j) => {
               return (
                 <div
@@ -134,7 +134,7 @@ const Layout = ({
                 </div>
               );
             });
-          })}
+          }) : null } 
     </div>
   );
 };
