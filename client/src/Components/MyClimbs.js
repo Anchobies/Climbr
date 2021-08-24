@@ -49,8 +49,8 @@ const MyClimbs = ({ currentUser, timeDifference }) => {
           <Card>
             <CardContent>
               <Link to={`/approaches/${approach.id}/1`}>
-                <h3>{approach.problem.name}</h3>
-                <p>{approach.problem.difficulty}</p>
+                <h3>{approach.name}</h3>
+                <p>For: {approach.problem.name}</p>
               </Link>
             </CardContent>
           </Card>

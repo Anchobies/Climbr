@@ -35,7 +35,7 @@ const Problem = ({ currentUser }) => {
           <Card>
             <CardContent>
               <Link to={`/approaches/${approach.id}/1`}>
-                <p>Approach {i + 1}</p>
+                <h3>{approach.name}</h3>
               </Link>
             </CardContent>
           </Card>
