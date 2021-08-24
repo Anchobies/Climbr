@@ -34,7 +34,7 @@ const Solve = ({ currentUser, solution, setSolution }) => {
       });
   }, [problemId]);
 
-  const clickTile = (row, col, stepSolution, setStepSolution) => {
+  const clickTile = (e, row, col, stepSolution, setStepSolution) => {
     const handFeet = ["lh", "rh", "lf", "rf"];
 
     if (+solutionStep === 5) {
