@@ -10,7 +10,7 @@ class ProblemsController < ApplicationController
     end
 
     def create
-        problem = Problem.create(name: params[:name], difficulty: params[:difficulty], wall_id: 1, layout: params[:layout])
+        problem = Problem.create(name: params[:name], difficulty: params[:difficulty], wall_id: Wall.first.id, layout: params[:layout])
         if problem.valid?
             UserProblem.create(user_id: User.first.id, problem_id: problem.id, status: [])
             render json: problem
