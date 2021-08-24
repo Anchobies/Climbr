@@ -1,6 +1,6 @@
 class ApproachesController < ApplicationController
     def index
-        approaches = User.find(1).approaches
+        approaches = User.first.approaches
         render json: approaches
     end
 
@@ -10,7 +10,7 @@ class ApproachesController < ApplicationController
     end
 
     def create
-        approach = Approach.create(user_id: 1, problem_id: params[:problem_id], steps: params[:steps])
+        approach = Approach.create(user_id: User.first.id, problem_id: params[:problem_id], steps: params[:steps])
         render json: approach
     end
 end
