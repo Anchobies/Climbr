@@ -47,7 +47,7 @@ const Approach = ({ currentUser }) => {
 
   return (
     <div>
-      <header>Approach: {solutionName}</header>
+      <header>Approach for {problem.name}: {solutionName}</header>
       <h4>Step {step}:</h4>
       <Layout layout={problem.layout} solution={approach[step - 1]} />
       <div className="legend">
