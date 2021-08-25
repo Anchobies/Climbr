@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Card, CardContent } from "@material-ui/core";
-import { Link } from "react-router-dom"
+import { Grid, Card, CardContent, Button } from "@material-ui/core";
+import { useHistory, Link } from "react-router-dom";
 
 const MyClimbs = ({ currentUser, timeDifference }) => {
   const [problems, setProblems] = useState([]);
   const [approaches, setApproaches] = useState([]);
+  const history = useHistory();;
 
   useEffect(() => {
     fetch("/problems")
@@ -13,7 +14,7 @@ const MyClimbs = ({ currentUser, timeDifference }) => {
         setProblems(data);
       });
 
-      fetch("/approaches")
+    fetch("/approaches")
       .then((res) => res.json())
       .then((data) => {
         setApproaches(data);
@@ -52,6 +53,32 @@ const MyClimbs = ({ currentUser, timeDifference }) => {
                 <h3>{approach.name}</h3>
                 <p>For: {approach.problem.name}</p>
               </Link>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  history.push(`/edit/${approach.id}/1`)
+                }}
+              >
+                Edit
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  fetch(`/approaches/${approach.id}`, {
+                    method: "DELETE",
+                  }).then(() => {
+                    fetch("/approaches")
+                      .then((res) => res.json())
+                      .then((data) => {
+                        setApproaches(data);
+                      });
+                  });
+                }}
+              >
+                Delete
+              </Button>
             </CardContent>
           </Card>
         </Grid>

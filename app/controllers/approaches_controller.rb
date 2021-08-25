@@ -22,4 +22,20 @@ class ApproachesController < ApplicationController
             render json: { errors: approach.errors.full_messages }, status: :unprocessable_entity
         end
     end
+
+    def update 
+        approach = Approach.find(params[:approach_id])
+        approach.update(steps: params[:steps], name: params[:name])
+        if approach.valid?
+            render json: approach
+        else
+            render json: { errors: approach.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+
+    def destroy 
+        approach = Approach.find(params[:approach_id])
+        approach.destroy
+        head :no_content
+    end
 end

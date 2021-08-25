@@ -3,8 +3,12 @@ import { useParams, useHistory } from "react-router-dom";
 import Layout from "./Layout";
 import { Button } from "@material-ui/core";
 
-const Solve = ({ currentUser, solution, setSolution }) => {
-  const problemId = useParams().problem_id;
+const Solve = ({ currentUser, solution, setSolution, solutionName="", probId=1, approachId=1 }) => {
+  let problemId = useParams().problem_id;
+
+  if (!problemId) {
+    problemId = probId;
+  }
 
   const step = useParams().step;
 
@@ -26,8 +30,14 @@ const Solve = ({ currentUser, solution, setSolution }) => {
 
   const [approachErrors, setApproachErrors] = useState([]);
 
+  useEffect(() => {
+    if (solutionName) {
+      setApproachName(solutionName);
+    }
+  }, [solutionName])
+
   if (!solution[+step - 1]) {
-    history.push(`/solve/${problemId}/1`);
+    !solutionName ? history.push(`/solve/${problemId}/1`) : history.push(`/edit/${problemId}/1`);
   }
 
   useEffect(() => {
@@ -70,7 +80,7 @@ const Solve = ({ currentUser, solution, setSolution }) => {
 
   return (
     <div>
-      <header>Solve {problem.name}</header>
+      {!solutionName ? <header>Solve {problem.name}</header> : <header>Edit Approach for {problem.name}: {solutionName}</header>}
       <div className="form-group">
           <label htmlFor="name">Approach Name:</label>
           <input
@@ -152,7 +162,7 @@ const Solve = ({ currentUser, solution, setSolution }) => {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => history.push(`/solve/${problemId}/${+step - 1}`)}
+          onClick={() => !solutionName ? history.push(`/solve/${problemId}/${+step - 1}`) : history.push(`/edit/${approachId}/${+step - 1}`)}
         >
           Previous step
         </Button>
@@ -181,7 +191,7 @@ const Solve = ({ currentUser, solution, setSolution }) => {
 
           setSolutionStep("0")
 
-          history.push(`/solve/${problemId}/${+step + 1}`);
+          !solutionName ? history.push(`/solve/${problemId}/${+step + 1}`) : history.push(`/edit/${approachId}/${+step + 1}`)
         }}
       >
         Next step
@@ -208,7 +218,7 @@ const Solve = ({ currentUser, solution, setSolution }) => {
         variant="contained"
         color="primary"
         onClick={() => {
-            fetch("/approaches", {
+            !solutionName ? (fetch("/approaches", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -223,10 +233,26 @@ const Solve = ({ currentUser, solution, setSolution }) => {
               } else {
                 setApproachErrors(data.errors);
               }
-            });
+            }))
+            : (fetch(`/approaches/${approachId}`, {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+              },
+              body: JSON.stringify({steps: solution, name: approachName})
+            })
+            .then((res) => res.json())
+            .then((data) => {
+              if (!data.errors) {
+                history.push("/climbs");
+              } else {
+                setApproachErrors(data.errors);
+              }
+            }))
         }}
       >
-        Create Approach
+        {!solutionName ? "Create Approach" : "Edit Approach"}
       </Button>
       {approachErrors.map((approachError) => (
         <p className="error-message" key={approachError}>
@@ -236,7 +262,7 @@ const Solve = ({ currentUser, solution, setSolution }) => {
       <Button
         variant="contained"
         color="primary"
-        onClick={() => history.goBack()}
+        onClick={() => +step > 1 ? history.push("/climbs") : history.goBack()}
       >
         Cancel
       </Button>

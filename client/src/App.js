@@ -12,6 +12,7 @@ import Profile from "./Components/Profile";
 import Search from "./Components/Search";
 // import SignUp from "./Components/SignUp";
 import SolveParent from "./Components/SolveParent";
+import EditParent from "./Components/EditParent";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
@@ -101,6 +102,11 @@ function App() {
           exact
           path="/solve/:problem_id/:step"
           component={() => <SolveParent currentUser={currentUser} />}
+        />
+        <Route
+          exact
+          path="/edit/:approach_id/:step"
+          component={() => <EditParent currentUser={currentUser} />}
         />
       </Switch>
       <Footer />

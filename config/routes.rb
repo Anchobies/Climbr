@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get "/approaches/:approach_id", to: "approaches#show"
   get "/users/:user_id/approaches", to: "approaches#users"
   post "/approaches", to: "approaches#create"
+  patch "/approaches/:approach_id", to: "approaches#update"
+  delete "/approaches/:approach_id", to: "approaches#destroy"
 
   # post "/signup", to: "sessions#signup"
   # post "/login", to: "sessions#login"

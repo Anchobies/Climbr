@@ -51,10 +51,30 @@ const Approach = ({ currentUser }) => {
       <Button
         variant="contained"
         color="primary"
-        onClick={() => history.goBack()}
+        onClick={() => +step > 1 ? history.push("/climbs") : history.goBack()}
       >
         Back
       </Button>
+      <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  history.push(`/edit/${approachId}/1`)
+                }}
+              >
+                Edit
+              </Button>
+      <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  fetch(`/approaches/${approachId}`, {
+                    method: "DELETE",
+                  }).then(() => history.goBack());
+                }}
+              >
+                Delete
+              </Button>
       <h4>Step {step}:</h4>
       <Layout layout={problem.layout} solution={approach[step - 1]} />
       <div className="legend">
@@ -68,7 +88,7 @@ const Approach = ({ currentUser }) => {
         <p style={{color:"purple"}} htmlFor="purple">Volume</p>
         <p style={{color:"cyan"}} htmlFor="cyan">End</p>
       </div>
-      {+step != 1 ? (
+      {+step !== 1 ? (
         <Button
           variant="contained"
           color="primary"
