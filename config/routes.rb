@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   patch "/approaches/:approach_id", to: "approaches#update"
   delete "/approaches/:approach_id", to: "approaches#destroy"
 
-  # post "/signup", to: "sessions#signup"
-  # post "/login", to: "sessions#login"
-  # delete "/signout", to: "sessions#destroy"
+  post "/signup", to: "sessions#signup"
+  post "/login", to: "sessions#login"
+  delete "/signout", to: "sessions#destroy"
 end

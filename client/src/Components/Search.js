@@ -41,7 +41,7 @@ const Search = ({ currentUser }) => {
     usersArray = queriedUsers.map((user) => {
       return (
         <li className="user" key={user.id}>
-          {user.id === currentUser.id ? (
+          {currentUser && user.id === currentUser.id ? (
             <>
               <Link to={`/profile`}>
                 <h4>{user.username} (Me)</h4>

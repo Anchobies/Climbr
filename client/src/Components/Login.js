@@ -59,7 +59,7 @@ const Login = ({ setToggle, toggle, onLogin }) => {
     return (
         <div className="Login">
             <img src="" className="loginLogo" alt="logo"/>
-            <p className="loginDescription">A safe space to build each <br /> other up anonymously.</p>
+            <p className="loginDescription">Set your climb<br />Solve your climb<br />And enjoy your climb</p>
             <div className="loginForm">
                 <form onSubmit={handleLogin} >
                     <br />

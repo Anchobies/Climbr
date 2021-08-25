@@ -1,6 +1,6 @@
 class ApproachesController < ApplicationController
     def user
-        approaches = User.first.approaches
+        approaches = User.find_by(id: session[:user_id]).approaches
         render json: approaches
     end
 
@@ -15,7 +15,7 @@ class ApproachesController < ApplicationController
     end
 
     def create
-        approach = Approach.create(user_id: User.first.id, problem_id: params[:problem_id], steps: params[:steps], name: params[:name])
+        approach = Approach.create(user_id: session[:user_id], problem_id: params[:problem_id], steps: params[:steps], name: params[:name])
         if approach.valid?
             render json: approach
         else

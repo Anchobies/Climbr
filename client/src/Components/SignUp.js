@@ -66,7 +66,7 @@ const SignUp = ({ setToggle, toggle, onLogin }) => {
     return (
         <div className="loginPage">
             <img src={""} className="loginLogo" alt="logo"/>
-            <p className="loginDescription">A safe space to build each <br /> other up anonymously.</p>
+            <p className="loginDescription">Set your climb,<br />solve your climb,<br />and enjoy your climb.</p>
             <div className="signUpForm">
                 <form onSubmit={handleSubmitUser} >
                     <br />
@@ -81,12 +81,7 @@ const SignUp = ({ setToggle, toggle, onLogin }) => {
                     <br />
                     <br />
                     <label>
-                        <input onChange={handleNewUser} name="first_name" value={newUser["first_name"]} type="text" className="signUpInput4" placeholder="First Name" />
-                    </label>
-                    <br />
-                    <br />
-                    <label>
-                        <input onChange={handleNewUser} name="last_name" value={newUser["last_name"]} type="text" className="signUpInput2" placeholder="Last Name" />
+                        <input onChange={handleNewUser} name="full_name" value={newUser["full_name"]} type="text" className="signUpInput4" placeholder="Full Name" />
                     </label>
                     <br />
                     <br />

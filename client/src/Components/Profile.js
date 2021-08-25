@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
-import MyClimbs from "./MyClimbs";
+// import MyClimbs from "./MyClimbs";
 
 const Profile = ({ currentUser }) => {
   const initialUser = { id: 1, username: "", full_name: "", email: "" };
@@ -14,13 +14,13 @@ const Profile = ({ currentUser }) => {
   const [userErrors, setUserErrors] = useState([]);
 
   useEffect(() => {
-      fetch(`/users/${user.id}`)
+      fetch(`/users/${currentUser.id}`)
       .then((res) => res.json())
       .then((data) => {
         setUser(data);
         setUpdateUser(data);
       });
-  }, [user.id]);
+  }, [currentUser.id]);
 
   const handleUpdates = (e) =>
     setUpdateUser({ ...updateUser, [e.target.name]: e.target.value });
@@ -37,7 +37,7 @@ const Profile = ({ currentUser }) => {
       body: JSON.stringify(updateUser),
     };
 
-    fetch(`/users/${user.id}`, configObj)
+    fetch(`/users/${currentUser.id}`, configObj)
       .then((response) => response.json())
       .then((data) => {
         if (!data.errors) {
@@ -136,7 +136,7 @@ const Profile = ({ currentUser }) => {
           {userError}
         </p>
       ))}
-      <MyClimbs />
+      {/* <MyClimbs /> */}
     </div>
   );
 };

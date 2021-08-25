@@ -13,11 +13,11 @@ User.destroy_all
 Approach.destroy_all
 UserProblem.destroy_all
 
-gym1 = Gym.create(name: "Gym 1")
-gym2 = Gym.create(name: "Gym 2")
-gym3 = Gym.create(name: "Gym 3")
-gym4 = Gym.create(name: "Gym 4")
-gym5 = Gym.create(name: "Gym 5")
+gym1 = Gym.create(name: "Gym 1", img_url:"https://icon-library.com/images/photo-placeholder-icon/photo-placeholder-icon-24.jpg")
+gym2 = Gym.create(name: "Gym 2", img_url:"https://icon-library.com/images/photo-placeholder-icon/photo-placeholder-icon-24.jpg")
+gym3 = Gym.create(name: "Gym 3", img_url:"https://icon-library.com/images/photo-placeholder-icon/photo-placeholder-icon-24.jpg")
+gym4 = Gym.create(name: "Gym 4", img_url:"https://icon-library.com/images/photo-placeholder-icon/photo-placeholder-icon-24.jpg")
+gym5 = Gym.create(name: "Gym 5", img_url:"https://icon-library.com/images/photo-placeholder-icon/photo-placeholder-icon-24.jpg")
 
 wall1 = Wall.create(name: "Wall 1", gym_id: gym1.id)
 wall2 = Wall.create(name: "Wall 2", gym_id: gym1.id)

@@ -1,32 +1,38 @@
 import "./App.css";
 
 import React, { useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import MyClimbs from "./Components/MyClimbs";
 import Approach from "./Components/Approach";
 import Create from "./Components/Create";
 import User from "./Components/User";
-// import Login from "./Components/Login";
+import Login from "./Components/Login";
 import Problem from "./Components/Problem";
 import Profile from "./Components/Profile";
 import Search from "./Components/Search";
-// import SignUp from "./Components/SignUp";
+import SignUp from "./Components/SignUp";
 import SolveParent from "./Components/SolveParent";
 import EditParent from "./Components/EditParent";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({id: 1});
+  const [currentUser, setCurrentUser] = useState(null);
   const [toggle, setToggle] = useState(true);
 
-  // if (!currentUser) {
-  //   if (toggle) {
-  //     return <Login setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />;
-  //   } else {
-  //     return <SignUp setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />;
-  //   }
-  // }
+  const history = useHistory();
+
+  if (!currentUser) {
+    if (window.location.pathname !== "/create") {
+      history.push("/create");
+    }
+
+    if (toggle) {
+      return <Login setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />;
+    } else {
+      return <SignUp setToggle={setToggle} toggle={toggle} onLogin={setCurrentUser} />;
+    }
+  }
 
   function timeDifference(current, previous) {
     const msPerMinute = 60 * 1000;
