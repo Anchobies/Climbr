@@ -13,10 +13,12 @@ Rails.application.routes.draw do
   get "/problems/all", to: "problems#index"
   get "/problems", to: "problems#user"
   get "/problems/:problem_id", to: "problems#show"
+  get "/users/:user_id/problems", to: "problems#users"
   post "/problems", to: "problems#create"
   
   get "/approaches", to: "approaches#user"
   get "/approaches/:approach_id", to: "approaches#show"
+  get "/users/:user_id/approaches", to: "approaches#users"
   post "/approaches", to: "approaches#create"
 
   # post "/signup", to: "sessions#signup"

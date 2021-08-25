@@ -68,7 +68,7 @@ const Approach = ({ currentUser }) => {
         <p style={{color:"purple"}} htmlFor="purple">Volume</p>
         <p style={{color:"cyan"}} htmlFor="cyan">End</p>
       </div>
-      {step != 1 ? (
+      {+step != 1 ? (
         <Button
           variant="contained"
           color="primary"

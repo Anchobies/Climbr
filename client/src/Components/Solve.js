@@ -41,8 +41,6 @@ const Solve = ({ currentUser, solution, setSolution }) => {
   }, [problemId]);
 
   const clickTile = (row, col, stepSolution, setStepSolution) => {
-    const handFeet = ["lh", "rh", "lf", "rf"];
-
     if (+solutionStep === 5) {
       return;
     }
@@ -150,7 +148,7 @@ const Solve = ({ currentUser, solution, setSolution }) => {
         <p style={{color:"purple"}} htmlFor="purple">Volume</p>
         <p style={{color:"cyan"}} htmlFor="cyan">End</p>
       </div>
-      {step != 1 ? (
+      {+step !== 1 ? (
         <Button
           variant="contained"
           color="primary"

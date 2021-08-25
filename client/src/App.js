@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import MyClimbs from "./Components/MyClimbs";
 import Approach from "./Components/Approach";
 import Create from "./Components/Create";
+import User from "./Components/User";
 // import Login from "./Components/Login";
 import Problem from "./Components/Problem";
 import Profile from "./Components/Profile";
@@ -60,6 +61,11 @@ function App() {
           exact
           path="/create"
           component={() => <Create currentUser={currentUser} />}
+        />
+        <Route
+          exact
+          path="/users/:user_id"
+          component={() => <User currentUser={currentUser} />}
         />
         <Route
           exact

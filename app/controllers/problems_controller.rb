@@ -9,6 +9,11 @@ class ProblemsController < ApplicationController
         render json: problems
     end
 
+    def users
+        problems = User.find(params[:user_id]).attempted_problems
+        render json: problems
+    end
+
     def show
         problem = Problem.find(params[:problem_id])
         render json: problem, serializer: ProblemSerializer

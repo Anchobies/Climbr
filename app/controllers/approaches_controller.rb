@@ -4,6 +4,11 @@ class ApproachesController < ApplicationController
         render json: approaches
     end
 
+    def users
+        approaches = User.find(params[:user_id]).approaches
+        render json: approaches
+    end
+
     def show
         approach = Approach.find(params[:approach_id])
         render json: {solution: approach, problem: approach.problem}

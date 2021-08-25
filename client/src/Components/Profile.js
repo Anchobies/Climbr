@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
-// import { useHistory } from "react-router-dom"
-// import { Grid } from "@material-ui/core"
+import { Link } from "react-router-dom"
+import { Grid, Card, CardContent } from "@material-ui/core"
 
 const Profile = ({ currentUser }) => {
   const initialUser = { id: 1, username: "", full_name: "", email: "" };
@@ -14,14 +14,69 @@ const Profile = ({ currentUser }) => {
 
   const [userErrors, setUserErrors] = useState([]);
 
+  const [problems, setProblems] = useState([]);
+  
+  const [approaches, setApproaches] = useState([]);
+
   useEffect(() => {
-    fetch(`/users/${user.id}`)
+    fetch("/problems")
+      .then((res) => res.json())
+      .then((data) => {
+        setProblems(data);
+      });
+
+      fetch("/approaches")
+      .then((res) => res.json())
+      .then((data) => {
+        setApproaches(data);
+      });
+
+      fetch(`/users/${user.id}`)
       .then((res) => res.json())
       .then((data) => {
         setUser(data);
         setUpdateUser(data);
       });
-  }, []);
+  }, [user.id]);
+
+  let problemsArray = [];
+
+  if (problems.length > 0) {
+    problemsArray = problems.map((problem) => {
+      return (
+        <Grid item xs={4} key={problem.id}>
+          <Card>
+            <CardContent>
+              <Link to={`/problems/${problem.id}`}>
+                <h3>{problem.name}</h3>
+                <p>{problem.difficulty}</p>
+                <p>Some wall or gym name</p>
+              </Link>
+            </CardContent>
+          </Card>
+        </Grid>
+      );
+    });
+  }
+
+  let approachesArray = [];
+
+  if (approaches.length > 0) {
+    approachesArray = approaches.map((approach) => {
+      return (
+        <Grid item xs={4} key={approach.id}>
+          <Card>
+            <CardContent>
+              <Link to={`/approaches/${approach.id}/1`}>
+                <h3>{approach.name}</h3>
+                <p>For: {approach.problem.name}</p>
+              </Link>
+            </CardContent>
+          </Card>
+        </Grid>
+      );
+    });
+  }
 
   const handleUpdates = (e) =>
     setUpdateUser({ ...updateUser, [e.target.name]: e.target.value });
@@ -137,16 +192,14 @@ const Profile = ({ currentUser }) => {
           {userError}
         </p>
       ))}
-      {/* <h3>You Reviewed</h3>
-         <div className="centerReview">
-            <Grid justifyContent="center" container spacing={3}>
-               {reviewedBevsArr}
-            </Grid>
-         </div>
-         <h3>Favorited Beverages</h3>
-         <Grid justifyContent="center" container spacing={3}>
-            {favedBevsArr}
-         </Grid> */}
+      <h3>My Problems</h3>
+      <Grid justifyContent="center" container spacing={3}>
+        {problemsArray}
+      </Grid>
+      <h3>My Approaches</h3>
+      <Grid justifyContent="center" container spacing={3}>
+        {approachesArray}
+      </Grid>
     </div>
   );
 };
