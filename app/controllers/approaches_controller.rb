@@ -1,5 +1,5 @@
 class ApproachesController < ApplicationController
-    def index
+    def user
         approaches = User.first.approaches
         render json: approaches
     end

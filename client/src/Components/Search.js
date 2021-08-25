@@ -43,16 +43,18 @@ const Search = ({ currentUser }) => {
         <li className="user" key={user.id}>
           {user.id === currentUser.id ? (
             <>
-              <h4>{user.username} (Me)</h4>
-              {user.img_url ? (
-                <img src={user.img_url} alt="User" className="img-circle" />
-              ) : (
-                <img
-                  src=""
-                  alt="User"
-                  className="default"
-                />
-              )}
+              <Link to={`/profile`}>
+                <h4>{user.username} (Me)</h4>
+                {user.img_url ? (
+                  <img src={user.img_url} alt="User" className="img-circle" />
+                ) : (
+                  <img
+                    src=""
+                    alt="User"
+                    className="default"
+                  />
+                )}
+              </Link>
               <br />
             </>
           ) : (
@@ -111,7 +113,7 @@ const Search = ({ currentUser }) => {
     problemsArray = queriedProblems.map((problem) => {
       return (
         <li className="problem" key={problem.id}>
-          <Link to={`/probems/${problem.id}`}>
+          <Link to={`/problems/${problem.id}`}>
             <h4>{problem.name}</h4>
             <img
               src=""

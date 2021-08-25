@@ -48,22 +48,49 @@ const Problem = ({ currentUser }) => {
     <div>
       <header>{problem.name}</header>
       <h4>Difficulty: {problem.difficulty}</h4>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => history.goBack()}
+      >
+        Back
+      </Button>
       <Layout layout={problem.layout} />
       <div className="legend">
         <h3>Legend</h3>
-        <p style={{color:"#FF00FF"}} htmlFor="#FF00FF">Start</p>
-        <p style={{color:"red"}} htmlFor="red">Jug</p>
-        <p style={{color:"orange"}} htmlFor="orange">Sloper</p>
-        <p style={{color:"yellow"}} htmlFor="yellow">Pocket</p>
-        <p style={{color:"green"}} htmlFor="green">Pinch</p>
-        <p style={{color:"blue"}} htmlFor="blue">Crimp</p>
-        <p style={{color:"purple"}} htmlFor="purple">Volume</p>
-        <p style={{color:"cyan"}} htmlFor="cyan">End</p>
+        <p style={{ color: "#FF00FF" }} htmlFor="#FF00FF">
+          Start
+        </p>
+        <p style={{ color: "red" }} htmlFor="red">
+          Jug
+        </p>
+        <p style={{ color: "orange" }} htmlFor="orange">
+          Sloper
+        </p>
+        <p style={{ color: "yellow" }} htmlFor="yellow">
+          Pocket
+        </p>
+        <p style={{ color: "green" }} htmlFor="green">
+          Pinch
+        </p>
+        <p style={{ color: "blue" }} htmlFor="blue">
+          Crimp
+        </p>
+        <p style={{ color: "purple" }} htmlFor="purple">
+          Volume
+        </p>
+        <p style={{ color: "cyan" }} htmlFor="cyan">
+          End
+        </p>
       </div>
       <h3>User Approaches: </h3>
-      {approachesArray.length > 0 ? <Grid justifyContent="center" container spacing={3}>
-        {approachesArray}
-      </Grid> : <p>No Approaches Yet</p>}
+      {approachesArray.length > 0 ? (
+        <Grid justifyContent="center" container spacing={3}>
+          {approachesArray}
+        </Grid>
+      ) : (
+        <p>No Approaches Yet</p>
+      )}
       <Button
         variant="contained"
         color="primary"

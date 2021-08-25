@@ -235,6 +235,13 @@ const Solve = ({ currentUser, solution, setSolution }) => {
           {approachError}
         </p>
       ))}
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => history.goBack()}
+      >
+        Cancel
+      </Button>
     </div>
   );
 };

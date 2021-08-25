@@ -15,7 +15,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState({id: 1});
   const [toggle, setToggle] = useState(true);
 
   // if (!currentUser) {

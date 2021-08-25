@@ -1,5 +1,10 @@
 class ProblemsController < ApplicationController
-    def index
+    def index 
+        problems = Problem.all
+        render json: problems
+    end
+
+    def user
         problems = User.first.attempted_problems
         render json: problems
     end
