@@ -14,6 +14,11 @@ const Problem = ({ currentUser }) => {
     categories: [],
     layout: [],
     wall_id: 1,
+    wall: {
+      name: "",
+      gym: { name: "" }
+    }
+
   });
 
   useEffect(() => {

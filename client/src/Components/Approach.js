@@ -48,6 +48,7 @@ const Approach = ({ currentUser }) => {
   return (
     <div>
       <header>Approach for {problem.name}: {solutionName}</header>
+      <br/>
       <Button
         variant="contained"
         color="primary"
