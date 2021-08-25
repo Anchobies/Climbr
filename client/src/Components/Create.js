@@ -27,6 +27,8 @@ const Create = ({ currentUser }) => {
   const [holdType, setHoldType] = useState("red");
   const [problemErrors, setProblemErrors] = useState([]);
   const [gyms, setGyms] = useState([]);
+  const [selectedGym, setSelectedGym] = useState(null);
+  const [selectedWall, setSelectedWall] = useState(null);
 
   const history = useHistory();
 
@@ -37,14 +39,28 @@ const Create = ({ currentUser }) => {
   }, []);
 
   let gymOptions = [];
+  let wallOptions = [];
 
   if (gyms.length > 0) {
-    gymOptions = gyms.map((gym) => {
+    gymOptions = gyms.map((gym, index) => {
       return {
         key: gym.name,
         text: gym.name,
-        value: gym.name,
-        image: { avatar: true, src: gym.image }
+        value: index,
+        icon: "map marker alternate",
+        // image: { avatar: true, src: gym.img_url }
+      };
+    });
+  }
+  
+  if (selectedGym !== null) {
+    wallOptions = gyms[selectedGym].walls.map((wall) => {
+      return {
+        key: wall.id,
+        text: wall.name,
+        value: wall.id,
+        icon: "stop",
+        // image: { avatar: true, src: wall.img_url }
       };
     });
   }
@@ -116,11 +132,17 @@ const Create = ({ currentUser }) => {
   return (
     <div className="pageDiv">
       <header>New Problem</header>
+      <br/>
       <form
         className="problem-form"
         onSubmit={(e) => {
           e.preventDefault();
 
+          if (selectedWall === null) {
+            setProblemErrors(["A wall must be selected."])
+            return;
+          }
+          
           fetch("/problems", {
             method: "POST",
             headers: {
@@ -132,7 +154,7 @@ const Create = ({ currentUser }) => {
               // gym: problemInfo.gym,
               difficulty: problemInfo.difficulty,
               layout: layout,
-              wall_id: 1,
+              wall_id: selectedWall,
             }),
           })
             .then((res) => res.json())
@@ -158,22 +180,31 @@ const Create = ({ currentUser }) => {
         </div>
         <div className="form-group">
           <label htmlFor="gym">Gym</label>
-          <input
-            className="form-control"
+          <Dropdown
             id="gym"
-            type="text"
-            value={problemInfo.gym}
-            onChange={handleChangeInput}
-            placeholder="Enter gym name..."
-          ></input>
+            placeholder="Select Gym"
+            fluid
+            search
+            selection
+            options={gymOptions}
+            onChange={(e, { value }) => {
+              setSelectedGym(value)
+              setSelectedWall(null)
+            }}
+          />
         </div>
-        <Dropdown
-          placeholder="Select Gym"
-          fluid
-          search
-          selection
-          options={gymOptions}
-        />
+        <div className="form-group">
+          <label htmlFor="wall">Wall</label>
+          <Dropdown
+            id="wall"
+            placeholder="Select Wall"
+            fluid
+            search
+            selection
+            options={wallOptions}
+          onChange={(e, { value }) => setSelectedWall(value)}
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="difficulty">Difficulty</label>
           <select

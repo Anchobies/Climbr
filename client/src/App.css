@@ -1,11 +1,12 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+  background: #ffda5b;
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -34,7 +35,7 @@ header {
   border-radius: 50%;
 }
 
-.default {
+.default-img {
   width: 150px;
   height: 150px;
 }
@@ -55,10 +56,6 @@ header {
   margin-top: 291px;
   margin-left: 666px;
   color: white;
-}
-
-body {
-  background: #ffda5b;
 }
 
 .loginLogo {
@@ -310,10 +307,6 @@ li {
 }
 
 .holds-group, .legend {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
   background: white;
   width: 25%;
 }

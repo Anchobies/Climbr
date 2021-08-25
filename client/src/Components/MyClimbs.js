@@ -32,7 +32,8 @@ const MyClimbs = ({ currentUser, timeDifference }) => {
               <Link to={`/problems/${problem.id}`}>
                 <h3>{problem.name}</h3>
                 <p>{problem.difficulty}</p>
-                <p>Some wall or gym name</p>
+                <p>Gym: {problem.wall.gym.name}</p>
+                <p>Wall: {problem.wall.name}</p>
               </Link>
             </CardContent>
           </Card>

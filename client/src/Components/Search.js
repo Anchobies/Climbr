@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Grid, Card, CardContent } from "@material-ui/core";
 import { useParams, Link } from "react-router-dom";
 
 const Search = ({ currentUser }) => {
@@ -19,7 +20,7 @@ const Search = ({ currentUser }) => {
 
     fetch("/problems/all")
       .then((response) => response.json())
-      .then((json) => setProblems(json));  
+      .then((json) => setProblems(json));
   }, []);
 
   let queriedUsers = users;
@@ -40,41 +41,32 @@ const Search = ({ currentUser }) => {
 
     usersArray = queriedUsers.map((user) => {
       return (
-        <li className="user" key={user.id}>
-          {currentUser && user.id === currentUser.id ? (
-            <>
-              <Link to={`/profile`}>
-                <h4>{user.username} (Me)</h4>
-                {user.img_url ? (
-                  <img src={user.img_url} alt="User" className="img-circle" />
-                ) : (
-                  <img
-                    src=""
-                    alt="User"
-                    className="default"
-                  />
-                )}
-              </Link>
+        <Grid item xs={4} key={user.id}>
+          <Card>
+            <CardContent>
+              {currentUser && user.id === currentUser.id ? (
+                <Link to={`/profile`}>
+                  <h4>{user.username} (Me)</h4>
+                  {user.img_url ? (
+                    <img src={user.img_url} alt="User" className="img-circle" />
+                  ) : (
+                    <img src="" alt="User" className="default-img" />
+                  )}
+                </Link>
+              ) : (
+                <Link to={`/users/${user.id}`}>
+                  <h4>{user.username}</h4>
+                  {user.img_url ? (
+                    <img src={user.img_url} alt="User" className="img-circle" />
+                  ) : (
+                    <img src="" alt="User" className="default-img" />
+                  )}
+                </Link>
+              )}
               <br />
-            </>
-          ) : (
-            <>
-              <Link to={`/users/${user.id}`}>
-                <h4>{user.username}</h4>
-                {user.img_url ? (
-                  <img src={user.img_url} alt="User" className="img-circle" />
-                ) : (
-                  <img
-                    src=""
-                    alt="User"
-                    className="default"
-                  />
-                )}
-              </Link>
-              <br />
-            </>
-          )}
-        </li>
+            </CardContent>
+          </Card>
+        </Grid>
       );
     });
   }
@@ -88,17 +80,17 @@ const Search = ({ currentUser }) => {
 
     gymsArray = queriedGyms.map((gym) => {
       return (
-        <li className="gym" key={gym.id}>
-          <Link to={`/gyms/${gym.id}`}>
-            <h4>{gym.name}</h4>
-            <img
-              src=""
-              alt="Gym"
-              className="default"
-            />
-          </Link>
-          <br />
-        </li>
+        <Grid item xs={4} key={gym.id}>
+          <Card>
+            <CardContent>
+              <Link to={`/gyms/${gym.id}`}>
+                <h4>{gym.name}</h4>
+                <img src="" alt="Gym" className="default-img" />
+              </Link>
+              <br />
+            </CardContent>
+          </Card>
+        </Grid>
       );
     });
   }
@@ -106,31 +98,43 @@ const Search = ({ currentUser }) => {
   if (problems.length > 0) {
     if (query !== "All") {
       queriedProblems = problems.filter(
-        (problem) => problem.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+        (problem) =>
+          problem.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
       );
     }
 
     problemsArray = queriedProblems.map((problem) => {
       return (
-        <li className="problem" key={problem.id}>
-          <Link to={`/problems/${problem.id}`}>
-            <h4>{problem.name}</h4>
-            <img
-              src=""
-              alt="Problem"
-              className="default"
-            />
-          </Link>
-          <br />
-        </li>
+        <Grid item xs={4} key={problem.id}>
+          <Card>
+            <CardContent>
+              <Link to={`/problems/${problem.id}`}>
+                <h4>{problem.name}</h4>
+                <p>{problem.difficulty}</p>
+                <p>Gym: {problem.wall.gym.name}</p>
+                <p>Wall: {problem.wall.name}</p>
+              </Link>
+              <br />
+            </CardContent>
+          </Card>
+        </Grid>
       );
     });
   }
 
   return (
     <div className="pageDiv">
-      <header>{type === "users" ? "Users" : (type === "gyms" ? "Gyms" : "Problems")}</header>
-      {type === "users" ? usersArray : (type === "gyms" ? gymsArray : problemsArray)}
+      <header>
+        {type === "users" ? "Users" : type === "gyms" ? "Gyms" : "Problems"}
+      </header>
+      <br />
+      <Grid justifyContent="center" container spacing={3}>
+        {type === "users"
+          ? usersArray
+          : type === "gyms"
+          ? gymsArray
+          : problemsArray}
+      </Grid>
     </div>
   );
 };

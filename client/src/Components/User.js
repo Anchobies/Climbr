@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Grid, Card, CardContent, Link } from "@material-ui/core";
+import { useParams, Link } from "react-router-dom";
+import { Grid, Card, CardContent } from "@material-ui/core";
 
 const User = () => {
   const userId = useParams().user_id;
@@ -44,7 +44,8 @@ const User = () => {
               <Link to={`/problems/${problem.id}`}>
                 <h3>{problem.name}</h3>
                 <p>{problem.difficulty}</p>
-                <p>Some wall or gym name</p>
+                <p>Gym: {problem.wall.gym.name}</p>
+                <p>Wall: {problem.wall.name}</p>
               </Link>
             </CardContent>
           </Card>

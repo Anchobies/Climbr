@@ -16,11 +16,11 @@ class ProblemsController < ApplicationController
 
     def show
         problem = Problem.find(params[:problem_id])
-        render json: problem, serializer: ProblemSerializer
+        render json: problem
     end
 
     def create
-        problem = Problem.create(name: params[:name], difficulty: params[:difficulty], wall_id: Wall.first.id, layout: (params[:layout]).to_json)
+        problem = Problem.create(name: params[:name], difficulty: params[:difficulty], wall_id: params[:wall_id], layout: (params[:layout]).to_json)
         if problem.valid?
             UserProblem.create(user_id: session[:user_id], problem_id: problem.id, status: [])
             render json: problem

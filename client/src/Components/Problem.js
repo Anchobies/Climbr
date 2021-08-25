@@ -48,6 +48,8 @@ const Problem = ({ currentUser }) => {
     <div>
       <header>{problem.name}</header>
       <h4>Difficulty: {problem.difficulty}</h4>
+      <h4>Gym: {problem.wall.gym.name}</h4>
+      <h4>Wall: {problem.wall.name}</h4>
       <Button
         variant="contained"
         color="primary"
