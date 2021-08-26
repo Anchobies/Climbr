@@ -56,10 +56,9 @@ const Layout = ({
         topLeft + " " + topRight + " " + bottomRight + " " + bottomLeft
     };
 
-    let placement = "";
-
+    let placement = ["", "", "", ""];
+    let handFeet = ["lh", "rh", "lf", "rf"];
     if (solution) {
-      const handFeet = ["lh", "rh", "lf", "rf"];
 
       for (let i = 0; i < solution.length; i++) {
         if (
@@ -67,21 +66,27 @@ const Layout = ({
           row === solution[i][0] &&
           col === solution[i][1]
         ) {
-          placement += handFeet[i];
+          placement[i] = handFeet[i];
         }
       }
     }
 
+    const placementArray = placement.map(place => {
+      if (place) {
+        return <div key={place} className={place} />;
+      }
+    })
+
     if (isEmpty) {
       return (
         <div className="hold" style={{ background: "white" }}>
-          {solution ? <p className="tileText">{placement}</p> : null}
+          {solution ? placementArray : null}
         </div>
       );
     } else {
       return (
         <div className="hold" style={myStyle}>
-          {solution ? <p className="tileText">{placement}</p> : null}
+          {solution ? placementArray : null}
         </div>
       );
     }

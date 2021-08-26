@@ -107,7 +107,7 @@ const Solve = ({ currentUser, solution, setSolution, solutionName="", probId=1, 
         }}
         clickTile={clickTile}
       />
-
+      <br/>
       <div className="placement-group">
         <h3>Select placement:</h3>
         <div>
@@ -187,6 +187,7 @@ const Solve = ({ currentUser, solution, setSolution, solutionName="", probId=1, 
           Previous step
         </Button>
       ) : null}
+      &nbsp;&nbsp;&nbsp;
       <Button
         variant="contained"
         color="primary"
@@ -216,6 +217,7 @@ const Solve = ({ currentUser, solution, setSolution, solutionName="", probId=1, 
       >
         Next step
       </Button>
+      &nbsp;&nbsp;&nbsp;
       {solveErrors.map((solveError) => (
         <p className="error-message" key={solveError}>
           {solveError}
@@ -234,6 +236,7 @@ const Solve = ({ currentUser, solution, setSolution, solutionName="", probId=1, 
       }} color="primary" variant="contained">
           Clear
         </Button>
+        &nbsp;&nbsp;&nbsp;
       <Button
         variant="contained"
         color="primary"
@@ -274,18 +277,20 @@ const Solve = ({ currentUser, solution, setSolution, solutionName="", probId=1, 
       >
         {!solutionName ? "Create Approach" : "Edit Approach"}
       </Button>
-      {approachErrors.map((approachError) => (
-        <p className="error-message" key={approachError}>
-          {approachError}
-        </p>
-      ))}
+      &nbsp;&nbsp;&nbsp;
       <Button
         variant="contained"
         color="primary"
         onClick={() => +step > 1 ? history.push("/climbs") : history.goBack()}
-      >
+        >
         Cancel
       </Button>
+      <br/>
+        {approachErrors.map((approachError) => (
+          <p className="error-message" key={approachError}>
+            {approachError}
+          </p>
+        ))}
     </div>
   );
 };

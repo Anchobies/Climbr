@@ -373,6 +373,7 @@ const Create = ({ currentUser }) => {
           Create Problem
         </Button>
       </form>
+      <br/>
       {problemErrors.map((problemError) => (
         <p className="error-message" key={problemError}>
           {problemError}
