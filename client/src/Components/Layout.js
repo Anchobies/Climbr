@@ -27,6 +27,7 @@ const Layout = ({
     }
     if (
       layout[row + 1] &&
+      layout[row + 1] &&
       !layout[row + 1][col].isEmpty &&
       layout[row][col].holdType === layout[row + 1][col].holdType
     ) {
@@ -53,13 +54,12 @@ const Layout = ({
     let myStyle = {
       background: layout[row][col].holdType,
       borderRadius:
-        topLeft + " " + topRight + " " + bottomRight + " " + bottomLeft
+        topLeft + " " + topRight + " " + bottomRight + " " + bottomLeft,
     };
 
     let placement = ["", "", "", ""];
     let handFeet = ["lh", "rh", "lf", "rf"];
     if (solution) {
-
       for (let i = 0; i < solution.length; i++) {
         if (
           solution[i][0] &&
@@ -71,11 +71,11 @@ const Layout = ({
       }
     }
 
-    const placementArray = placement.map(place => {
+    const placementArray = placement.map((place) => {
       if (place) {
         return <div key={place} className={place} />;
       }
-    })
+    });
 
     if (isEmpty) {
       return (
@@ -94,14 +94,18 @@ const Layout = ({
 
   return (
     <div className="layout">
-      {(layout && layout.length > 0 && setLayout && clickTile && dragOverTile)
+      {layout && layout.length > 0 && setLayout && clickTile && dragOverTile
         ? layout.map((row, i) => {
             return row.map((col, j) => {
               return (
                 <div
                   className="tile"
                   key={col.id}
-                  style={{border: col.startFinish ? `4px solid ${col.startFinish}` : "1px solid rgb(75, 75, 75)"}}
+                  style={{
+                    border: col.startFinish
+                      ? `4px solid ${col.startFinish}`
+                      : "1px solid rgb(75, 75, 75)",
+                  }}
                   onMouseDown={() =>
                     clickTile(
                       i,
@@ -125,13 +129,18 @@ const Layout = ({
               );
             });
           })
-        : ((layout && layout.length > 0) ? layout.map((row, i) => {
+        : layout && layout.length > 0
+        ? layout.map((row, i) => {
             return row.map((col, j) => {
               return (
                 <div
                   className="tile"
                   key={col.id}
-                  style={{border: col.startFinish ? `4px solid ${col.startFinish}` : "1px solid rgb(75, 75, 75)"}}
+                  style={{
+                    border: col.startFinish
+                      ? `4px solid ${col.startFinish}`
+                      : "1px solid rgb(75, 75, 75)",
+                  }}
                   onMouseDown={() =>
                     clickTile ? clickTile(i, j, solution, setSolution) : null
                   }
@@ -140,7 +149,8 @@ const Layout = ({
                 </div>
               );
             });
-          }) : null )} 
+          })
+        : null}
     </div>
   );
 };
