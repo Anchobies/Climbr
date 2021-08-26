@@ -143,6 +143,9 @@ const Login = ({ setToggle, toggle, onLogin }) => {
             <br />
           </form>
           <br/>
+          <br/>
+          <br/>
+          <br/>
           {loginErrors.map((loginError) => (
             <p className="error-message" key={loginError}>
               {loginError}
