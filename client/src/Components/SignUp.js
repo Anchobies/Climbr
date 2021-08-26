@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
 
-const style = {
-  background: "#b5d1fc",
+const style2 = {
+  background: "#ffda5b",
   borderRadius: 3,
-  border: "0",
+  border: 0,
   color: "black",
   height: 48,
   fontWeight: "bold",
@@ -117,7 +117,7 @@ const SignUp = ({ setToggle, toggle, onLogin }) => {
           <br />
           <br />
           <Button
-            style={style}
+            style={style2}
             type="submit"
             color="secondary"
             variant="contained"
