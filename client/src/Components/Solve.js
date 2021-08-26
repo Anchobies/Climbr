@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import Layout from "./Layout";
 import { Button } from "@material-ui/core";
+import { Input } from "semantic-ui-react";
 
 const Solve = ({ currentUser, solution, setSolution, solutionName="", probId=1, approachId=1 }) => {
   let problemId = useParams().problem_id;
@@ -79,17 +80,20 @@ const Solve = ({ currentUser, solution, setSolution, solutionName="", probId=1, 
   };
 
   return (
-    <div>
+    <div className="pageDiv">
       {!solutionName ? <header>Solve {problem.name}</header> : <header>Edit Approach for {problem.name}: {solutionName}</header>}
-      <div className="form-group">
-          <label htmlFor="name">Approach Name:</label>
-          <input
+        <br/>
+        
+        <div className="form-group">
+          <label htmlFor="approach-name">Approach Name</label>
+          <Input
             type="text"
             className="form-control"
             value={approachName}
-            onChange={(e) => setApproachName(e.target.value)}
             id="approach-name"
             placeholder="Enter approach name..."
+            fluid
+            onChange={e => setApproachName(e.target.value)}
           />
         </div>
       <h4>Step {step}:</h4>
@@ -104,8 +108,8 @@ const Solve = ({ currentUser, solution, setSolution, solutionName="", probId=1, 
         clickTile={clickTile}
       />
 
-      <div className="form-group">
-        <p>Select placement:</p>
+      <div className="placement-group">
+        <h3>Select placement:</h3>
         <div>
           <input
             type="radio"
@@ -114,7 +118,7 @@ const Solve = ({ currentUser, solution, setSolution, solutionName="", probId=1, 
             onChange={handleRadioChange}
             className="hold-form"
           />
-          <label htmlFor="0">Left hand</label>
+          <label htmlFor="0"> Left hand</label> 
         </div>
         <div>
           <input
@@ -124,7 +128,7 @@ const Solve = ({ currentUser, solution, setSolution, solutionName="", probId=1, 
             onChange={handleRadioChange}
             className="hold-form"
           />
-          <label htmlFor="1">Right hand</label>
+          <label htmlFor="1"> Right hand</label>
         </div>
         <div>
           <input
@@ -134,7 +138,7 @@ const Solve = ({ currentUser, solution, setSolution, solutionName="", probId=1, 
             onChange={handleRadioChange}
             className="hold-form"
           />
-          <label htmlFor="2">Left foot</label>
+          <label htmlFor="2"> Left foot</label>
         </div>
         <div>
           <input
@@ -144,19 +148,35 @@ const Solve = ({ currentUser, solution, setSolution, solutionName="", probId=1, 
             onChange={handleRadioChange}
             className="hold-form"
           />
-          <label htmlFor="3">Right foot</label>
+          <label htmlFor="3"> Right foot</label>
         </div>
       </div>
       <div className="legend">
-        <h3>Legend</h3>
-        <p style={{color:"#FF00FF"}} htmlFor="#FF00FF">Start</p>
-        <p style={{color:"red"}} htmlFor="red">Jug</p>
-        <p style={{color:"orange"}} htmlFor="orange">Sloper</p>
-        <p style={{color:"yellow"}} htmlFor="yellow">Pocket</p>
-        <p style={{color:"green"}} htmlFor="green">Pinch</p>
-        <p style={{color:"blue"}} htmlFor="blue">Crimp</p>
-        <p style={{color:"purple"}} htmlFor="purple">Volume</p>
-        <p style={{color:"cyan"}} htmlFor="cyan">End</p>
+        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Legend</h3>
+        <p className="hold-form" style={{ color: "#FF00FF" }} htmlFor="#FF00FF">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start
+        </p>
+        <p className="hold-form" style={{ color: "red" }} htmlFor="red">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jug
+        </p>
+        <p className="hold-form" style={{ color: "orange" }} htmlFor="orange">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sloper
+        </p>
+        <p className="hold-form" style={{ color: "yellow" }} htmlFor="yellow">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pocket
+        </p>
+        <p className="hold-form" style={{ color: "green" }} htmlFor="green">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pinch
+        </p>
+        <p className="hold-form" style={{ color: "blue" }} htmlFor="blue">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Crimp
+        </p>
+        <p className="hold-form" style={{ color: "purple" }} htmlFor="purple">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Volume
+        </p>
+        <p className="hold-form" style={{ color: "cyan" }} htmlFor="cyan">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End
+        </p>
       </div>
       {+step !== 1 ? (
         <Button

@@ -50,7 +50,7 @@ const Problem = ({ currentUser }) => {
   }
 
   return (
-    <div>
+    <div className="pageDiv">
       <header>{problem.name}</header>
       <h4>Difficulty: {problem.difficulty}</h4>
       <h4>Gym: {problem.wall.gym.name}</h4>
@@ -62,32 +62,34 @@ const Problem = ({ currentUser }) => {
       >
         Back
       </Button>
+      <br/>
+      <br/>
       <Layout layout={problem.layout} />
       <div className="legend">
-        <h3>Legend</h3>
-        <p style={{ color: "#FF00FF" }} htmlFor="#FF00FF">
-          Start
+        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Legend</h3>
+        <p className="hold-form" style={{ color: "#FF00FF" }} htmlFor="#FF00FF">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start
         </p>
-        <p style={{ color: "red" }} htmlFor="red">
-          Jug
+        <p className="hold-form" style={{ color: "red" }} htmlFor="red">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jug
         </p>
-        <p style={{ color: "orange" }} htmlFor="orange">
-          Sloper
+        <p className="hold-form" style={{ color: "orange" }} htmlFor="orange">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sloper
         </p>
-        <p style={{ color: "yellow" }} htmlFor="yellow">
-          Pocket
+        <p className="hold-form" style={{ color: "yellow" }} htmlFor="yellow">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pocket
         </p>
-        <p style={{ color: "green" }} htmlFor="green">
-          Pinch
+        <p className="hold-form" style={{ color: "green" }} htmlFor="green">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pinch
         </p>
-        <p style={{ color: "blue" }} htmlFor="blue">
-          Crimp
+        <p className="hold-form" style={{ color: "blue" }} htmlFor="blue">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Crimp
         </p>
-        <p style={{ color: "purple" }} htmlFor="purple">
-          Volume
+        <p className="hold-form" style={{ color: "purple" }} htmlFor="purple">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Volume
         </p>
-        <p style={{ color: "cyan" }} htmlFor="cyan">
-          End
+        <p className="hold-form" style={{ color: "cyan" }} htmlFor="cyan">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End
         </p>
       </div>
       <h3>User Approaches: </h3>
@@ -98,6 +100,7 @@ const Problem = ({ currentUser }) => {
       ) : (
         <p>No Approaches Yet</p>
       )}
+      <br/>
       <Button
         variant="contained"
         color="primary"

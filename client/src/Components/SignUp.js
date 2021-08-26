@@ -13,24 +13,12 @@ const style = {
   width: "285px",
 };
 
-const style2 = {
-  background: "#ffda5b",
-  borderRadius: 3,
-  border: 0,
-  color: "black",
-  height: 48,
-  fontWeight: "bold",
-  padding: "0 30px",
-  width: "285px",
-};
-
 const SignUp = ({ setToggle, toggle, onLogin }) => {
   const initialUser = {
     email: "",
     password: "",
     username: "",
-    first_name: "",
-    last_name: "",
+    full_name: "",
   };
 
   const history = useHistory();
@@ -52,8 +40,8 @@ const SignUp = ({ setToggle, toggle, onLogin }) => {
       .then((response) => response.json())
       .then((json) => {
         if (!json.errors) {
+          history.push("/create");
           onLogin(json);
-          history.push("/");
         } else {
           setUserErrors(json.errors);
         }
@@ -140,6 +128,7 @@ const SignUp = ({ setToggle, toggle, onLogin }) => {
           <br />
           <br />
         </form>
+        <br/>
         {userErrors.map((userError) => (
           <p className="error-message" key={userError}>
             {userError}

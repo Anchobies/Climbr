@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 const style = {
   background: "#b5d1fc",
@@ -29,6 +30,8 @@ const Login = ({ setToggle, toggle, onLogin }) => {
     username: "",
   };
 
+  const history = useHistory();
+
   const [cred, setCred] = useState(initialUser);
   const [loginErrors, setLoginErrors] = useState([]);
   const [loginToggle, setLoginToggle] = useState(false);
@@ -47,6 +50,7 @@ const Login = ({ setToggle, toggle, onLogin }) => {
       .then((response) => response.json())
       .then((json) => {
         if (!json.errors) {
+          history.push("/create");
           onLogin(json);
         } else {
           setLoginErrors(json.errors);

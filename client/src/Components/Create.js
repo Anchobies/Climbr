@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Layout from "./Layout";
 import { Button } from "@material-ui/core";
-import { Dropdown } from "semantic-ui-react";
+import { Dropdown, Input } from "semantic-ui-react";
 
 const Create = ({ currentUser }) => {
   let initialLayout = [];
@@ -52,7 +52,7 @@ const Create = ({ currentUser }) => {
       };
     });
   }
-  
+
   if (selectedGym !== null) {
     wallOptions = gyms[selectedGym].walls.map((wall) => {
       return {
@@ -132,17 +132,17 @@ const Create = ({ currentUser }) => {
   return (
     <div className="pageDiv">
       <header>New Problem</header>
-      <br/>
+      <br />
       <form
         className="problem-form"
         onSubmit={(e) => {
           e.preventDefault();
 
           if (selectedWall === null) {
-            setProblemErrors(["A wall must be selected."])
+            setProblemErrors(["A wall must be selected."]);
             return;
           }
-          
+
           fetch("/problems", {
             method: "POST",
             headers: {
@@ -169,14 +169,16 @@ const Create = ({ currentUser }) => {
       >
         <div className="form-group">
           <label htmlFor="name">Name</label>
-          <input
+          <Input
             type="text"
             className="form-control"
             value={problemInfo.name}
-            onChange={handleChangeInput}
             id="name"
             placeholder="Enter problem name..."
+            fluid
+            onChange={e => handleChangeInput(e)}
           />
+          <br/>
         </div>
         <div className="form-group">
           <label htmlFor="gym">Gym</label>
@@ -188,10 +190,11 @@ const Create = ({ currentUser }) => {
             selection
             options={gymOptions}
             onChange={(e, { value }) => {
-              setSelectedGym(value)
-              setSelectedWall(null)
+              setSelectedGym(value);
+              setSelectedWall(null);
             }}
           />
+          <br/>
         </div>
         <div className="form-group">
           <label htmlFor="wall">Wall</label>
@@ -202,11 +205,13 @@ const Create = ({ currentUser }) => {
             search
             selection
             options={wallOptions}
-          onChange={(e, { value }) => setSelectedWall(value)}
+            onChange={(e, { value }) => setSelectedWall(value)}
           />
+          <br />
         </div>
         <div className="form-group">
           <label htmlFor="difficulty">Difficulty</label>
+          &nbsp; &nbsp;
           <select
             value={problemInfo.difficulty}
             onChange={handleChangeInput}
@@ -228,6 +233,7 @@ const Create = ({ currentUser }) => {
             <option value="Professional">Professional</option>
           </select>
         </div>
+        <br />
         <Layout
           layout={layout}
           setLayout={setLayout}
@@ -235,27 +241,9 @@ const Create = ({ currentUser }) => {
           clickTile={clickTile}
           dragOverTile={dragOverTile}
         />
-        <Button
-          color="primary"
-          variant="contained"
-          onClick={() => {
-            let newLayout = [...layout];
-            newLayout.push([]);
-            for (let col = 0; col < 16; col++) {
-              newLayout[newLayout.length - 1].push({
-                id: (newLayout.length - 1) * 16 + col + 1,
-                isEmpty: true,
-                placementType: null,
-                startFinish: false,
-              });
-            }
-            setLayout(newLayout);
-          }}
-        >
-          Add Row
-        </Button>
+        <br/>
         <div className="holds-group">
-          <p>Select a hold type:</p>
+          <h3>Select a hold type:</h3>
           <div>
             <input
               type="radio"
@@ -354,12 +342,33 @@ const Create = ({ currentUser }) => {
           </div>
         </div>
         <Button
+          color="primary"
+          variant="contained"
+          onClick={() => {
+            let newLayout = [...layout];
+            newLayout.push([]);
+            for (let col = 0; col < 16; col++) {
+              newLayout[newLayout.length - 1].push({
+                id: (newLayout.length - 1) * 16 + col + 1,
+                isEmpty: true,
+                placementType: null,
+                startFinish: false,
+              });
+            }
+            setLayout(newLayout);
+          }}
+        >
+          Add Row
+        </Button>
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        <Button
           onClick={() => setLayout(initialLayout)}
           color="primary"
           variant="contained"
         >
           Clear
         </Button>
+        &nbsp; &nbsp; &nbsp; &nbsp;
         <Button type="submit" color="primary" variant="contained">
           Create Problem
         </Button>

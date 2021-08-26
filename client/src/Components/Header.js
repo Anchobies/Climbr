@@ -24,8 +24,8 @@ const Header = ({ onLogin, setToggle }) => {
       })
          .then(response => {
             if (response.ok) {
-               setToggle(true);
                onLogin(null);
+               setToggle(true);
             }
          }
       );

@@ -46,8 +46,9 @@ const Approach = ({ currentUser }) => {
   }, [approachId]);
 
   return (
-    <div>
+    <div className="pageDiv">
       <header>Approach for {problem.name}: {solutionName}</header>
+      <br/>
       <br/>
       <Button
         variant="contained"
@@ -56,6 +57,7 @@ const Approach = ({ currentUser }) => {
       >
         Back
       </Button>
+      &nbsp;&nbsp;&nbsp;
       <Button
                 variant="contained"
                 color="primary"
@@ -65,6 +67,7 @@ const Approach = ({ currentUser }) => {
               >
                 Edit
               </Button>
+              &nbsp;&nbsp;&nbsp;
       <Button
                 variant="contained"
                 color="primary"
@@ -79,16 +82,33 @@ const Approach = ({ currentUser }) => {
       <h4>Step {step}:</h4>
       <Layout layout={problem.layout} solution={approach[step - 1]} />
       <div className="legend">
-        <h3>Legend</h3>
-        <p style={{color:"#FF00FF"}} htmlFor="#FF00FF">Start</p>
-        <p style={{color:"red"}} htmlFor="red">Jug</p>
-        <p style={{color:"orange"}} htmlFor="orange">Sloper</p>
-        <p style={{color:"yellow"}} htmlFor="yellow">Pocket</p>
-        <p style={{color:"green"}} htmlFor="green">Pinch</p>
-        <p style={{color:"blue"}} htmlFor="blue">Crimp</p>
-        <p style={{color:"purple"}} htmlFor="purple">Volume</p>
-        <p style={{color:"cyan"}} htmlFor="cyan">End</p>
+        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Legend</h3>
+        <p className="hold-form" style={{ color: "#FF00FF" }} htmlFor="#FF00FF">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start
+        </p>
+        <p className="hold-form" style={{ color: "red" }} htmlFor="red">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jug
+        </p>
+        <p className="hold-form" style={{ color: "orange" }} htmlFor="orange">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sloper
+        </p>
+        <p className="hold-form" style={{ color: "yellow" }} htmlFor="yellow">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pocket
+        </p>
+        <p className="hold-form" style={{ color: "green" }} htmlFor="green">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pinch
+        </p>
+        <p className="hold-form" style={{ color: "blue" }} htmlFor="blue">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Crimp
+        </p>
+        <p className="hold-form" style={{ color: "purple" }} htmlFor="purple">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Volume
+        </p>
+        <p className="hold-form" style={{ color: "cyan" }} htmlFor="cyan">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End
+        </p>
       </div>
+      <br/>
       {+step !== 1 ? (
         <Button
           variant="contained"
@@ -98,6 +118,7 @@ const Approach = ({ currentUser }) => {
           Previous step
         </Button>
       ) : null}
+      &nbsp; &nbsp;
       {approach[+step] ? (
         <Button
           variant="contained"

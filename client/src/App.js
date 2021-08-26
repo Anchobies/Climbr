@@ -23,8 +23,8 @@ function App() {
   const history = useHistory();
 
   if (!currentUser) {
-    if (window.location.pathname !== "/create") {
-      history.push("/create");
+    if (window.location.pathname !== "/") {
+      history.push("/");
     }
 
     if (toggle) {

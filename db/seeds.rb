@@ -34,11 +34,11 @@ problem5 = Problem.create(name: "Problem 5", wall_id: wall4.id, difficulty: "V5"
 problem6 = Problem.create(name: "Problem 6", wall_id: wall5.id, difficulty: "V6", categories: [], layout: "")
 problem7 = Problem.create(name: "Problem 7", wall_id: wall6.id, difficulty: "V7", categories: [], layout: "")
 
-user1 = User.create(full_name: "Anthony Chung", email: "anthonychung@gmail.com", password: "password", username: "Anchobies", img_url: "")
-user2 = User.create(full_name: "Anthony2 Chung2", email: "anthonychung2@gmail.com", password: "password", username: "Anchobies2", img_url: "")
-user3 = User.create(full_name: "Anthony3 Chung3", email: "anthonychung3@gmail.com", password: "password", username: "Anchobies3", img_url: "")
-user4 = User.create(full_name: "Anthony4 Chung4", email: "anthonychung4@gmail.com", password: "password", username: "Anchobies4", img_url: "")
-user5 = User.create(full_name: "Anthony5 Chung5", email: "anthonychung5@gmail.com", password: "password", username: "Anchobies5", img_url: "")
+user1 = User.create(full_name: "Anthony Chung", email: "anthonychung@gmail.com", password: "password", username: "Anchobies", img_url: "https://us.123rf.com/450wm/yupiramos/yupiramos1706/yupiramos170614990/80116103-avatar-user-isolated-icon-vector-illustration-design.jpg?ver=6")
+user2 = User.create(full_name: "Anthony2 Chung2", email: "anthonychung2@gmail.com", password: "password", username: "Anchobies2", img_url: "https://us.123rf.com/450wm/yupiramos/yupiramos1706/yupiramos170614990/80116103-avatar-user-isolated-icon-vector-illustration-design.jpg?ver=6")
+user3 = User.create(full_name: "Anthony3 Chung3", email: "anthonychung3@gmail.com", password: "password", username: "Anchobies3", img_url: "https://us.123rf.com/450wm/yupiramos/yupiramos1706/yupiramos170614990/80116103-avatar-user-isolated-icon-vector-illustration-design.jpg?ver=6")
+user4 = User.create(full_name: "Anthony4 Chung4", email: "anthonychung4@gmail.com", password: "password", username: "Anchobies4", img_url: "https://us.123rf.com/450wm/yupiramos/yupiramos1706/yupiramos170614990/80116103-avatar-user-isolated-icon-vector-illustration-design.jpg?ver=6")
+user5 = User.create(full_name: "Anthony5 Chung5", email: "anthonychung5@gmail.com", password: "password", username: "Anchobies5", img_url: "https://us.123rf.com/450wm/yupiramos/yupiramos1706/yupiramos170614990/80116103-avatar-user-isolated-icon-vector-illustration-design.jpg?ver=6")
 
 approach1 = Approach.create(user_id: user1.id, name: "Approach 1", problem_id: problem1.id, steps: [
     [

@@ -50,7 +50,7 @@ const Search = ({ currentUser }) => {
                   {user.img_url ? (
                     <img src={user.img_url} alt="User" className="img-circle" />
                   ) : (
-                    <img src="" alt="User" className="default-img" />
+                    <img src="https://us.123rf.com/450wm/yupiramos/yupiramos1706/yupiramos170614990/80116103-avatar-user-isolated-icon-vector-illustration-design.jpg?ver=6" alt="User" className="default-img" />
                   )}
                 </Link>
               ) : (
@@ -59,7 +59,7 @@ const Search = ({ currentUser }) => {
                   {user.img_url ? (
                     <img src={user.img_url} alt="User" className="img-circle" />
                   ) : (
-                    <img src="" alt="User" className="default-img" />
+                    <img src="https://us.123rf.com/450wm/yupiramos/yupiramos1706/yupiramos170614990/80116103-avatar-user-isolated-icon-vector-illustration-design.jpg?ver=6" alt="User" className="default-img" />
                   )}
                 </Link>
               )}
@@ -85,7 +85,7 @@ const Search = ({ currentUser }) => {
             <CardContent>
               <Link to={`/gyms/${gym.id}`}>
                 <h4>{gym.name}</h4>
-                <img src="" alt="Gym" className="default-img" />
+                <img src={gym.img_url} alt="Gym" className="default-img" />
               </Link>
               <br />
             </CardContent>

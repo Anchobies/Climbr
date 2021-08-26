@@ -54,6 +54,7 @@ const MyClimbs = ({ currentUser, timeDifference }) => {
                 <h3>{approach.name}</h3>
                 <p>For: {approach.problem.name}</p>
               </Link>
+              <br/>
               <Button
                 variant="contained"
                 color="primary"
@@ -63,6 +64,7 @@ const MyClimbs = ({ currentUser, timeDifference }) => {
               >
                 Edit
               </Button>
+              &nbsp; &nbsp; 
               <Button
                 variant="contained"
                 color="primary"
@@ -88,12 +90,13 @@ const MyClimbs = ({ currentUser, timeDifference }) => {
   }
 
   return (
-    <div>
-      <h3>My Problems</h3>
+    <div className="pageDiv">
+      <h1>My Problems</h1>
       <Grid justifyContent="center" container spacing={3}>
         {problemsArray}
       </Grid>
-      <h3>My Approaches</h3>
+      <br/>
+      <h1>My Approaches</h1>
       <Grid justifyContent="center" container spacing={3}>
         {approachesArray}
       </Grid>
