@@ -27,7 +27,7 @@ const Layout = ({
     }
     if (
       layout[row + 1] &&
-      layout[row + 1] &&
+      layout[row + 1][col] &&
       !layout[row + 1][col].isEmpty &&
       layout[row][col].holdType === layout[row + 1][col].holdType
     ) {
