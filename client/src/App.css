@@ -9,7 +9,7 @@
 } */
 
 body {
-  background-image: url("/Users/anthony/Development/code/Mod5/Climbr/client/src/climbingbackground.jpeg");
+  background-image: url("./climbingbackground.jpeg");
 }
 
 code {
@@ -195,7 +195,7 @@ header {
 .App {
   text-align: center;
   /* background: rgb(250, 248, 227); */
-  background-image: url("/Users/anthony/Development/code/Mod5/Climbr/client/src/climbingbackground.jpeg");
+  background-image: url("./climbingbackground.jpeg");
   min-height: 100vh;
   padding-bottom: 125px;
 }
@@ -337,7 +337,7 @@ li {
 .climbr {
   width: 360px; 
   height: 128px; 
-  background-image: url("/Users/anthony/Development/code/Mod5/Climbr/client/src/Climbr.png");
+  background-image: url("./Climbr.png");
   background-size: cover;
   margin: 8% 36.8%;
 }
@@ -345,7 +345,7 @@ li {
 .climbr-hover {
   width: 360px; 
   height: 128px; 
-  background-image: url("/Users/anthony/Development/code/Mod5/Climbr/client/src/Climbr.gif");
+  background-image: url("./Climbr.gif");
   background-size: cover;
   margin: 8% 36.8%;
 }
