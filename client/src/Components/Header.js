@@ -33,7 +33,7 @@ const Header = ({ onLogin, setToggle }) => {
 
    return (
           <div className="header">
-             <img onClick={() => history.push("/")} style={{cursor:'pointer'}} src={ClimbrStatic} className="headerLogo" alt="logo"/>
+             <img onClick={() => history.push("/create")} style={{cursor:'pointer'}} src={ClimbrStatic} className="headerLogo" alt="logo"/>
              <SearchBar setValue={setValue}/>
              <SimpleTabs value={value === "/" || value === "/create" || value === "/climbs" || value === "/profile" ? value : "/"} setValue={setValue}/>
              <Button style={style} onClick={handleSignOut} type="submit" color="primary" variant="contained">

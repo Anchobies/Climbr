@@ -253,7 +253,7 @@ const Create = ({ currentUser }) => {
               className="hold-form"
             />
             <label style={{ color: "#FF00FF" }} htmlFor="#FF00FF">
-              Start
+            &nbsp;&nbsp;Start
             </label>
           </div>
           <div>
@@ -265,7 +265,7 @@ const Create = ({ currentUser }) => {
               className="hold-form"
             />
             <label style={{ color: "#D65456" }} htmlFor="#D65456">
-              Jug
+            &nbsp;&nbsp;Jug
             </label>
           </div>
           <div>
@@ -277,7 +277,7 @@ const Create = ({ currentUser }) => {
               className="hold-form"
             />
             <label style={{ color: "#f28500" }} htmlFor="#f28500">
-              Sloper
+            &nbsp;&nbsp;Sloper
             </label>
           </div>
           <div>
@@ -289,7 +289,7 @@ const Create = ({ currentUser }) => {
               className="hold-form"
             />
             <label style={{ color: "#FAD261" }} htmlFor="#FAD261">
-              Pocket
+            &nbsp;&nbsp;Pocket
             </label>
           </div>
           <div>
@@ -301,7 +301,7 @@ const Create = ({ currentUser }) => {
               className="hold-form"
             />
             <label style={{ color: "#519F61" }} htmlFor="#519F61">
-              Pinch
+            &nbsp;&nbsp;Pinch
             </label>
           </div>
           <div>
@@ -313,7 +313,7 @@ const Create = ({ currentUser }) => {
               className="hold-form"
             />
             <label style={{ color: "#349AF1" }} htmlFor="#349AF1">
-              Crimp
+            &nbsp;&nbsp;Crimp
             </label>
           </div>
           <div>
@@ -325,7 +325,7 @@ const Create = ({ currentUser }) => {
               className="hold-form"
             />
             <label style={{ color: "#6f2da8" }} htmlFor="#6f2da8">
-              Volume
+            &nbsp;&nbsp;Volume
             </label>
           </div>
           <div>
@@ -337,7 +337,7 @@ const Create = ({ currentUser }) => {
               className="hold-form"
             />
             <label style={{ color: "cyan" }} htmlFor="cyan">
-              Finish
+            &nbsp;&nbsp;Finish
             </label>
           </div>
         </div>
