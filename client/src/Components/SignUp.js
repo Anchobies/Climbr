@@ -74,7 +74,7 @@ const SignUp = ({ setToggle, toggle, onLogin }) => {
         onMouseEnter={(e) => (e.target.className = "climbr-hover")}
         className="climbr"
       ></div>
-      <div className="loginForm">
+      <div className="signUpForm">
         <form onSubmit={handleSubmitUser}>
           <br />
           <label>
@@ -133,7 +133,7 @@ const SignUp = ({ setToggle, toggle, onLogin }) => {
             type="submit"
             color="secondary"
             variant="contained"
-            className="loginButton3"
+            className="loginButton4"
           >
             Sign Up
           </Button>

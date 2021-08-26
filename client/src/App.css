@@ -78,9 +78,10 @@ header {
 }
 
 .signUpForm {
-  position: absolute;
+  /* position: absolute;
   top: 300px;
-  left: 730px;
+  left: 840px; */
+  margin: -6% 39%;
 }
 
 .loginInput {
@@ -157,6 +158,12 @@ header {
 .loginButton3 {
   position: relative;
   top: 35px;
+  left: 0;
+}
+
+.loginButton4 {
+  position: relative;
+  top: 25px;
   left: 0;
 }
 
