@@ -75,8 +75,7 @@ const User = () => {
 
   return (
     <div className="pageDiv">
-      <h2>Profile</h2>
-      {/* <img className="avatar" alt="User Avatar" src={user.avatar} /> */}
+      <img src="https://us.123rf.com/450wm/yupiramos/yupiramos1706/yupiramos170614990/80116103-avatar-user-isolated-icon-vector-illustration-design.jpg?ver=6" alt="User" className="default-img" />
       <ul className="signup-form-2">
         <br />
         <li>
