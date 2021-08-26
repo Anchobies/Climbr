@@ -3,6 +3,7 @@ import { Button } from "@material-ui/core"
 import SearchBar from "./SearchBar";
 import SimpleTabs from './SimpleTabs'
 import React from 'react';
+import ClimbrStatic from '../ClimbrBlue.png';
 
 const style = {
    background: '#FE3B8B',
@@ -32,7 +33,7 @@ const Header = ({ onLogin, setToggle }) => {
 
    return (
           <div className="header">
-             <img onClick={() => history.push("/")} style={{cursor:'pointer'}} src="" className="headerLogo" alt="logo"/>
+             <img onClick={() => history.push("/")} style={{cursor:'pointer'}} src={ClimbrStatic} className="headerLogo" alt="logo"/>
              <SearchBar setValue={setValue}/>
              <SimpleTabs value={value === "/" || value === "/create" || value === "/climbs" || value === "/profile" ? value : "/"} setValue={setValue}/>
              <Button style={style} onClick={handleSignOut} type="submit" color="primary" variant="contained">

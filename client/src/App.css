@@ -5,21 +5,25 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #ffda5b;
+  background: #b5d1fc;
 } */
 
+body {
+  background-image: url("/Users/anthony/Development/code/Mod5/Climbr/client/src/climbingbackground.jpeg");
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 #add-bee {
   font-size: 16px;
-  background: none!important;
+  background: none !important;
   border: none;
-  padding: 0!important;
+  padding: 0 !important;
   font-family: arial, sans-serif;
-  color: #FE3B8B;
+  color: #fe3b8b;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -49,14 +53,14 @@ header {
   color: red;
 }
 
-.loginPage {
+/* .loginPage {
   background: black;
   height: 124.63px;
   text-align: center;
   margin-top: 291px;
   margin-left: 666px;
   color: white;
-}
+} */
 
 .loginLogo {
   position: absolute;
@@ -67,9 +71,10 @@ header {
 }
 
 .loginForm {
-  position: absolute;
+  /* position: absolute;
   top: 300px;
-  left: 840px;
+  left: 840px; */
+  margin: -7% 39%;
 }
 
 .signUpForm {
@@ -80,11 +85,11 @@ header {
 
 .loginInput {
   padding: 10px 20px;
-  width: 225px;
+  width: 90%;
   margin-top: -10px;
   font-size: 16px;
   box-sizing: border-box;
-  border: 2px solid #ffda5b;
+  border: 2px solid #607da8;
   border-radius: 4px;
 }
 
@@ -94,7 +99,7 @@ header {
   margin-top: -10px;
   font-size: 16px;
   box-sizing: border-box;
-  border: 2px solid #ffda5b;
+  border: 2px solid #67696b;
   border-radius: 4px;
 }
 
@@ -107,7 +112,7 @@ header {
   left: 250px;
   font-size: 16px;
   box-sizing: border-box;
-  border: 2px solid #ffda5b;
+  border: 2px solid #b5d1fc;
   border-radius: 4px;
 }
 
@@ -120,7 +125,7 @@ header {
   left: 400px;
   font-size: 16px;
   box-sizing: border-box;
-  border: 2px solid #ffda5b;
+  border: 2px solid #b5d1fc;
   border-radius: 4px;
 }
 
@@ -133,20 +138,26 @@ header {
   left: 250px;
   font-size: 16px;
   box-sizing: border-box;
-  border: 2px solid #ffda5b;
+  border: 2px solid #b5d1fc;
   border-radius: 4px;
 }
 
 .loginButton1 {
-  position: absolute;
-  top: -142px;
-  left: 220px;
+  position: relative;
+  top: 110px;
+  left: 39%;
 }
 
 .loginButton2 {
-  position: absolute;
-  top: -5px;
-  left: 0px;
+  position: relative;
+  top: 110px;
+  left: 39%;
+}
+
+.loginButton3 {
+  position: relative;
+  top: 35px;
+  left: 0;
 }
 
 .signUpButton1 {
@@ -162,19 +173,22 @@ header {
 }
 
 .loginDescription {
-  position: absolute;
+  /* position: absolute;
   text-align: left;
   width: 400px;
   top: 100px;
-  left: 840px;
-  font-size: 32px;
-  font-family: 'Titillium Web', sans-serif;
+  left: 840px; */
+  margin: -8% 42%;
+  font-size: 30px;
+  font-family: "Titillium Web", sans-serif;
   color: black;
+  background: white;
 }
 
 .App {
   text-align: center;
-  background: rgb(250, 248, 227);
+  /* background: rgb(250, 248, 227); */
+  background-image: url("/Users/anthony/Development/code/Mod5/Climbr/client/src/climbingbackground.jpeg");
   min-height: 100vh;
   padding-bottom: 125px;
 }
@@ -192,7 +206,7 @@ ul {
 }
 
 .header {
-  background: #ffda5b;
+  background: #b5d1fc;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -208,11 +222,11 @@ ul {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  bottom:0;
-  left:0;
-  width:100%;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   height: 70px;
-  background-color: #ffda5b;
+  background-color: #b5d1fc;
 }
 
 .footer p {
@@ -221,29 +235,21 @@ ul {
   font-size: 16px;
   font-weight: bold;
   margin-right: 30px;
-  font-family: 
-    '-apple-system',
-    'BlinkMacSystemFont',
-    '"Segoe UI"',
-    'Roboto',
-    '"Helvetica Neue"',
-    'Arial',
-    'sans-serif',
-    '"Apple Color Emoji"',
-    '"Segoe UI Emoji"',
-    '"Segoe UI Symbol"';
+  font-family: "-apple-system", "BlinkMacSystemFont", '"Segoe UI"', "Roboto",
+    '"Helvetica Neue"', "Arial", "sans-serif", '"Apple Color Emoji"',
+    '"Segoe UI Emoji"', '"Segoe UI Symbol"';
   opacity: 0.75;
 }
 
 .footer p:hover {
-  color: #FE3B8B;
+  color: #fe3b8b;
   opacity: 1;
 }
 
 .headerLogo {
-  margin-left: 0px;
-  margin-right: 50px;
-  width: 175px;
+  margin-left: 0p;
+  margin-right: 10%;
+  width: 150px;
 }
 
 .searchInput {
@@ -263,7 +269,7 @@ ul {
   margin: auto;
   margin-top: 50px;
   padding: 30px;
-  background: #ffda5b;
+  background: #b5d1fc;
   width: 60%;
 }
 
@@ -286,14 +292,14 @@ li {
 
 .tile {
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 1px solid rgb(75, 75, 75);
   background: white;
-  height: 50px;
+  height: 40px;
 }
 
 :root {
-  --cols: 16;
-  --tile-size: 50px;
+  --cols: 20;
+  --tile-size: 40px;
 }
 
 .hold {
@@ -306,7 +312,33 @@ li {
   display: inline-block;
 }
 
-.holds-group, .legend {
+.holds-group,
+.legend {
   background: white;
   width: 25%;
+}
+
+.static {
+  position: absolute;
+  background: white;
+}
+
+.static:hover {
+  opacity: 0;
+}
+
+.climbr {
+  width: 360px; 
+  height: 128px; 
+  background-image: url("/Users/anthony/Development/code/Mod5/Climbr/client/src/Climbr.png");
+  background-size: cover;
+  margin: 8% 36.8%;
+}
+
+.climbr-hover {
+  width: 360px; 
+  height: 128px; 
+  background-image: url("/Users/anthony/Development/code/Mod5/Climbr/client/src/Climbr.gif");
+  background-size: cover;
+  margin: 8% 36.8%;
 }

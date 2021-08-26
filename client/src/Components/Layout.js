@@ -96,7 +96,7 @@ const Layout = ({
                 <div
                   className="tile"
                   key={col.id}
-                  style={{border: col.startFinish ? `4px solid ${col.startFinish}` : "1px solid black"}}
+                  style={{border: col.startFinish ? `4px solid ${col.startFinish}` : "1px solid rgb(75, 75, 75)"}}
                   onMouseDown={() =>
                     clickTile(
                       i,
@@ -126,7 +126,7 @@ const Layout = ({
                 <div
                   className="tile"
                   key={col.id}
-                  style={{border: col.startFinish ? `4px solid ${col.startFinish}` : "1px solid black"}}
+                  style={{border: col.startFinish ? `4px solid ${col.startFinish}` : "1px solid rgb(75, 75, 75)"}}
                   onMouseDown={() =>
                     clickTile ? clickTile(i, j, solution, setSolution) : null
                   }

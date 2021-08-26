@@ -7,11 +7,11 @@ import { Dropdown } from "semantic-ui-react";
 const Create = ({ currentUser }) => {
   let initialLayout = [];
 
-  for (let row = 0; row < 12; row++) {
+  for (let row = 0; row < 16; row++) {
     initialLayout.push([]);
-    for (let col = 0; col < 16; col++) {
+    for (let col = 0; col < 20; col++) {
       initialLayout[row].push({
-        id: row * 16 + col + 1,
+        id: row * 20 + col + 1,
         isEmpty: true,
         placementType: null,
         startFinish: null,
@@ -24,7 +24,7 @@ const Create = ({ currentUser }) => {
     gym: "",
     difficulty: "Intro",
   });
-  const [holdType, setHoldType] = useState("red");
+  const [holdType, setHoldType] = useState("#D65456");
   const [problemErrors, setProblemErrors] = useState([]);
   const [gyms, setGyms] = useState([]);
   const [selectedGym, setSelectedGym] = useState(null);
@@ -271,72 +271,72 @@ const Create = ({ currentUser }) => {
           <div>
             <input
               type="radio"
-              value="red"
-              checked={holdType === "red"}
+              value="#D65456"
+              checked={holdType === "#D65456"}
               onChange={handleRadioChange}
               className="hold-form"
             />
-            <label style={{ color: "red" }} htmlFor="red">
+            <label style={{ color: "#D65456" }} htmlFor="#D65456">
               Jug
             </label>
           </div>
           <div>
             <input
               type="radio"
-              value="orange"
-              checked={holdType === "orange"}
+              value="#f28500"
+              checked={holdType === "#f28500"}
               onChange={handleRadioChange}
               className="hold-form"
             />
-            <label style={{ color: "orange" }} htmlFor="orange">
+            <label style={{ color: "#f28500" }} htmlFor="#f28500">
               Sloper
             </label>
           </div>
           <div>
             <input
               type="radio"
-              value="yellow"
-              checked={holdType === "yellow"}
+              value="#FAD261"
+              checked={holdType === "#FAD261"}
               onChange={handleRadioChange}
               className="hold-form"
             />
-            <label style={{ color: "yellow" }} htmlFor="yellow">
+            <label style={{ color: "#FAD261" }} htmlFor="#FAD261">
               Pocket
             </label>
           </div>
           <div>
             <input
               type="radio"
-              value="green"
-              checked={holdType === "green"}
+              value="#519F61"
+              checked={holdType === "#519F61"}
               onChange={handleRadioChange}
               className="hold-form"
             />
-            <label style={{ color: "green" }} htmlFor="green">
+            <label style={{ color: "#519F61" }} htmlFor="#519F61">
               Pinch
             </label>
           </div>
           <div>
             <input
               type="radio"
-              value="blue"
-              checked={holdType === "blue"}
+              value="#349AF1"
+              checked={holdType === "#349AF1"}
               onChange={handleRadioChange}
               className="hold-form"
             />
-            <label style={{ color: "blue" }} htmlFor="blue">
+            <label style={{ color: "#349AF1" }} htmlFor="#349AF1">
               Crimp
             </label>
           </div>
           <div>
             <input
               type="radio"
-              value="purple"
-              checked={holdType === "purple"}
+              value="#6f2da8"
+              checked={holdType === "#6f2da8"}
               onChange={handleRadioChange}
               className="hold-form"
             />
-            <label style={{ color: "purple" }} htmlFor="purple">
+            <label style={{ color: "#6f2da8" }} htmlFor="#6f2da8">
               Volume
             </label>
           </div>
