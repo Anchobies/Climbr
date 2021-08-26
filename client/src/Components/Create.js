@@ -347,9 +347,9 @@ const Create = ({ currentUser }) => {
           onClick={() => {
             let newLayout = [...layout];
             newLayout.push([]);
-            for (let col = 0; col < 16; col++) {
+            for (let col = 0; col < 20; col++) {
               newLayout[newLayout.length - 1].push({
-                id: (newLayout.length - 1) * 16 + col + 1,
+                id: (newLayout.length - 1) * 20 + col + 1,
                 isEmpty: true,
                 placementType: null,
                 startFinish: false,
